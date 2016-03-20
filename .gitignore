@@ -14,7 +14,18 @@
 # Executables
 *.exe
 
+# eclipse/DDT
+.project
+.settings
+
 # DUB
 .dub
 docs.json
 __dummy.html
+dub.selections.json
+
+# not necessary or later
+private/
+source/iup/trash
+source/iup/iupdefx.ddd
+source/im

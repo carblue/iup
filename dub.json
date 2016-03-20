@@ -1,0 +1,14 @@
+{
+	"name": "iup",
+	"version": "3.17.0",
+	"description": "Deimos Bindings for iup.",
+	"copyright": "Copyright © 2016, Carsten Blüggel",
+	"authors": ["Carsten Blüggel"],
+	"targetType": "sourceLibrary",
+	"sourcePaths": [
+		"source/"
+	],
+	"importPaths": [
+		"source/"
+	]
+}

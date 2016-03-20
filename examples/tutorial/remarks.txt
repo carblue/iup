@@ -1,0 +1,114 @@
+Re: Build error on Linux
+
+Hello, folks--
+
+I very much appreciate Your work on IUP, CD, IM and the design goals. Unfortunately I only recently "discovered" IUP for
+use from D programming language (Binding: https://bitbucket.org/alphaglosined/libglosined/src/ and my own).
+
+First of all, this is my OS: Linux319_64 (in package notation), Kubuntu 15.10 (up to date from repo, liblua5.1-0 runtime, libgtk-3-dev (3.14.13-0ubuntu1)
+, libgtk2.0-0 runtime installed but NOT libgtk2.0-dev)
+
+I had trouble to build an IUP installation from sources too, but this thread helped a lot to succeed finally.
+Here are my suggestions for changes in documentation (iup-3.17_Docs.pdf) and sources:
+
+"Building Lua, IM, CD and IUP in Linux", page 90
+After installing prerequisites (for building all libraries; libgtk3.0-dev doesn't exist, but libgtk-3-dev does), Unpacking:
+cd-5.8.2_Sources.tar.gz
+im-3.9.1_Sources.tar.gz
+iup-3.15_Sources.tar.gz
+lua-5.3_Sources.tar.gz
+
+"If you want to use some of these libraries that are installed on the system you will have to define some environment variables before building them."
+The meaning wasn't clear to me, so I defined the environment variables mentioned, and ran in build errors.
+So I took the meaning as "libraries that are already installed by a previous installation" and NOT "going to be installed".
+
+Lua, page 92
+As the already installed Lua (only runtime, nothing else) is version 5.1 and I downloaded lua-5.3_Sources.tar.gz, I decided to go with the newer
+version 5.3 and defined USE_LUA53=Yes in the environment (export USE_LUA53=Yes  in .bashrc).
+
+Building
+There is no mention about building Lua now, so I decided to do this first.
+Confusingly there is a Makefile in directory lua53/ as well as in lua53/src/
+The README file for installation instructions points to doc/readme.html, that doesn't exist.
+So I decided for: lua53$ make linux
+
+Building Lua: liblua.a, lua and luac got built successfully.
+
+Building IM: im/src$ make
+============
+Build error is:
+/usr/bin/ld: cannot find -llua53
+
+Obviously I made a mistake with lua, corrected as a workaround by:
+lua53/src/$ sudo cp liblua.a /usr/local/lib/liblua53.a
+
+The bulk of compiler warnings is confusing, but finally libimlua_fftw53.so got built successfully.
+
+Building CD: cd/src$ make
+============
+Again, the bulk of compiler warnings and even errors is confusing, but finally:
+../tecmake.mak:1468: recipe for target '../lib/Linux319_64/libcdcontextplus.so' failed
+Build error is:
+/usr/bin/ld: cannot find -lcdx11
+
+This is where I came across this thread and changed Makefile like this:
+cd/src$ diff -u Makefile_original Makefile
+--- Makefile_original   2015-04-23 18:50:20.000000000 +0200                                                                                                                                                                                                                   
++++ Makefile    2015-09-04 17:17:23.233316821 +0200                                                                                                                                                                                                                           
+@@ -5,7 +5,7 @@                                                                                                                                                                                                                                                               
+ endif                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                              
+ .PHONY: do_all cd_zlib cd_freetype cd_ftgl cd cd_pdflib cdpdf cdgl cdcontextplus cdcairo cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluacairo5 cdluaim5                                                                                                                    
+-do_all:        cd_zlib cd_freetype cd_ftgl cd cd_pdflib cdpdf cdgl cdcontextplus         cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5             cdluaim5                                                                                                                    
++do_all:        cd_zlib cd_freetype cd_ftgl cd cd_pdflib cdpdf cdgl                       cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5             cdluaim5                                                                                                                    
+                                                                                                                                                                                                                                                                              
+ cd_zlib:                                                                                                                                                                                                                                                                     
+        @$(TECMAKE_CMD) MF=cd_zlib        
+
+Now make runs until finally building libcdluaim53.so successfully.
+
+Building IUP: iup$ make
+=============
+Again, the bulk of compiler warnings and even errors is confusing, but finally:
+gtk/iupgtk_dialog.c: In function ‘gtkDialogSetTrayImageAttrib’:
+gtk/iupgtk_dialog.c:1045:3: error: unknown type name ‘GtkStatusIcon’
+   GtkStatusIcon* status_icon = gtkDialogGetStatusIcon(ih);
+...   
+../tecmake.mak:1583: recipe for target '../obj/Linux319_64/iupgtk_dialog.o' failed
+
+The reason for that turned out to be the same as for Matt Gushee's workaround:
+/usr/include/gtk-3.0/gtk/gtk.h includes some deprecated files (among others that for ‘GtkStatusIcon’) only, if
+GTK_DISABLE_DEPRECATED is not defined;
+
+So, DEFINES += GTK_DISABLE_DEPRECATED seems to be risky to break building iup, if not closely following and adapt to updates of gtk.
+
+I changed iupgtk_dialog.c like this:
+iup/src/gtk$ diff -u iupgtk_dialog_original.c  iupgtk_dialog.c
+--- iupgtk_dialog_original.c    2015-04-20 21:38:46.000000000 +0200
++++ iupgtk_dialog.c     2015-09-05 16:45:38.572157719 +0200
+@@ -4,6 +4,8 @@
+  * See Copyright Notice in "iup.h"
+  */
+ 
++#undef GTK_DISABLE_DEPRECATED /* Since GTK 3.14 ? GtkStatusIcon is deprecated.
++                                 TODO:  */
+ #include <gtk/gtk.h>
+ 
+ #ifdef HILDON
+
+Next, make error:
+Tecmake: linking iupview ...
+g++: error: ../../lua53/lib/Linux319_64/liblua53.a: File or directory not found
+../tecmake.mak:1515: recipe for target '../bin/Linux319_64/iupview' failed
+
+So I manually created that file and make finishes successfully:
+Tecmake: Application (../bin/Linux319_64/iuplua53) Done.
+
+Installation (System Directory)
+===============================
+I personally comletely avoid installing manually in /usr except in /usr/local und prefer building a .deb-package for install (using checkinstall),
+but that only works with an install target in a Makefile.
+
+It's sad, that iup is close to a smooth build on Linux, but in the current situation some people may give up earlier.
+
+ 
