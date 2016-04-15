@@ -6,8 +6,7 @@
 
 module iup.iupim;
 
-import iup.iup;
-import im.im_image;
+import iup.iup : Ihandle;
 
 extern (C) :
 
@@ -16,6 +15,9 @@ int IupSaveImage(Ihandle* ih, const(char)* file_name, const(char)* format);
 Ihandle* IupLoadAnimation(const(char)* file_name);
 Ihandle* IupLoadAnimationFrames(const(char)** file_name_list, int file_count);
 
-imImage* IupGetNativeHandleImage(void* handle);
-void* IupGetImageNativeHandle(const(imImage)* image);
-Ihandle* IupImageFromImImage(const(imImage)* image);
+version(IM_IMAGE) {
+	import im.im_image : imImage;
+	imImage* IupGetNativeHandleImage(void* handle);
+	void* IupGetImageNativeHandle(const(imImage)* image);
+	Ihandle* IupImageFromImImage(const(imImage)* image);
+}
