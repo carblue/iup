@@ -6,6 +6,8 @@
  
 module iup.iupgl;
 
+import iup.iup : Ihandle;
+
 extern (C) :
 /+
 /* Attributes 
@@ -74,10 +76,11 @@ extern (C) :
 #ifndef IUP_NO
 #define IUP_NO    "NO"
 #endif
++/
+void IupGLCanvasOpen();
 
-void IupGLCanvasOpen(void);
-
-Ihandle *IupGLCanvas(const char *action);
+Ihandle* IupGLCanvas(const(char)* action);
+Ihandle* IupGLBackgroundBox(Ihandle* child);
 
 void IupGLMakeCurrent(Ihandle* ih);
 int IupGLIsCurrent(Ihandle* ih);
@@ -85,4 +88,3 @@ void IupGLSwapBuffers(Ihandle* ih);
 void IupGLPalette(Ihandle* ih, int index, float r, float g, float b);
 void IupGLUseFont(Ihandle* ih, int first, int count, int list_base);
 void IupGLWait(int gl);
-+/

@@ -20,11 +20,11 @@ Ihandle* IupMglPlot();
 /*           Additional API                    */
 
 /* Linear Data Only */
-void IupMglPlotBegin(Ihandle *ih, int dim);
-void IupMglPlotAdd1D(Ihandle *ih, const(char)* name, double y);
-void IupMglPlotAdd2D(Ihandle *ih, double x, double y);
-void IupMglPlotAdd3D(Ihandle *ih, double x, double y, double z);
-int  IupMglPlotEnd(Ihandle *ih);
+void IupMglPlotBegin(Ihandle* ih, int dim);
+void IupMglPlotAdd1D(Ihandle* ih, const(char)* name, double y);
+void IupMglPlotAdd2D(Ihandle* ih, double x, double y);
+void IupMglPlotAdd3D(Ihandle* ih, double x, double y, double z);
+int  IupMglPlotEnd(Ihandle* ih);
 
 /* Linear (dim=1,2,3), Planar (dim=1), Volumetric (dim=1) */
 int IupMglPlotNewDataSet(Ihandle *ih, int dim);
@@ -54,7 +54,7 @@ void IupMglPlotDrawMark(Ihandle* ih, double x, double y, double z);
 void IupMglPlotDrawLine(Ihandle* ih, double x1, double y1, double z1, double x2, double y2, double z2);
 void IupMglPlotDrawText(Ihandle* ih, const(char)* text, double x, double y, double z);
 
-void IupMglPlotPaintTo(Ihandle *ih, const(char)* format, int w, int h, double dpi, void* data);
+void IupMglPlotPaintTo(Ihandle* ih, const(char)* format, int w, int h, double dpi, void* data);
 
 /***********************************************/
 

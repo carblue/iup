@@ -8,21 +8,20 @@
  */
 
 module iup.iup;
- 
-//#include "iupkey.h"
+
 public import iup.iupkey;
-//#include "iupdef.h"
 public import iup.iupdef;
-pragma(lib, "iup");
+
+version (DigitalMars)  pragma(lib, "iup"); // gdc error: pragma(lib) not implemented [-Werror]
 
 extern (C) {
 
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
-enum IUP_COPYRIGHT = "Copyright (C) 1994-2015 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.17";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 317000;
-enum IUP_VERSION_DATE = "2015/11/29";  /* does not include bug fix releases */
+enum IUP_COPYRIGHT = "Copyright (C) 1994-2016 Tecgraf/PUC-Rio";
+enum IUP_VERSION = "3.18";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 318000;
+enum IUP_VERSION_DATE = "2016/03/21";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -511,7 +510,7 @@ enum {IUP_RECBINARY, IUP_RECTEXT};
 
 
 /******************************************************************************
-* Copyright (C) 1994-2015 Tecgraf, PUC-Rio.
+* Copyright (C) 1994-2016 Tecgraf, PUC-Rio.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the
