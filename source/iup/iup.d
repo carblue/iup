@@ -12,8 +12,6 @@ module iup.iup;
 public import iup.iupkey;
 public import iup.iupdef;
 
-version (DigitalMars)  pragma(lib, "iup"); // gdc error: pragma(lib) not implemented [-Werror]
-
 extern (C) {
 
 enum IUP_NAME = "IUP - Portable User Interface";

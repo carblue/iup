@@ -4,11 +4,38 @@
 	"description": "Deimos Bindings for iup.",
 	"copyright": "Copyright © 2016, Carsten Blüggel",
 	"authors": ["Carsten Blüggel"],
-	"targetType": "sourceLibrary",
+	"targetType": "library",
+	"targetPath": "lib",
 	"sourcePaths": [
 		"source/"
 	],
 	"importPaths": [
 		"source/"
+	],
+	"libs-posix": ["iup", "iupcontrols"],
+	"sourceFiles-windows-x86": [
+		"lib/windows-x86-dmd/iup.lib",
+		"lib/windows-x86-dmd/iupcontrols.lib"
+	],
+	"copyFiles-windows-x86": [
+		"lib/windows-x86-dmd/iup.dll",
+		"lib/windows-x86-dmd/iupcontrols.dll",
+		"lib/windows-x86-dmd/iupcd.dll",
+		"lib/windows-x86-dmd/cd.dll",
+		"lib/windows-x86-dmd/freetype6.dll",
+		"lib/windows-x86-dmd/zlib1.dll"
+	],
+	"sourceFiles-windows-x86_64": [
+		"lib/windows-x86_64-dmd/iup.lib",
+		"lib/windows-x86_64-dmd/iupcontrols.lib"
+	],
+	"copyFiles-windows-x86_64": [
+		"lib/windows-x86_64-dmd/iup.dll",
+		"lib/windows-x86_64-dmd/iupcontrols.dll",
+		"lib/windows-x86_64-dmd/iupcd.dll",
+		"lib/windows-x86_64-dmd/cd.dll",
+		"lib/windows-x86_64-dmd/freetype6.dll",
+		"lib/windows-x86_64-dmd/zlib1.dll",
+		"lib/windows-x86_64-dmd/vcruntime140_dll"
 	]
 }

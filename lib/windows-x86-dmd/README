@@ -1,0 +1,13 @@
+This folder has to be populated with .lib files (generated from .dll files):
+
+.dll files to be downloaded from (adapt links to new versions; prefer dependency on MSVCRT.DLL only!):
+
+https://sourceforge.net/projects/iup/files/3.18/Windows%20Libraries/Dynamic/iup-3.18_Win32_dllw4_lib.zip/download
+https://sourceforge.net/projects/canvasdraw/files/5.9/Windows%20Libraries/Dynamic/cd-5.9_Win32_dllw4_lib.zip/download
+https://sourceforge.net/projects/imtoolkit/files/3.10/Windows%20Libraries/Dynamic/im-3.10_Win32_dllw4_lib.zip/download
+
+.lib files to be generated with Digital Mars tool : implib
+http://www.digitalmars.com/ctg/implib.html
+
+To create the import library e.g. iup.lib from iup.dll, run:
+implib /s iup.lib iup.dll

@@ -8,8 +8,6 @@ module iup.iupcontrols;
 
 import iup.iup : Ihandle;
 
-version (DigitalMars)  pragma(lib, "iupcontrols"); // gdc error: pragma(lib) not implemented [-Werror]
-
 extern (C) :
 
 

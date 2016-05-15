@@ -1,0 +1,7 @@
+.lib files in this folder got downloaded from:
+
+https://sourceforge.net/projects/iup/files/3.18/Windows%20Libraries/Dynamic/iup-3.18_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/canvasdraw/files/5.9/Windows%20Libraries/Dynamic/cd-5.9_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/imtoolkit/files/3.10/Windows%20Libraries/Dynamic/im-3.10_Win64_dll14_lib.zip/download
+
+There will be a dependency on some vcruntime???.dll (vcruntime140.dll in this case) too !
