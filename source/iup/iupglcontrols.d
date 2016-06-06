@@ -8,7 +8,7 @@ module iup.iupglcontrols;
 
 import iup.iup;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 int  IupGLControlsOpen();
 

@@ -10,6 +10,8 @@ import iup.iup : Ihandle;
 
 struct _cdCanvas;
 
+extern(C) nothrow :
+
 alias IFidle = int function();  /* idle */
 
 alias IFi     = void function(int); /* globalentermodal_cb, globalleavemodal_cb,  */

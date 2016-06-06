@@ -3,12 +3,12 @@
  *
  * See Copyright Notice in "iup.h"
  */
- 
+
 module iup.iupcontrols;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 
 int  IupControlsOpen();

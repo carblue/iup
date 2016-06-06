@@ -8,7 +8,7 @@ module iup.iupmask;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 //#pragma message("Warning: Using DEPRECATED iupMask definitions from \"iupmask.h\", use the MASK attribute in IupText or IupMatrix. It will be removed in a future version.") 
 

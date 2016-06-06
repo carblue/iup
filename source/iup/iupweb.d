@@ -8,7 +8,7 @@ module iup.iupweb;
 
 import iup.iup : Ihandle;
 
-extern(C) :
+extern(C) @nogc nothrow :
 
 int IupWebBrowserOpen();
 

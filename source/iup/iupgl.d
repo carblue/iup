@@ -8,7 +8,7 @@ module iup.iupgl;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 /+
 /* Attributes 
 ** To set the appropriate visual (pixel format) the following

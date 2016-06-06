@@ -8,7 +8,9 @@ module iup.iup_plot;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+struct _cdCanvas;
+
+extern(C) @nogc nothrow :
 
 /* Initialize IupPlot widget class */
 void IupPlotOpen();
@@ -53,8 +55,6 @@ void IupPlotTransform(Ihandle* ih, double x, double y, double* cnv_x, double* cn
 void IupPlotTransformTo(Ihandle* ih, double cnv_x, double cnv_y, double* x, double* y);
 
 int  IupPlotFindSample(Ihandle* ih, double cnv_x, double cnv_y, int* ds_index, int* sample_index);
-
-struct _cdCanvas;
 
 void IupPlotPaintTo(Ihandle* ih, _cdCanvas* cnv);
 

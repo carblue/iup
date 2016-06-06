@@ -12,7 +12,7 @@ module iup.iup;
 public import iup.iupkey;
 public import iup.iupdef;
 
-extern (C) {
+extern(C) {
 
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
@@ -24,7 +24,9 @@ enum IUP_VERSION_DATE = "2016/03/21";  /* does not include bug fix releases */
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
 struct Ihandle;
-alias Icallback = int function(Ihandle*);
+alias Icallback = int function(Ihandle*) nothrow;
+
+@nogc nothrow {
 
 /************************************************************************/
 /*                        Main API                                      */
@@ -322,8 +324,8 @@ Ihandle* IupParamBox(Ihandle* parent, Ihandle** params, int count);
 Ihandle* IupLayoutDialog(Ihandle* dialog);
 Ihandle* IupElementPropertiesDialog(Ihandle* elem);
 
-
-} // extern (C)
+} // @nogc nothrow
+} // extern(C)
 
 /************************************************************************/
 /*                   Common Flags and Return Values                     */
@@ -368,7 +370,7 @@ enum {IUP_SHOW, IUP_RESTORE, IUP_MINIMIZE, IUP_MAXIMIZE, IUP_HIDE};
 /************************************************************************/
 /*               SCROLL_CB Callback Values                              */
 /************************************************************************/
-enum {IUP_SBUP,   IUP_SBDN,    IUP_SBPGUP,   IUP_SBPGDN,    IUP_SBPOSV, IUP_SBDRAGV, 
+enum {IUP_SBUP,   IUP_SBDN,    IUP_SBPGUP,   IUP_SBPGDN,    IUP_SBPOSV, IUP_SBDRAGV,
       IUP_SBLEFT, IUP_SBRIGHT, IUP_SBPGLEFT, IUP_SBPGRIGHT, IUP_SBPOSH, IUP_SBDRAGH};
 
 /************************************************************************/

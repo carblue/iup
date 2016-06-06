@@ -8,7 +8,7 @@ module iup.iup_scintilla;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 void IupScintillaOpen();
 

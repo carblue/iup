@@ -8,7 +8,7 @@ module iup.iupole;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 Ihandle* IupOleControl(const(char)* progid);
 

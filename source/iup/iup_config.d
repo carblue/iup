@@ -8,7 +8,7 @@ module iup.iup_config;
 
 import iup.iup : Ihandle, Icallback;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 Ihandle* IupConfig();
 

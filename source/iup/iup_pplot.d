@@ -8,7 +8,7 @@ module iup.iup_pplot;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 /* Initialize IupPPlot widget class */
 void IupPPlotOpen();

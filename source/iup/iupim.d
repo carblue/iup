@@ -8,7 +8,7 @@ module iup.iupim;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 Ihandle* IupLoadImage(const(char)* file_name);
 int IupSaveImage(Ihandle* ih, const(char)* file_name, const(char)* format);

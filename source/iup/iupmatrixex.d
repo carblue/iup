@@ -8,7 +8,7 @@ module iup.iupmatrixex;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 void IupMatrixExOpen();
 

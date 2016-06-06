@@ -8,7 +8,7 @@ module iup.iup_mglplot;
 
 import iup.iup : Ihandle;
 
-extern (C) :
+extern(C) @nogc nothrow :
 
 /* Initialize IupMglPlot widget class */
 void IupMglPlotOpen();
