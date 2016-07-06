@@ -494,12 +494,12 @@ void imProcessBitPlane(const imImage* src_image, imImage* dst_image, int plane, 
  * \ingroup process */
 
 /** Render Funtion.
- * \verbatim render_func(x: number, y: number, d: number, params: table) -> value: number [in Lua 5] \endverbatim
+ * \verbatim func(x: number, y: number, d: number, params: table) -> value: number [in Lua 5] \endverbatim
  * \ingroup render */
 typedef float (*imRenderFunc)(int x, int y, int d, float* params);
 
 /** Render Conditional Funtion.
- * \verbatim render_cond_func(x: number, y: number, d: number, params: table) -> value: number, cond: boolean [in Lua 5] \endverbatim
+ * \verbatim func(x: number, y: number, d: number, params: table) -> value: number, cond: boolean [in Lua 5] \endverbatim
  * \ingroup render */
 typedef float (*imRenderCondFunc)(int x, int y, int d, int *cond, float* params);
 
@@ -508,17 +508,17 @@ typedef float (*imRenderCondFunc)(int x, int y, int d, int *cond, float* params)
  * or else all data will be replaced. All the render functions use this or the conditional function. \n
  * Returns zero if the counter aborted.
  *
- * \verbatim im.ProcessRenderOp(image: imImage, render_func: function, render_name: string, params: table, plus: boolean) -> counter: boolean [in Lua 5] \endverbatim
+ * \verbatim im.ProcessRenderOp(image: imImage, func: function, render_name: string, params: table, plus: boolean) -> counter: boolean [in Lua 5] \endverbatim
  * \ingroup render */
-int imProcessRenderOp(imImage* image, imRenderFunc render_func, const char* render_name, float* params, int plus);
+int imProcessRenderOp(imImage* image, imRenderFunc func, const char* render_name, float* params, int plus);
 
 /** Render a synthetic image using a conditional render function. \n
  * Data will be rendered only if the condional parameter is true. \n
  * Returns zero if the counter aborted.
  *
- * \verbatim im.ProcessRenderCondOp(image: imImage, render_cond_func: function, render_name: string, params: table) -> counter: boolean [in Lua 5] \endverbatim
+ * \verbatim im.ProcessRenderCondOp(image: imImage, func: function, render_name: string, params: table) -> counter: boolean [in Lua 5] \endverbatim
  * \ingroup render */
-int imProcessRenderCondOp(imImage* image, imRenderCondFunc render_cond_func, const char* render_name, float* params);
+int imProcessRenderCondOp(imImage* image, imRenderCondFunc func, const char* render_name, float* params);
 
 /** Render speckle noise on existing data. Can be done in-place.
  *

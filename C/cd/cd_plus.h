@@ -8,8 +8,6 @@
 #define __CD_PLUS_H
 
 
-#include <im_plus.h>
-
 #include "cd.h"
 #include "wd.h"
 
@@ -242,10 +240,12 @@ namespace cd
     int LineCap(int cap) { return cdCanvasLineCap(canvas, cap); }
     int InteriorStyle(int style) { return cdCanvasInteriorStyle(canvas, style); }
     int Hatch(int style) { return cdCanvasHatch(canvas, style); }
+#ifdef __IM_PLUS_H
     void Stipple(const im::Image& stipple) { cdCanvasStippleImImage(canvas, stipple.GetHandle()); }
     unsigned char* GetStipple(int &n, int &m) { return cdCanvasGetStipple(canvas, &n, &m); }
     void Pattern(const im::Image& pattern) { cdCanvasPatternImImage(canvas, pattern.GetHandle()); }
     long* GetPattern(int& n, int& m) { return cdCanvasGetPattern(canvas, &n, &m); }
+#endif    
     int FillMode(int mode) { return cdCanvasFillMode(canvas, mode); }
     int Font(const char* type_face, int style, int size) { return cdCanvasFont(canvas, type_face, style, size); }
     int wFont(const char* type_face, int style, double size) { return wdCanvasFont(canvas, type_face, style, size); }
@@ -308,12 +308,14 @@ namespace cd
 
 
     /* client images */
+#ifdef __IM_PLUS_H
     void PutImage(const im::Image& image, int x, int y, int w, int h) { cdCanvasPutImImage(canvas, image.GetHandle(), x, y, w, h); }
     void PutImage(const im::Image& image, double x, double y, double w, double h) { cdfCanvasPutImImage(canvas, image.GetHandle(), x, y, w, h); }
     void wPutImage(const im::Image& image, double x, double y, double w, double h) { wdCanvasPutImImage(canvas, image.GetHandle(), x, y, w, h); }
 
     void GetImage(im::Image& image, int x, int y) { cdCanvasGetImImage(canvas, image.GetHandle(), x, y); }
     void wGetImage(im::Image& image, double x, double y) { wdCanvasGetImImage(canvas, image.GetHandle(), x, y); }
+#endif    
   };
 
 
@@ -330,6 +332,7 @@ namespace cd
       else
         canvas = cdCreateCanvasf(CD_IMAGERGB, "%dx%d %s", width, height, alpha); }
   };
+#ifdef __IM_PLUS_H
   class CanvasImImage : public Canvas
   {
   public:
@@ -339,6 +342,7 @@ namespace cd
         cdCanvasSetfAttribute(canvas, "RESOLUTION", "%g", res); 
     }
   };
+#endif
   class CanvasMetafileEMF : public Canvas
   {
   public:

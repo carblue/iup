@@ -243,9 +243,9 @@ void imBinSwapBytes8(void *data, int count);
 
 /** \defgroup compress Data Compression Utilities
  * \par
- * Deflate compression support uses zlib version 1.2.5.     \n
+ * Deflate compression support uses zlib version 1.2.8.     \n
  * http://www.zlib.org/                                     \n
- * Copyright (C) 1995-2011 Jean-loup Gailly and Mark Adler
+ * Copyright (C) 1995-2013 Jean-loup Gailly and Mark Adler
  * \par
  * LZF compression support uses libLZF version 3.5.       \n
  * http://software.schmorp.de/pkg/liblzf                  \n

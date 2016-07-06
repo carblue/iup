@@ -291,11 +291,15 @@ int cdStrLineCount(const char* str);
 char* cdStrDup(const char* str);
 char* cdStrDupN(const char* str, int len);
 int cdStrIsAscii(const char* str);
+char* cdStrConvertToUTF8(const char* str, int len, char* utf8_buffer, int *utf8_buffer_len, int utf8mode);
 void cdSetPaperSize(int size, double *w_pt, double *h_pt);
 int cdGetFontFileName(const char* type_face, char* filename);
 int cdGetFontFileNameDefault(const char *type_face, int style, char* filename);
 int cdGetFontFileNameSystem(const char *type_face, int style, char* filename);
 int cdStrTmpFileName(char* filename);
+int cdMakeDirectory(const char *path);
+int cdIsDirectory(const char* path);
+int cdRemoveDirectory(const char *path);
 
 void cdPoly(cdCanvas* canvas, int mode, cdPoint* points, int n);
 

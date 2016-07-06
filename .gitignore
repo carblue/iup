@@ -9,7 +9,7 @@
 
 # Compiled Static libraries
 *.a
-#*.lib
+*.lib
 
 # Executables
 *.exe
@@ -28,7 +28,8 @@ dub.selections.json
 # not necessary to be done or later:
 private/
 di/iup/*.di
-lib/windows-x86_64-dmd/*.lib
-lib/windows-x86_64-dmd/vcruntime140_dll
+
+lib/windows-x86_64/vcruntime140_dll
+source/cd
 source/im
 source/iup/trash

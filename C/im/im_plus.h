@@ -1187,7 +1187,7 @@ namespace im
       return imProcessRenderGrid(image.GetHandle(), x_space, y_space); }
     inline int RenderChessboard(Image& image, int x_space, int y_space) {
       return imProcessRenderChessboard(image.GetHandle(), x_space, y_space); }
-    inline int RenderFloodFill(Image& image, int start_x, int start_y, float* replace_color, float tolerance) {
+    inline void RenderFloodFill(Image& image, int start_x, int start_y, float* replace_color, float tolerance) {
       imProcessRenderFloodFill(image.GetHandle(), start_x, start_y, replace_color, tolerance); }
   }
 
@@ -1259,7 +1259,7 @@ namespace im
 
   public:
     MeasureTable(int _region_count)
-      :region_count(_region_count), AttribTable(0) {
+      :AttribTable(0), region_count(_region_count) {
     }
     ~MeasureTable() {}
 
