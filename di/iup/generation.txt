@@ -1,1 +1,1 @@
-dmd -c -o- -H -Hd../../di/iup iup_config.d iup_mglplot.d iup_plot.d iup_pplot.d iup_scintilla.d iup.d iupcbs.d iupcontrols.d iupdef.d iupgl.d iupglcontrols.d iupim.d iupkey.d iupmask.d iupmatrixex.d iupole.d iuptuio.d iupweb.d package.d
+dmd -c -o- -H -Hd../../di/iup iup_config.d iup_mglplot.d iup_plot.d iup_scintilla.d iup.d iupcbs.d iupcontrols.d iupdef.d iupdraw.d iupgl.d iupglcontrols.d iupim.d iupkey.d iupmatrixex.d iupole.d iuptuio.d iupweb.d package.d

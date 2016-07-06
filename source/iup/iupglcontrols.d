@@ -28,3 +28,4 @@ Ihandle* IupGLFrame(Ihandle* child);
 Ihandle* IupGLExpander(Ihandle* child);
 Ihandle* IupGLScrollBox(Ihandle* child);
 Ihandle* IupGLSizeBox(Ihandle* child);
+Ihandle* IupGLText();

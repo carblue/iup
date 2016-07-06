@@ -17,9 +17,9 @@ extern(C) {
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
 enum IUP_COPYRIGHT = "Copyright (C) 1994-2016 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.18";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 318000;
-enum IUP_VERSION_DATE = "2016/03/21";  /* does not include bug fix releases */
+enum IUP_VERSION = "3.19";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 319000;
+enum IUP_VERSION_DATE = "2016/06/20";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -276,25 +276,6 @@ void* IupTreeGetUserId(Ihandle* ih, int id);
 int   IupTreeGetId(Ihandle* ih, void* userid);
 void  IupTreeSetAttributeHandle(Ihandle* ih, const(char)* name, int id, Ihandle* ih_named);
 
-deprecated("IupTree utilities, use Iup*AttributeId functions. It will be removed in a future version.")
-{
-	void  IupTreeSetAttribute  (Ihandle* ih, const(char)* name, int id, const(char)* value);
-	void  IupTreeStoreAttribute(Ihandle* ih, const(char)* name, int id, const(char)* value);
-	char* IupTreeGetAttribute  (Ihandle* ih, const(char)* name, int id);
-	int   IupTreeGetInt        (Ihandle* ih, const(char)* name, int id);
-	float IupTreeGetFloat      (Ihandle* ih, const(char)* name, int id);
-	void  IupTreeSetfAttribute (Ihandle* ih, const(char)* name, int id, const(char)* format, ...);
-}
-
-deprecated("callback management. It will be removed in a future version.")
-	const(char)* IupGetActionName();
-
-deprecated("font names. It will be removed in a future version.")
-{
-	char*     IupMapFont       (const(char)* iupfont);
-	char*     IupUnMapFont     (const(char)* driverfont);
-}
-
 /************************************************************************/
 /*                      Pre-definided dialogs                           */
 /************************************************************************/
@@ -318,8 +299,9 @@ int  IupGetColor(int x, int y, ubyte* r, ubyte* g, ubyte* b);
 alias Iparamcb = int function(Ihandle* dialog, int param_index, void* user_data);
 int IupGetParam(const(char)* title, Iparamcb action, void* user_data, const(char)* format,...);
 int IupGetParamv(const(char)* title, Iparamcb action, void* user_data, const(char)* format, int param_count, int param_extra, void** param_data);
-Ihandle* IupParamf(const(char)* format);
-Ihandle* IupParamBox(Ihandle* parent, Ihandle** params, int count);
+Ihandle* IupParam(const(char)* format);
+Ihandle*  IupParamBox(Ihandle* child, ...);
+Ihandle*  IupParamBoxv(Ihandle** children);
 
 Ihandle* IupLayoutDialog(Ihandle* dialog);
 Ihandle* IupElementPropertiesDialog(Ihandle* elem);

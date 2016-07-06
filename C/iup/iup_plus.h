@@ -8,10 +8,9 @@
 #define __IUP_PLUS_H
 
 
-#include <cd_plus.h>
-
 #include "iup.h"
 #include "iupkey.h"
+#include "iupdraw.h"
 #include "iup_class_cbs.hpp"
 #include "iupcontrols.h"
 #include "iupmatrixex.h"
@@ -186,15 +185,6 @@ namespace iup
   inline Handle GetHandle(const char *name) { return Handle(IupGetHandle(name)); }
   inline Handle SetHandle(const char *name, const Handle& handle) { return Handle(IupSetHandle(name, handle.GetHandle())); }
   inline void SetLanguagePack(const Handle& handle) { IupSetLanguagePack(handle.GetHandle()); }
-  inline Handle Paramf(const char* format) { return Handle(IupParamf(format)); }
-  inline Handle ParamBox(const Handle& parent, const Handle* params_handle, int count) {
-    Ihandle** params = new Ihandle* [count];
-    for (int i = 0; i < count; i++)
-      params[i] = params_handle[i].GetHandle();
-    Handle handle = Handle(IupParamBox(parent.GetHandle(), params, count));
-    delete [] params;
-    return handle;
-  }
 
   class Dialog;
   class Container;
@@ -292,6 +282,7 @@ namespace iup
     int Popup(int x, int y) { return IupPopup(ih, x, y); }
   };
 
+#ifdef __IM_PLUS_H
   class Image : public Handle
   {
   public:
@@ -310,10 +301,16 @@ namespace iup
 
     im::Image GetImage(void) { return im::Image(IupGetNativeHandleImage(GetUserData("NATIVEIMAGE"))); }
   };
+#endif
   class User : public Handle
   {
   public:
     User() : Handle(IupUser()) {}
+  };
+  class Param : public Handle
+  {
+  public:
+    Param(const char* format) : Handle(IupParam(format)) {}
   };
   class Timer : public Handle
   {
@@ -334,6 +331,23 @@ namespace iup
   {
   public:
     Canvas() : Control(IupCanvas(0)) {}
+                   
+    void DrawBegin() { IupDrawBegin(ih); }
+    void DrawEnd() { IupDrawEnd(ih); }
+    void DrawSetClipRect(int x1, int y1, int x2, int y2) { IupDrawSetClipRect(ih, x1, y1, x2, y2); }
+    void DrawResetClip() { IupDrawResetClip(ih); }
+    void DrawParentBackground() { IupDrawParentBackground(ih); }
+    void DrawLine(int x1, int y1, int x2, int y2) { IupDrawLine(ih, x1, y1, x2, y2); }
+    void DrawRectangle(int x1, int y1, int x2, int y2) { IupDrawRectangle(ih, x1, y1, x2, y2); }
+    void DrawArc(int x1, int y1, int x2, int y2, double a1, double a2) { IupDrawArc(ih, x1, y1, x2, y2, a1, a2); }
+    void DrawPolygon(int* points, int count) { IupDrawPolygon(ih, points, count); }
+    void DrawText(const char* text, int len, int x, int y) { IupDrawText(ih, text, len, x, y); }
+    void DrawImage(const char* name, int make_inactive, int x, int y) { IupDrawImage(ih, name, make_inactive, x, y); }
+    void DrawSelectRect(int x1, int y1, int x2, int y2) { IupDrawSelectRect(ih, x1, y1, x2, y2); }
+    void DrawFocusRect(int x1, int y1, int x2, int y2) { IupDrawFocusRect(ih, x1, y1, x2, y2); }
+    void DrawGetSize(int &w, int &h) { IupDrawGetSize(ih, &w, &h); }
+    void DrawGetTextSize(const char* str, int &w, int &h) { IupDrawGetTextSize(ih, str, &w, &h); }
+    void DrawGetImageInfo(const char* name, int &w, int &h, int &bpp) { IupDrawGetImageInfo(name, &w, &h, &bpp); }
   };
   class Link : public Control
   {
@@ -452,6 +466,23 @@ namespace iup
   public:
     BackgroundBox() : Container(IupBackgroundBox(0)) {}
     BackgroundBox(const Control& child) : Container(IupBackgroundBox(child.GetHandle())) {}
+
+    void DrawBegin() { IupDrawBegin(ih); }
+    void DrawEnd() { IupDrawEnd(ih); }
+    void DrawSetClipRect(int x1, int y1, int x2, int y2) { IupDrawSetClipRect(ih, x1, y1, x2, y2); }
+    void DrawResetClip() { IupDrawResetClip(ih); }
+    void DrawParentBackground() { IupDrawParentBackground(ih); }
+    void DrawLine(int x1, int y1, int x2, int y2) { IupDrawLine(ih, x1, y1, x2, y2); }
+    void DrawRectangle(int x1, int y1, int x2, int y2) { IupDrawRectangle(ih, x1, y1, x2, y2); }
+    void DrawArc(int x1, int y1, int x2, int y2, double a1, double a2) { IupDrawArc(ih, x1, y1, x2, y2, a1, a2); }
+    void DrawPolygon(int* points, int count) { IupDrawPolygon(ih, points, count); }
+    void DrawText(const char* text, int len, int x, int y) { IupDrawText(ih, text, len, x, y); }
+    void DrawImage(const char* name, int make_inactive, int x, int y) { IupDrawImage(ih, name, make_inactive, x, y); }
+    void DrawSelectRect(int x1, int y1, int x2, int y2) { IupDrawSelectRect(ih, x1, y1, x2, y2); }
+    void DrawFocusRect(int x1, int y1, int x2, int y2) { IupDrawFocusRect(ih, x1, y1, x2, y2); }
+    void DrawGetSize(int &w, int &h) { IupDrawGetSize(ih, &w, &h); }
+    void DrawGetTextSize(const char* str, int &w, int &h) { IupDrawGetTextSize(ih, str, &w, &h); }
+    void DrawGetImageInfo(const char* name, int &w, int &h, int &bpp) { IupDrawGetImageInfo(name, &w, &h, &bpp); }
   };
   class Frame : public Container
   {
@@ -519,6 +550,14 @@ namespace iup
       : Container(IupGridBox(0), child0, child1, child2, child3, child4, child5, child6, child7, child8, child9) {}
     GridBox(const Control* child_array, int count) : Container(IupGridBox(0), child_array, count) {}
   };
+  class ParamBox : public Container
+  {
+    ParamBox() : Container(IupParamBox(0)) {}
+  public:
+    ParamBox(const Control& child) : Container(IupParamBox(child.GetHandle(), 0)) {}
+    ParamBox(const Control* child0, const Control* child1 = 0, const Control* child2 = 0, const Control* child3 = 0, const Control* child4 = 0, const Control* child5 = 0, const Control* child6 = 0, const Control* child7 = 0, const Control* child8 = 0, const Control* child9 = 0)
+      : Container(IupParamBox(child0->GetHandle(), child1->GetHandle(), child2->GetHandle(), child3->GetHandle(), child4->GetHandle(), child5->GetHandle(), child6->GetHandle(), child7->GetHandle(), child8->GetHandle(), child9->GetHandle(), 0)) {}
+  };
   class Normalizer : public Container
   {
   public:
@@ -569,6 +608,12 @@ namespace iup
     void UseFont(int first, int count, int list_base) { IupGLUseFont(ih, first, count, list_base); }
 
     static void Wait(int gl) { IupGLWait(gl); }
+  };
+  class GLBackgroundBox : public Container
+  {
+  public:
+    GLBackgroundBox() : Container(IupGLBackgroundBox(0)) {}
+    GLBackgroundBox(const Control& child) : Container(IupGLBackgroundBox(child.GetHandle())) {}
   };
 
   class Controls
@@ -740,7 +785,9 @@ namespace iup
 
     int FindSample(double cnv_x, double cnv_y, int &ds_index, int &sample_index) { return IupPlotFindSample(ih, cnv_x, cnv_y, &ds_index, &sample_index); }
 
+#ifdef __CD_PLUS_H
     void PaintTo(cd::Canvas& cd_canvas) { IupPlotPaintTo(ih, cd_canvas.GetHandle()); }
+#endif
   };
   class MglPlot : public Control
   {
@@ -852,6 +899,7 @@ namespace iup
   };
 }
 
+#ifdef __CD_PLUS_H
 namespace cd
 {
   class CanvasIup : public Canvas
@@ -873,5 +921,6 @@ namespace cd
       : Canvas() { canvas = cdCreateCanvas(CD_IUPDBUFFERRGB, iup_canvas.GetHandle()); }
   };
 }
+#endif
 
 #endif

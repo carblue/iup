@@ -1,0 +1,8 @@
+This folder has to be populated with .lib files, to be downloaded from (adapt to Your compiler/linker, but stick with Windows x86_64 here):
+
+https://sourceforge.net/projects/iup/files/3.19.1/Windows%20Libraries/Dynamic/iup-3.19.1_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/canvasdraw/files/5.10/Windows%20Libraries/Dynamic/cd-5.10_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/imtoolkit/files/3.11/Windows%20Libraries/Dynamic/im-3.11_Win64_dll14_lib.zip/download
+
+DMD for x86_64 uses the MS Visual Studio linker and it's COFF-formatted import libraries, thus we have to stick with MS's .lib files.
+This will probably introduce some vcruntime???.dll dependency on top of MSVCRT.DLL: vcruntime140.dll in this case too !

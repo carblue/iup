@@ -7,11 +7,9 @@
 
 module iup.iupdef;
 
-/* Deprecated definitions */
+/* OLD definitions */
 /* Avoid using these definitions. Use the strings instead. */
 /* Define __IUPDEF_H to avoid the inclusion of this header */
-deprecated("Avoid using these definitions. Use the strings instead.")
-{
 
 const IUP_RUN =            "RUN";
 const IUP_ENGLISH =        "ENGLISH";
@@ -721,4 +719,3 @@ const IUP_IMGCOLLAPSED        = "IMGCOLLAPSED";
 const IUP_IMGEXPANDED         = "IMGEXPANDED";
 const IUP_IMGBLANK            = "IMGBLANK";
 const IUP_IMGPAPER            = "IMGPAPER";
-}
