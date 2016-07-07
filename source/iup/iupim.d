@@ -15,7 +15,7 @@ int IupSaveImage(Ihandle* ih, const(char)* file_name, const(char)* format);
 Ihandle* IupLoadAnimation(const(char)* file_name);
 Ihandle* IupLoadAnimationFrames(const(char)** file_name_list, int file_count);
 
-version(IM_IMAGE) {
+version(IM) {
 	import im.im_image : imImage;
 	imImage* IupGetNativeHandleImage(void* handle);
 	void* IupGetImageNativeHandle(const(imImage)* image);

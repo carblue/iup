@@ -1,0 +1,30 @@
+dmd -c -version=CD -o- -H -Hd../../di/cd \
+ cd_old.d \
+ cd.d \
+ cdcairo.d \
+ cdcgm.d \
+ cdclipbd.d \
+ cddbuf.d \
+ cddebug.d \
+ cddgn.d \
+ cddxf.d \
+ cdemf.d \
+ cdgdiplus.d \
+ cdgl.d \
+ cdim.d \
+ cdimage.d \
+ cdirgb.d \
+ cdiup.d \
+ cdmf_private.d \
+ cdmf.d \
+ cdnative.d \
+ cdpdf.d \
+ cdpicture.d \
+ cdpptx.d \
+ cdprint.d \
+ cdps.d \
+ cdsvg.d \
+ cdwmf.d \
+ wd_old.d \
+ wd.d \
+ package.d

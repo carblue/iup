@@ -28,8 +28,11 @@ dub.selections.json
 # not necessary to be done or later:
 private/
 di/iup/*.di
+di/cd/*.di
+di/im/*.di
 
 lib/windows-x86_64/vcruntime140_dll
-source/cd
 source/im
-source/iup/trash
+source/iup/private
+source/cd/private
+source/im/private

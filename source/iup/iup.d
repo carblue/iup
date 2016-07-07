@@ -24,7 +24,9 @@ enum IUP_VERSION_DATE = "2016/06/20";  /* does not include bug fix releases */
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
 struct Ihandle;
+
 alias Icallback = int function(Ihandle*) nothrow;
+alias Iparamcb  = int function(Ihandle* dialog, int param_index, void* user_data) nothrow;
 
 @nogc nothrow {
 
@@ -296,7 +298,7 @@ int  IupListDialog(int type, const(char)* title, int size, const(char)** list,
 int  IupGetText(const(char)* title, char* text, int maxsize);
 int  IupGetColor(int x, int y, ubyte* r, ubyte* g, ubyte* b);
 
-alias Iparamcb = int function(Ihandle* dialog, int param_index, void* user_data);
+//alias Iparamcb = int function(Ihandle* dialog, int param_index, void* user_data) nothrow;
 int IupGetParam(const(char)* title, Iparamcb action, void* user_data, const(char)* format,...);
 int IupGetParamv(const(char)* title, Iparamcb action, void* user_data, const(char)* format, int param_count, int param_extra, void** param_data);
 Ihandle* IupParam(const(char)* format);
