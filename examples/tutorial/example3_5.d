@@ -1,4 +1,4 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 import std.string : toStringz;
 import core.stdc.stdio;
 import core.stdc.stdlib : EXIT_SUCCESS, malloc, free;
@@ -10,7 +10,7 @@ pragma(lib, "iupimglib");
 /********************************** Utilities *****************************************/
 
 
-int str_compare(const(char) *l, const(char) *r, int casesensitive)
+int str_compare(const(char) *l, const(char) *r, int casesensitive) nothrow
 {
   if (!l || !r)
     return 0;
@@ -46,7 +46,7 @@ int str_compare(const(char) *l, const(char) *r, int casesensitive)
   return 0;
 }
 
-int str_find(const(char) *str, const(char) *str_to_find, int casesensitive)
+int str_find(const(char) *str, const(char) *str_to_find, int casesensitive) nothrow
 {
   int i, str_len, str_to_find_len, count;
 
@@ -72,7 +72,7 @@ int str_find(const(char) *str, const(char) *str_to_find, int casesensitive)
   return -1;
 }
 
-char* read_file(const(char)* filename)
+char* read_file(const(char)* filename) nothrow
 {
   int size;
   char* str;
@@ -99,7 +99,7 @@ char* read_file(const(char)* filename)
   return str;
 }
 
-void write_file(const(char)* filename, const(char)* str, int count)
+void write_file(const(char)* filename, const(char)* str, int count) nothrow
 {
   FILE* file = fopen(filename, "w");
   if (!file)
@@ -116,14 +116,14 @@ void write_file(const(char)* filename, const(char)* str, int count)
 /********************************** Callbacks *****************************************/
 
 
-extern (C) int multitext_caret_cb (Ihandle *ih, int lin, int col, int pos)
+extern (C) int multitext_caret_cb (Ihandle *ih, int lin, int col, int pos) nothrow
 {
   Ihandle *lbl_statusbar = IupGetDialogChild(ih, "STATUSBAR");
   IupSetfAttribute(lbl_statusbar, "TITLE", "Lin %d, Col %d", lin, col);
   return IUP_DEFAULT;
 }
 
-extern (C) int item_open_action_cb(Ihandle* item_open)
+extern (C) int item_open_action_cb(Ihandle* item_open) nothrow
 {
   Ihandle* multitext = IupGetDialogChild(item_open, "MULTITEXT");
   Ihandle *filedlg = IupFileDlg();
@@ -149,7 +149,7 @@ extern (C) int item_open_action_cb(Ihandle* item_open)
   return IUP_DEFAULT;
 }
 
-extern (C) int item_saveas_action_cb(Ihandle* item_saveas)
+extern (C) int item_saveas_action_cb(Ihandle* item_saveas) nothrow
 {
   Ihandle* multitext = IupGetDialogChild(item_saveas, "MULTITEXT");
   Ihandle *filedlg = IupFileDlg();
@@ -172,12 +172,12 @@ extern (C) int item_saveas_action_cb(Ihandle* item_saveas)
   return IUP_DEFAULT;
 }
 
-extern (C) int item_exit_action_cb()
+extern (C) int item_exit_action_cb() nothrow
 {
   return IUP_CLOSE;
 }
 
-extern (C) int goto_ok_action_cb(Ihandle* bt_ok)
+extern (C) int goto_ok_action_cb(Ihandle* bt_ok) nothrow
 {
   int line_count = IupGetInt(bt_ok, "TEXT_LINECOUNT");
   Ihandle* txt = IupGetDialogChild(bt_ok, "LINE_TEXT");
@@ -192,13 +192,13 @@ extern (C) int goto_ok_action_cb(Ihandle* bt_ok)
   return IUP_CLOSE;
 }
 
-extern (C) int goto_cancel_action_cb(Ihandle* bt_ok)
+extern (C) int goto_cancel_action_cb(Ihandle* bt_ok) nothrow
 {
   IupSetAttribute(IupGetDialog(bt_ok), "STATUS", "0");
   return IUP_CLOSE;
 }
 
-extern (C) int item_goto_action_cb(Ihandle* item_goto)
+extern (C) int item_goto_action_cb(Ihandle* item_goto) nothrow
 {
   Ihandle* multitext = IupGetDialogChild(item_goto, "MULTITEXT");
   Ihandle* dlg, box, bt_ok, bt_cancel, txt, lbl;
@@ -254,7 +254,7 @@ extern (C) int item_goto_action_cb(Ihandle* item_goto)
   return IUP_DEFAULT;
 }
 
-extern (C) int find_next_action_cb(Ihandle* bt_next)
+extern (C) int find_next_action_cb(Ihandle* bt_next) nothrow
 {
   Ihandle* multitext = cast(Ihandle*)IupGetAttribute(bt_next, "MULTITEXT");
   char* str = IupGetAttribute(multitext, "VALUE");
@@ -292,13 +292,13 @@ extern (C) int find_next_action_cb(Ihandle* bt_next)
   return IUP_DEFAULT;
 }
 
-extern (C) int find_close_action_cb(Ihandle* bt_close)
+extern (C) int find_close_action_cb(Ihandle* bt_close) nothrow
 {
   IupHide(IupGetDialog(bt_close));
   return IUP_DEFAULT;
 }
 
-extern (C) int item_find_action_cb(Ihandle* item_find)
+extern (C) int item_find_action_cb(Ihandle* item_find) nothrow
 {
   Ihandle* dlg = cast(Ihandle*)IupGetAttribute(item_find, "FIND_DIALOG");
   if (!dlg)
@@ -351,7 +351,7 @@ extern (C) int item_find_action_cb(Ihandle* item_find)
   return IUP_DEFAULT;
 }
 
-extern (C) int item_font_action_cb(Ihandle* item_font)
+extern (C) int item_font_action_cb(Ihandle* item_font) nothrow
 {
   Ihandle* multitext = IupGetDialogChild(item_font, "MULTITEXT");
   Ihandle* fontdlg = IupFontDlg();
@@ -371,7 +371,7 @@ extern (C) int item_font_action_cb(Ihandle* item_font)
   return IUP_DEFAULT;
 }
 
-extern (C) int item_about_action_cb()
+extern (C) int item_about_action_cb() nothrow
 {
   IupMessage("About", "   Simple Notepad\n\nAutors:\n   Gustavo Lyrio\n   Antonio Scuri");
   return IUP_DEFAULT;

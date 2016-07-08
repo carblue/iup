@@ -1,9 +1,9 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 import std.string : toStringz;
 import core.stdc.stdlib : EXIT_SUCCESS;
 import iup.iup;
 
-extern (C) int exit_cb()
+extern (C) int exit_cb() nothrow
 {
   return IUP_CLOSE;
 }

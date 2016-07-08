@@ -1,4 +1,4 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 import std.string : toStringz;
 import core.stdc.stdio;
 import core.stdc.stdlib;// : EXIT_SUCCESS;
@@ -7,7 +7,7 @@ import iup.iup;
 /* global variable - to be used inside the menu callbacks */
 Ihandle* multitext = null;
 
-char* read_file(const(char)* filename)
+char* read_file(const(char)* filename) nothrow
 {
   int size;
   char* str;
@@ -34,7 +34,7 @@ char* read_file(const(char)* filename)
   return str;
 }
 
-void write_file(const(char)* filename, const(char)* str, int count)
+void write_file(const(char)* filename, const(char)* str, int count) nothrow
 {
   FILE* file = fopen(filename, "w");
   if (!file) 
@@ -47,7 +47,7 @@ void write_file(const(char)* filename, const(char)* str, int count)
   fclose(file);
 }
 
-extern (C) int open_cb()
+extern (C) int open_cb() nothrow
 {
   Ihandle *filedlg = IupFileDlg();
   IupSetAttribute(filedlg, "DIALOGTYPE", "OPEN");
@@ -71,7 +71,7 @@ extern (C) int open_cb()
   return IUP_DEFAULT;
 }
 
-extern (C) int saveas_cb()
+extern (C) int saveas_cb() nothrow
 {
   Ihandle *filedlg = IupFileDlg();
   IupSetAttribute(filedlg, "DIALOGTYPE", "SAVE");
@@ -92,7 +92,7 @@ extern (C) int saveas_cb()
   return IUP_DEFAULT;
 }
 
-extern (C) int font_cb()
+extern (C) int font_cb() nothrow
 {
   Ihandle* fontdlg = IupFontDlg();
   char* font1 = IupGetAttribute(multitext, "FONT");
@@ -109,13 +109,13 @@ extern (C) int font_cb()
   return IUP_DEFAULT;
 }
 
-extern (C) int about_cb() 
+extern (C) int about_cb() nothrow
 {
   IupMessage("About", "   Simple Notepad\n\nAutors:\n   Gustavo Lyrio\n   Antonio Scuri");
   return IUP_DEFAULT;
 }
 
-extern (C) int exit_cb()
+extern (C) int exit_cb() nothrow
 {
   return IUP_CLOSE;
 }

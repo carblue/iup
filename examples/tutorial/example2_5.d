@@ -1,4 +1,4 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 import std.string : toStringz;
 import core.stdc.stdlib : EXIT_SUCCESS;
 import iup.iup;
@@ -9,7 +9,7 @@ extern (C) int btn_msg_cb( Ihandle *self )
   return IUP_DEFAULT;
 }
 
-extern (C) int btn_exit_cb( Ihandle *self )
+extern (C) int btn_exit_cb( Ihandle *self ) nothrow
 {
   /* Exits the main loop */
   return IUP_CLOSE;

@@ -1,6 +1,6 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 //#include <stdlib.h>
-import std.c.stdlib;
+import core.stdc.stdlib;
 //#include <stdio.h>
 import std.stdio;
 //#include <iup.h>
@@ -184,7 +184,7 @@ char *iupKeyCodeToName(int code) { return null; } //"".toStringz;
 
 extern (C) int k_any(Ihandle *ih, int c)
 {
-  if (iup_isprint(c))
+  if (iup_isprint(cast(wchar)c))
     printf("K_ANY(%s, %d = %s \'%c\')\n", IupGetClassName(ih), c, iupKeyCodeToName(c), cast(char)c);
   else
     printf("K_ANY(%s, %d = %s)\n", IupGetClassName(ih), c, iupKeyCodeToName(c));
@@ -200,7 +200,7 @@ extern (C) int help_cb(Ihandle* ih)
   return IUP_DEFAULT;
 }
 
-static void show_menu(Ihandle* ih)
+static void show_menu(Ihandle* ih) nothrow
 {
   int x, y;
 
@@ -225,20 +225,20 @@ static void show_menu(Ihandle* ih)
   IupDestroy(menu);
 }
 
-extern (C) int action1_cb(Ihandle* ih)
+extern (C) int action1_cb(Ihandle* ih) nothrow
 {
 //  IupSetAttribute(IupGetDialog(ih), "BACKGROUND", "255 128 128");
   show_menu(ih);
   return IUP_DEFAULT;
 }
 
-extern (C) int action2_cb(Ihandle* ih)
+extern (C) int action2_cb(Ihandle* ih) nothrow
 {
   IupSetAttribute(IupGetDialog(ih), "BGCOLOR", "0 128 0");
   return IUP_DEFAULT;
 }
 
-extern (C) int action3_cb(Ihandle* ih)
+extern (C) int action3_cb(Ihandle* ih) nothrow
 {
   printf("ACTION3\n");
 //  IupSetAttribute(IupGetChild(IupGetDialog(ih), 0), "BGCOLOR", "128 0 0");

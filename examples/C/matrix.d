@@ -1,7 +1,7 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 
+import core.stdc.stdlib;
 import std.stdio;
-import std.c.stdlib;
 import std.string;
 
 import iup.iup;

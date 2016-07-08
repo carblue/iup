@@ -1,14 +1,14 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 /* IupTabs: Example in C 
    Creates a IupTabs control.
 */
 
-import std.string;
 //#include <stdlib.h>
-import std.c.stdlib;
+import core.stdc.stdlib;
 //#include <stdio.h>
 //#include <iup.h>
 import iup.iup;
+import std.string;
 
 /* Main program */
 int main(string[] args) { // C: int main(int argc, char **argv)
@@ -26,10 +26,10 @@ int main(string[] args) { // C: int main(int argc, char **argv)
 
   spin = IupText(null);
   IupSetAttribute(spin, "SPIN", "YES");
-  IupSetAttribute(spin, "SPINMIN", "2015");
+  IupSetAttribute(spin, "SPINMIN", "2016");
   IupSetAttribute(spin, "SPINMAX", "2030");
   
-  hbox1 = IupHbox(IupLabel("Jahr"), spin, null);
+  hbox1 = IupHbox(IupLabel("YEAR"), spin, null);
   vbox1 = IupVbox(IupLabel("Inside Tab A"), IupButton("Button A", ""), null);
   vbox2 = IupVbox(IupLabel("Inside Tab B"), IupButton("Button B", ""), null);
 

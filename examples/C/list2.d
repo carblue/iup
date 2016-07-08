@@ -1,4 +1,4 @@
-#!/usr/bin/rdmd -I../../source/
+#!/usr/bin/rdmd @cmdfile
 /* IupList: Example in C 
    Creates a dialog with three frames, each one containing a list.
    The first is a simple list, the second one is a multiple list and the last one is a drop-down list.
@@ -6,7 +6,7 @@
 */
 
 //#include <stdlib.h>
-import std.c.stdlib;
+import core.stdc.stdlib;
 //#include <stdio.h>
 import std.stdio;
 //#include <iup.h>
