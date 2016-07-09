@@ -88,9 +88,9 @@ void     cdCanvasClear(cdCanvas* canvas);
 cdState* cdCanvasSaveState(cdCanvas* canvas);
 void     cdCanvasRestoreState(cdCanvas* canvas, cdState* state);
 void     cdReleaseState(cdState* state);
-void     cdCanvasSetAttribute(cdCanvas* canvas, const(char*) name, char* data);
-void     cdCanvasSetfAttribute(cdCanvas* canvas, const(char*) name, const(char*) format, ...);
-char*    cdCanvasGetAttribute(cdCanvas* canvas, const(char*) name);
+void     cdCanvasSetAttribute(cdCanvas* canvas, const(char)* name, char* data);
+void     cdCanvasSetfAttribute(cdCanvas* canvas, const(char)* name, const(char)* format, ...);
+char*    cdCanvasGetAttribute(cdCanvas* canvas, const(char)* name);
 
 /* interpretation */
 int cdCanvasPlay(cdCanvas* canvas, cdContext* context, int xmin, int xmax, int ymin, int ymax, void* data);

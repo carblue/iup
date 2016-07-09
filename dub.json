@@ -13,5 +13,5 @@
 		"source/im/private/*",
 		"source/cd/private/*" 
 	],
-	"libs-posix-ldc": ["iup", "iupcontrols", "iupimglib"]
+	"libs-posix": ["iup", "iupcontrols", "iupimglib"]
 }
