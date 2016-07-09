@@ -6,6 +6,7 @@
 module cd.cdmf_private;
 
 version(CD) :
+//version(DigitalMars) { pragma(lib, "cd"); } // required anyway
 
 import cd.cd : cdCanvas;
 

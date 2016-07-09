@@ -6,6 +6,7 @@
 module cd.cdpdf;
 
 version(CD) :
+version(DigitalMars) { pragma(lib, "cdpdf"); }
 
 import cd.cd : cdContext;
 

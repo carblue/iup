@@ -10,6 +10,7 @@
 module cd.cd;
 
 version(CD) :
+version(DigitalMars) { pragma(lib, "cd"); }
 
 import core.stdc.config : c_ulong, c_long;
 //private import cd.cd_private : _cdContext, _cdCanvas, _cdImage;

@@ -5,6 +5,7 @@
  */
  
 module iup.iupmatrixex;
+version(DigitalMars) { pragma(lib, "iupmatrixex"); }
 
 import iup.iup : Ihandle;
 

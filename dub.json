@@ -1,45 +1,17 @@
 {
 	"name": "iup",
-	"version": "~>master",
-	"description": "Deimos Bindings for iup.",
+	"version": "0.0.1",
+	"description": "Deimos Binding to IUP, Portable graphical User Interface",
 	"copyright": "Copyright © 2016, Carsten Blüggel",
 	"authors": ["Carsten Blüggel"],
 	"targetType": "library",
 	"targetPath": "lib",
-	"sourcePaths": [
-		"source/"
-	],
-	"importPaths": [
-		"source/"
-	],
+	"sourcePaths": ["source/"],
+	"importPaths": ["source/"],
 	"excludedSourceFiles": [
-		"source/iup/private/*", "source/im/private/*", "source/cd/private/*" 
+		"source/iup/private/*",
+		"source/im/private/*",
+		"source/cd/private/*" 
 	],
-	"libs-posix": ["iup", "iupcontrols"],
-	"versions": ["CD", "CD_NO_OLD_INTERFACE"],
-	"sourceFiles-windows-x86-dmd": [
-		"lib/windows-x86-dmd/iup.lib",
-		"lib/windows-x86-dmd/iupcontrols.lib"
-	],
-	"copyFiles-windows-x86-dmd": [
-		"lib/windows-x86-dmd/iup.dll",
-		"lib/windows-x86-dmd/iupcontrols.dll",
-		"lib/windows-x86-dmd/iupcd.dll",
-		"lib/windows-x86-dmd/cd.dll",
-		"lib/windows-x86-dmd/freetype6.dll",
-		"lib/windows-x86-dmd/zlib1.dll"
-	],
-	"sourceFiles-windows-x86_64": [
-		"lib/windows-x86_64/iup.lib",
-		"lib/windows-x86_64/iupcontrols.lib"
-	],
-	"copyFiles-windows-x86_64": [
-		"lib/windows-x86_64/iup.dll",
-		"lib/windows-x86_64/iupcontrols.dll",
-		"lib/windows-x86_64/iupcd.dll",
-		"lib/windows-x86_64/cd.dll",
-		"lib/windows-x86_64/freetype6.dll",
-		"lib/windows-x86_64/zlib1.dll",
-		"lib/windows-x86_64/vcruntime140_dll"
-	]
+	"libs-posix-ldc": ["iup", "iupcontrols", "iupimglib"]
 }

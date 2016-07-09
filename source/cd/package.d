@@ -12,7 +12,6 @@ public import cd.cddgn;
 public import cd.cddxf; 
 public import cd.cdemf;
 public import cd.cdgdiplus;
-
 public import cd.cdgl;
 public import cd.cdim;
 public import cd.cdimage;

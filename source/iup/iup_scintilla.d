@@ -5,6 +5,7 @@
  */
 
 module iup.iup_scintilla;
+version(DigitalMars) { pragma(lib, "iup_scintilla"); }
 
 import iup.iup : Ihandle;
 

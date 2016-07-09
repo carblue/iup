@@ -5,6 +5,7 @@
  */
 
 module iup.iuptuio;
+version(DigitalMars) { pragma(lib, "iuptuio"); }
 
 import iup.iup : Ihandle;
 

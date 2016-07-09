@@ -6,6 +6,7 @@
 module cd.cdim;
 
 version(CD) :
+version(DigitalMars) { pragma(lib, "cdim"); }
 
 import cd.cd : cdContext, cdCanvas;
 

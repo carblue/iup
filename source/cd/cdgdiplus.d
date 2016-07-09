@@ -6,14 +6,14 @@
 module cd.cdgdiplus;
 
 version(CD) :
+version(WINDOWS) :
+version(DigitalMars) { pragma(lib, "cdcontextplus"); }
 
 import cd.cd : CD_POLYCUSTOM;
 
 extern(C) @nogc nothrow :
 
-version(WINDOWS) // #ifdef WIN32
-	void cdInitGdiPlus();  /* old function, replaced by cdInitContextPlus */
-else { /* #define cdInitGdiPlus() (0) */ }
+void cdInitGdiPlus();  /* old function, replaced by cdInitContextPlus */
 
 /* Windows GDI+ Additional Polygons */
 enum CD_SPLINE       = (CD_POLYCUSTOM+0);

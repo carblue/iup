@@ -5,6 +5,7 @@
  */
 
 module iup.iup_config;
+//version(DigitalMars) { pragma(lib, "iup"); } // required anyway
 
 import iup.iup : Ihandle, Icallback;
 

@@ -5,6 +5,7 @@
  */
  
 module iup.iupdraw;
+//version(DigitalMars) { pragma(lib, "iup"); } // required anyway
 
 import iup.iup : Ihandle;
 

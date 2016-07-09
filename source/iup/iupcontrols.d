@@ -5,6 +5,7 @@
  */
 
 module iup.iupcontrols;
+version(DigitalMars) { pragma(lib, "iupcontrols"); }
 
 import iup.iup : Ihandle;
 

@@ -6,6 +6,7 @@
 module cd.cdiup;
 
 version(CD) :
+version(DigitalMars) { pragma(lib, "iupcd"); }
 
 import cd.cd : cdContext;
 

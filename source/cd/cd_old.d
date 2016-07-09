@@ -6,6 +6,7 @@
 module cd.cd_old;
 
 version(CD) :
+//version(DigitalMars) { pragma(lib, "cd"); } // required anyway
 
 import core.stdc.config : c_long;
 import cd.cd : cdCallback, cdContext, cdCanvas, cdState, cdImage, cdBitmap, CD_CLIPAREA, CD_BASE_CENTER, CD_BASE_LEFT, CD_BASE_RIGHT, CD_BOLD_ITALIC;

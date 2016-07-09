@@ -5,6 +5,7 @@
  */
 
 module iup.iup_plot;
+version(DigitalMars) { pragma(lib, "iup_plot"); }
 
 import iup.iup : Ihandle;
 

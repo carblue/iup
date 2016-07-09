@@ -8,6 +8,8 @@
  */
 
 module iup.iup;
+version(DigitalMars) { pragma(lib, "iup"); }
+//version(DigitalMars) { pragma(lib, "iupimglib"); } // not necessarily required, but how to make shure it gets linked (when IupImageLibOpen() is used) without a setting in dub.json?
 
 public import iup.iupkey;
 public import iup.iupdef;
@@ -36,7 +38,7 @@ alias Iparamcb  = int function(Ihandle* dialog, int param_index, void* user_data
 
 int       IupOpen          (int* argc, char*** argv);
 void      IupClose         ();
-void      IupImageLibOpen  ();
+void      IupImageLibOpen  (); // libiupimglib.so
 
 int       IupMainLoop      ();
 int       IupLoopStep      ();

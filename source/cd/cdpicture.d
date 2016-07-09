@@ -6,6 +6,7 @@
 module cd.cdpicture;
 
 version(CD) :
+//version(DigitalMars) { pragma(lib, "cd"); } // required anyway
 
 import cd.cd : cdContext;
 

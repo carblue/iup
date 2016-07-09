@@ -6,6 +6,9 @@
 
 module iup.iupole;
 
+version(Windows) :
+version(DigitalMars) { pragma(lib, "iupole"); }
+
 import iup.iup : Ihandle;
 
 extern(C) @nogc nothrow :
