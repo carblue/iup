@@ -6,10 +6,11 @@
 module cd.wd_old;
 
 version(CD) :
-//version(DigitalMars) { pragma(lib, "cd"); } // required anyway
 
 import core.stdc.config : c_long;
 import cd.cd : cdContext, cdCanvas, cdImage, cdBitmap;
+
+//version(DigitalMars) version(Windows) { pragma(lib, "cd.lib"); } // import cd.cd required anyway, that comes with this pragma
 
 extern(C) @nogc nothrow :
 

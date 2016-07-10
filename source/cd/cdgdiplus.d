@@ -7,9 +7,10 @@ module cd.cdgdiplus;
 
 version(CD) :
 version(WINDOWS) :
-version(DigitalMars) { pragma(lib, "cdcontextplus"); }
 
 import cd.cd : CD_POLYCUSTOM;
+
+version(DigitalMars) version(Windows) { pragma(lib, "cdcontextplus.lib"); }
 
 extern(C) @nogc nothrow :
 

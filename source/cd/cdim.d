@@ -6,9 +6,10 @@
 module cd.cdim;
 
 version(CD) :
-version(DigitalMars) { pragma(lib, "cdim"); }
 
 import cd.cd : cdContext, cdCanvas;
+
+version(DigitalMars) version(Windows) { pragma(lib, "cdim.lib"); }
 
 extern(C) @nogc nothrow :
 

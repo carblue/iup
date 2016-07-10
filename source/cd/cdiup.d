@@ -6,9 +6,10 @@
 module cd.cdiup;
 
 version(CD) :
-version(DigitalMars) { pragma(lib, "iupcd"); }
 
 import cd.cd : cdContext;
+
+version(DigitalMars) version(Windows) { pragma(lib, "iupcd.lib"); }
 
 extern(C) @nogc nothrow :
 

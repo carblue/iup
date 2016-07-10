@@ -6,9 +6,10 @@
 module cd.cdpdf;
 
 version(CD) :
-version(DigitalMars) { pragma(lib, "cdpdf"); }
 
 import cd.cd : cdContext;
+
+version(DigitalMars) version(Windows) { pragma(lib, "cdpdf.lib"); }
 
 extern(C) @nogc nothrow :
 

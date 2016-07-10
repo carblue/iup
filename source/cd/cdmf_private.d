@@ -6,9 +6,10 @@
 module cd.cdmf_private;
 
 version(CD) :
-//version(DigitalMars) { pragma(lib, "cd"); } // required anyway
 
 import cd.cd : cdCanvas;
+
+//version(DigitalMars) version(Windows) { pragma(lib, "cd.lib"); } // import cd.cd required anyway, that comes with this pragma
 
 extern(C) @nogc nothrow :
 

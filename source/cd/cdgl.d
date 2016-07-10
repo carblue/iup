@@ -6,9 +6,10 @@
 module cd.cdgl;
 
 version(CD) :
-version(DigitalMars) { pragma(lib, "cdgl"); }
 
 import cd.cd : cdContext;
+
+version(DigitalMars) version(Windows) { pragma(lib, "cdgl.lib"); }
 
 extern(C) @nogc nothrow :
 
