@@ -5,13 +5,14 @@
  */
 
 module iup.iupweb;
-version(DigitalMars)
-{
-version(Posix)		pragma(lib, "iupweb"); 
-//version(Windows)	pragma(lib, "iupole"); 
-}
 
 import iup.iup : Ihandle;
+
+version(DigitalMars) version(Windows)
+{
+/*version(Posix)		pragma(lib, "libiupweb.so"); */
+/*version(Windows)*/	pragma(lib, "iupole.lib");
+}
 
 extern(C) @nogc nothrow :
 

@@ -5,9 +5,10 @@
  */
 
 module iup.iup_scintilla;
-version(DigitalMars) { pragma(lib, "iup_scintilla"); }
 
 import iup.iup : Ihandle;
+
+version(DigitalMars) version(Windows) { pragma(lib, "iup_scintilla.lib"); }
 
 extern(C) @nogc nothrow :
 

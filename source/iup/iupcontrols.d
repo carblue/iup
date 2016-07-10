@@ -5,9 +5,10 @@
  */
 
 module iup.iupcontrols;
-version(DigitalMars) { pragma(lib, "iupcontrols"); }
 
 import iup.iup : Ihandle;
+
+version(DigitalMars) version(Windows) { pragma(lib, "iupcontrols.lib"); }
 
 extern(C) @nogc nothrow :
 

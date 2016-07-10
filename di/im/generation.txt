@@ -1,0 +1,33 @@
+dmd -c -o- -H -Hd../di/im \
+ im/im_attrib_flat.d \
+ im/im_binfile.d \
+ im/im_capture.d \
+ im/im_color.d \
+ im/im_colorhsi.d \
+ im/im_complex.d \
+ im/im_convert.d \
+ im/im_counter.d \
+ im/im_dib.d \
+ im/im_file.d \
+ im/im_format_all.d \
+ im/im_format_avi.d \
+ im/im_format_ecw.d \
+ im/im_format_jp2.d \
+ im/im_format_raw.d \
+ im/im_format_wmv.d \
+ im/im_image.d \
+ im/im_kernel.d \
+ im/im_lib.d \
+ im/im_math_op.d \
+ im/im_math.d \
+ im/im_old.d \
+ im/im_palette.d \
+ im/im_process_ana.d \
+ im/im_process_glo.d \
+ im/im_process_loc.d \
+ im/im_process_pnt.d \
+ im/im_process.d \
+ im/im_raw.d \
+ im/im_util.d \
+ im/im.d \
+ im/package.d

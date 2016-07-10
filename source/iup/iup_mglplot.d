@@ -5,9 +5,10 @@
  */
  
 module iup.iup_mglplot;
-version(DigitalMars) { pragma(lib, "iup_mglplot"); }
 
 import iup.iup : Ihandle;
+
+version(DigitalMars) version(Windows) { pragma(lib, "iup_mglplot.lib"); }
 
 extern(C) @nogc nothrow :
 

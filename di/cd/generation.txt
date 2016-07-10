@@ -1,4 +1,4 @@
-dmd -c -version=CD -version=IM -o- -H -Hd../di/cd \
+dmd -c -o- -H -Hd../di/cd \
  cd/cd_old.d \
  cd/cd.d \
  cd/cdcairo.d \

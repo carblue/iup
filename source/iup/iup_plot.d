@@ -5,9 +5,10 @@
  */
 
 module iup.iup_plot;
-version(DigitalMars) { pragma(lib, "iup_plot"); }
 
 import iup.iup : Ihandle;
+
+version(DigitalMars) version(Windows) { pragma(lib, "iup_plot.lib"); }
 
 struct _cdCanvas;
 

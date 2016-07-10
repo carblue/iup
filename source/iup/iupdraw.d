@@ -5,9 +5,10 @@
  */
  
 module iup.iupdraw;
-//version(DigitalMars) { pragma(lib, "iup"); } // required anyway
 
 import iup.iup : Ihandle;
+
+//version(DigitalMars) version(Windows) { pragma(lib, "iup.lib"); } // import iup.iup required anyway, that comes with this pragma
 
 extern(C) @nogc nothrow :
 

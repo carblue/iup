@@ -5,9 +5,10 @@
  */
  
 module iup.iupmatrixex;
-version(DigitalMars) { pragma(lib, "iupmatrixex"); }
 
 import iup.iup : Ihandle;
+
+version(DigitalMars) version(Windows) { pragma(lib, "iupmatrixex.lib"); }
 
 extern(C) @nogc nothrow :
 
