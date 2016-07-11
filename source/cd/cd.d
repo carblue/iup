@@ -19,6 +19,7 @@ version(DigitalMars) version(Windows) { pragma(lib, "cd.lib"); }
 extern(C) :
 
 alias cdCallback = int function(cdCanvas* canvas, ...) nothrow;
+alias cdSizeCB = int function(cdCanvas* canvas, int w, int h, double w_mm, double h_mm) nothrow;
 
 @nogc nothrow :
 
@@ -266,11 +267,11 @@ void cdDecodeColor(c_long color, ubyte* red, ubyte* green, ubyte* blue);
 void cdDecodeColorAlpha(c_long color, ubyte* red, ubyte* green, ubyte* blue, ubyte* alpha);
 ubyte cdDecodeAlpha(c_long color);
 
-//#define cdAlpha(_)    (ubyte)(~(((_) >> 24) & 0xFF))
-//#define cdReserved(_) (ubyte)(((_) >> 24) & 0xFF)
-//#define cdRed(_)      (ubyte)(((_) >> 16) & 0xFF)
-//#define cdGreen(_)    (ubyte)(((_) >>  8) & 0xFF)
-//#define cdBlue(_)     (ubyte)(((_) >>  0) & 0xFF)
+ubyte cdAlpha(uint _)    { return cast(ubyte) ~((_ >> 24) & 0xFF); }
+ubyte cdReserved(uint _) { return cast(ubyte)  ((_ >> 24) & 0xFF); }
+ubyte cdRed(uint _)      { return cast(ubyte)  ((_ >> 16) & 0xFF); }
+ubyte cdGreen(uint _)    { return cast(ubyte)  ((_ >>  8) & 0xFF); }
+ubyte cdBlue(uint _)     { return cast(ubyte)  ((_ >>  0) & 0xFF); }
 
 /* client image color conversion */
 void cdRGB2Map(int width, int height, const(ubyte)* red, const(ubyte)* green, const(ubyte)* blue, ubyte* index, int pal_size, c_long* color);
@@ -487,7 +488,7 @@ enum {
 
 /* cdPlay definitions */
 enum CD_SIZECB = 0;        /* size callback */
-alias int function(cdCanvas* canvas, int w, int h, double w_mm, double h_mm) cdSizeCB;
+//alias cdSizeCB = int function(cdCanvas* canvas, int w, int h, double w_mm, double h_mm) nothrow;
 enum CD_ABORT = 1;
 enum CD_CONTINUE = 0;
 

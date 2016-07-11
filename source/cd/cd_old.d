@@ -166,4 +166,4 @@ enum CD_RIGHT_BASE   = CD_BASE_RIGHT;
 enum CD_ITALIC_BOLD  = CD_BOLD_ITALIC;
 alias cdScrollImage = cdScrollArea;
 //#define cdCanvas2Raster(x, y) {(void)x; cdUpdateYAxis(y);}
-//void cdCanvas2Raster(int* x, int* y) {/*(void)x;*/ cdUpdateYAxis(y);}
+void cdCanvas2Raster(int* x, int* y) {/*(void)x;*/ cdUpdateYAxis(y);} // not shure about argument x !
