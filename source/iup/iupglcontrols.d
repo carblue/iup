@@ -6,7 +6,7 @@
  
 module iup.iupglcontrols;
 
-import iup.iup;
+import iup.iup : Ihandle;
 
 version(DigitalMars) version(Windows) { pragma(lib, "iupglcontrols.lib"); }
 

@@ -4,12 +4,22 @@
  * See Copyright Notice in "iup.h"
  */
 
+/*
+Attention: Changed when binding to D:
+There were no types at all in the underlying C-source file, just a bunch of #define, but some would work with/be/result in int types
+In the D binding code, the type of a key is the smallest Char type, that can represent the key's value, either char, wchar or dchar.
+Likewise, the key related functions operate on Char types only, even if they are templates
+My reasoning is: This reduces mixing keys with other arbitrary integral types 
+This won't compile: auto keyA = 65; writeln("keyA is printable: ", iup_isprint(keyA)); // Error: template iup.iupkey.iup_isprint cannot deduce function from argument types !()(int)
+This will  compile: char keyB = 66; writeln("keyB is printable: ", iup_isprint(keyB)); // if You insist on using int literal 66 instead of K_B; the compiler is smart enough to implicitely convert 66 to char
+*/
 module iup.iupkey;
 
+import std.traits : isSomeChar;
 
 /* from 32 to 126, all character sets are equal,
    the key code is the same as the ASCii character code. */
-enum {
+enum : char {
      K_SP          = ' ',   /* 32 (0x20) */
      K_exclam      = '!',   /* 33 */
      K_quotedbl    = '\"',  /* 34 */
@@ -109,11 +119,11 @@ enum {
 
 /* Printable ASCii keys */
 
-bool iup_isprint(wchar _c) { return _c > 31 && _c < 127; }
+bool iup_isprint(T)(T _c) if (isSomeChar!T) { return _c > 31 && _c < 127; }
 
 /* also define the escape sequences that have keys associated */
 
-enum {
+enum : char {
         K_BS          = '\b',       /* 8 */
         K_TAB         = '\t',       /* 9 */
         K_LF          = '\n',       /* 10 (0x0A) not a real key, is a combination of CR with a modifier, just to document */
@@ -121,19 +131,19 @@ enum {
 }
 /* backward compatible definitions */
 
-enum {
+enum : char {
         K_quoteleft   = K_grave,
         K_quoteright  = K_apostrophe,
 }
 
 /* IUP Extended Key Codes, range start at 128      */
 
-bool iup_isXkey(wchar _c) { return _c >= 128; }
+bool iup_isXkey(T)(T _c) if (isSomeChar!T) { return _c >= 128; }
 
 /* These use the same definition as X11 and GDK.
    This also means that any X11 or GDK definition can also be used. */
 
-enum {
+enum : wchar {
 			K_PAUSE    = 0xFF13,
 			K_ESC      = 0xFF1B,
 			K_HOME     = 0xFF50,
@@ -192,18 +202,18 @@ bool iup_isCtrlXkey(dchar _c)   { return _c & 0x2000_0000; }
 bool iup_isAltXkey(dchar _c)    { return _c & 0x4000_0000; }
 bool iup_isSysXkey(dchar _c)    { return _c & 0x8000_0000; }
 
-uint iup_XkeyBase(dchar _c)     { return _c & 0x0FFF_FFFF; }
-uint iup_XkeyShift(dchar _c)    { return _c | 0x1000_0000; }   /* Shift  */
-uint iup_XkeyCtrl(dchar _c)     { return _c | 0x2000_0000; }   /* Ctrl   */
-uint iup_XkeyAlt(dchar _c)      { return _c | 0x4000_0000; }   /* Alt    */
-uint iup_XkeySys(dchar _c)      { return _c | 0x8000_0000; }   /* Sys (Win or Apple) */
+dchar iup_XkeyBase(dchar _c)     { return _c & 0x0FFF_FFFF; }
+dchar iup_XkeyShift(dchar _c)    { return _c | 0x1000_0000; }   /* Shift  */
+dchar iup_XkeyCtrl(dchar _c)     { return _c | 0x2000_0000; }   /* Ctrl   */
+dchar iup_XkeyAlt(dchar _c)      { return _c | 0x4000_0000; }   /* Alt    */
+dchar iup_XkeySys(dchar _c)      { return _c | 0x8000_0000; }   /* Sys (Win or Apple) */
 
 /* These definitions are here for backward compatibility 
    and to simplify some key combination usage.
    But since IUP 3.9, modifiers can be combined with any key
    and they can be mixed togheter. */
 
-enum {
+enum : dchar {
 			K_sHOME    = iup_XkeyShift(K_HOME   ),
 			K_sUP      = iup_XkeyShift(K_UP     ),
 			K_sPGUP    = iup_XkeyShift(K_PGUP   ),

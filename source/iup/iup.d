@@ -363,8 +363,7 @@ enum {IUP_SBUP,   IUP_SBDN,    IUP_SBPGUP,   IUP_SBPGDN,    IUP_SBPOSV, IUP_SBDR
 /************************************************************************/
 /*               Mouse Button Values and Macros                         */
 /************************************************************************/
-alias  IUP_BUTTON = char;
-enum : IUP_BUTTON {
+enum : char {
 	IUP_BUTTON1   = '1',
 	IUP_BUTTON2   = '2',
 	IUP_BUTTON3   = '3',
@@ -372,76 +371,65 @@ enum : IUP_BUTTON {
 	IUP_BUTTON5   = '5',
 }
 
-	bool iup_isshift(string _s) {
-		if (_s.length > 0)
-			return _s[0] == 'S';
-		return false;
-	}
+bool iup_isshift(string _s) {
+	if (_s.length > 0)
+		return _s[0] == 'S';
+	return false;
+}
 
-	bool iup_iscontrol(string _s){
-		if (_s.length > 1)
-			return _s[1]=='C';
-		return false;
-	}
+bool iup_iscontrol(string _s){
+	if (_s.length > 1)
+		return _s[1]=='C';
+	return false;
+}
 
-	bool iup_isbutton1(string _s){
-		if (_s.length > 2)
-			return _s[2]=='1';
-		return false;
-	}
+bool iup_isbutton1(string _s){
+	if (_s.length > 2)
+		return _s[2]=='1';
+	return false;
+}
 
-	bool iup_isbutton2(string _s){
-		if (_s.length > 3)
-			return _s[3]=='2';
-		return false;
-	}
+bool iup_isbutton2(string _s){
+	if (_s.length > 3)
+		return _s[3]=='2';
+	return false;
+}
 
-	bool iup_isbutton3(string _s){
-		if (_s.length > 4)
-			return _s[4]=='3';
-		return false;
-	}
-	bool iup_isdouble(string _s){
-		if (_s.length > 5)
-			return _s[5]=='D';
-		return false;
-	}
+bool iup_isbutton3(string _s){
+	if (_s.length > 4)
+		return _s[4]=='3';
+	return false;
+}
 
-	bool iup_isalt(string _s){
-		if (_s.length > 6)
-			return _s[6]=='A';
-		return false;
-	}
+bool iup_isdouble(string _s){
+	if (_s.length > 5)
+		return _s[5]=='D';
+	return false;
+}
 
-	bool iup_issys(string _s){
-		if (_s.length > 7)
-			return _s[7]=='Y';
-		return false;
-	}
+bool iup_isalt(string _s){
+	if (_s.length > 6)
+		return _s[6]=='A';
+	return false;
+}
 
-	bool iup_isbutton4(string _s){
-		if (_s.length > 8)
-			return _s[8]=='4';
-		return false;
-	}
+bool iup_issys(string _s){
+	if (_s.length > 7)
+		return _s[7]=='Y';
+	return false;
+}
 
-	bool iup_isbutton5(string _s){
-		if (_s.length > 9)
-			return _s[9]=='5';
-		return false;
-	}
-/*
-bool iup_isshift(char* _s)    { return (_s[0]=='S'); }
-bool iup_iscontrol(char* _s)  { return (_s[1]=='C'); }
-bool iup_isbutton1(char* _s)  { return (_s[2]=='1'); }
-bool iup_isbutton2(char* _s)  { return (_s[3]=='2'); }
-bool iup_isbutton3(char* _s)  { return (_s[4]=='3'); }
-bool iup_isdouble(char* _s)   { return (_s[5]=='D'); }
-bool iup_isalt(char* _s)      { return (_s[6]=='A'); }
-bool iup_issys(char* _s)      { return (_s[7]=='Y'); }
-bool iup_isbutton4(char* _s)  { return (_s[8]=='4'); }
-bool iup_isbutton5(char* _s)  { return (_s[9]=='5'); }
-*/
+bool iup_isbutton4(string _s){
+	if (_s.length > 8)
+		return _s[8]=='4';
+	return false;
+}
+
+bool iup_isbutton5(string _s){
+	if (_s.length > 9)
+		return _s[9]=='5';
+	return false;
+}
 
 /* Old definitions for backward compatibility */
 alias isshift     = iup_isshift;
@@ -471,15 +459,14 @@ enum IUP_MASK_UINT        =        "/d+";
 alias IUPMASK_FLOAT     = IUP_MASK_FLOAT;
 alias IUPMASK_UFLOAT    = IUP_MASK_UFLOAT;
 alias IUPMASK_EFLOAT    = IUP_MASK_EFLOAT;
-alias IUPMASK_INT	      = IUP_MASK_INT;
+alias IUPMASK_INT       = IUP_MASK_INT;
 alias IUPMASK_UINT      = IUP_MASK_UINT;
 
 
 /************************************************************************/
 /*                   IupGetParam Callback situations                    */
 /************************************************************************/
-alias  IUP_GETPARAM = int;
-enum : IUP_GETPARAM {
+enum {
 	IUP_GETPARAM_BUTTON1 = -1,
 	IUP_GETPARAM_INIT    = -2,
 	IUP_GETPARAM_BUTTON2 = -3,

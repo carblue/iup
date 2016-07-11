@@ -4,6 +4,8 @@
  * See Copyright Notice in "iup.d"
  */
 
+/* Read about IupWebBrowser in the documentation, if it is available for Your platform */
+
 module iup.iupweb;
 
 import iup.iup : Ihandle;
@@ -16,6 +18,6 @@ version(DigitalMars) version(Windows)
 
 extern(C) @nogc nothrow :
 
-int IupWebBrowserOpen(); // where on Windows?
+int IupWebBrowserOpen();
 
 Ihandle* IupWebBrowser();
