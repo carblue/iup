@@ -1,17 +1,24 @@
 {
 	"name": "iup",
 	"version": "0.0.1",
-	"description": "Deimos Binding to IUP, Portable graphical User Interface",
+	"description": "Deimos-like binding to IUP, Portable graphical User Interface",
 	"copyright": "Copyright © 2016, Carsten Blüggel",
 	"authors": ["Carsten Blüggel"],
 	"targetType": "library",
 	"targetPath": "lib",
 	"sourcePaths": ["source/"],
 	"importPaths": ["source/"],
-	"excludedSourceFiles": [
-		"source/iup/private/*",
-		"source/im/private/*",
-		"source/cd/private/*" 
+	"versions": [],
+	"lflags-posix": ["-L/path/to/extracted/folder/cd-5.10_Linux44_64_lib_OR_WHATEVER/ftgl/lib/Linux44_64"],
+	"libs-posix": ["ftgl", "iup", "iupcontrols"],
+	"sourceFiles-windows-x86-dmd": [
+		"lib/windows-x86-dmd/ftgl.lib",
+		"lib/windows-x86-dmd/iup.lib",
+		"lib/windows-x86-dmd/iupcontrols.lib"
 	],
-	"libs-posix": ["iup", "iupcontrols", "iupimglib"]
+	"sourceFiles-windows-x86_64": [
+		"lib/windows-x86_64/ftgl.lib",
+		"lib/windows-x86_64/iup.lib",
+		"lib/windows-x86_64/iupcontrols.lib"
+	]
 }

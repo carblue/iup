@@ -8,7 +8,7 @@ module iup.iup_plot;
 
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iup_plot.lib"); }
+version(DigitalMars) version(Windows) { pragma(lib, "iup_plot.lib"); } // libiup_plot.so depends on libcd.so, libcdgl.so, libcdcontextplus.so, libiupgl, libiup.so, GL-library, ...
 
 extern(C) @nogc nothrow :
 

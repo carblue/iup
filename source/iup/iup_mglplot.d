@@ -8,7 +8,7 @@ module iup.iup_mglplot;
 
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iup_mglplot.lib"); }
+version(DigitalMars) version(Windows) { pragma(lib, "iup_mglplot.lib"); } // libiup_mglplot.so depends on libiupgl.so, libiup.so, ...
 
 extern(C) @nogc nothrow :
 

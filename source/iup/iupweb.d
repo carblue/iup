@@ -12,7 +12,7 @@ import iup.iup : Ihandle;
 
 version(DigitalMars) version(Windows)
 {
-/*version(Posix)		pragma(lib, "libiupweb.so"); */
+/*version(Posix)		pragma(lib, "libiupweb.so"); // requires WebKitGTK+ installation */
 /*version(Windows)*/	pragma(lib, "iupole.lib");
 }
 

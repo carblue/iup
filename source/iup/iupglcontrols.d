@@ -8,7 +8,7 @@ module iup.iupglcontrols;
 
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iupglcontrols.lib"); }
+version(DigitalMars) version(Windows) { pragma(lib, "iupglcontrols.lib"); } // libiupglcontrols.so depends on libiupgl.so, libiup.so, ...
 
 extern(C) @nogc nothrow :
 

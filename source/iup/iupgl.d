@@ -8,7 +8,8 @@ module iup.iupgl;
 
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iupgl.lib"); }
+version(DigitalMars) version(Windows) { pragma(lib, "iupgl.lib"); } // libiupgl.so depends on libiup.so, ...
+version(DigitalMars) version(Windows) { pragma(lib, "opengl32.lib"); } // link with the "opengl32.lib" library on Windows.
 
 extern(C) @nogc nothrow :
 

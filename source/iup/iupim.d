@@ -6,9 +6,11 @@
 
 module iup.iupim;
 
+/* Usage of any of these functions requires prior installation of package/toolkit IM */
+
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iupim.lib"); }
+version(DigitalMars) version(Windows) { pragma(lib, "iupim.lib"); } // libiupim.so depends on libim.so, (maybe image type specific .so like libpng12.so), libiup.so,...
 
 extern(C) @nogc nothrow :
 
@@ -17,9 +19,9 @@ int IupSaveImage(Ihandle* ih, const(char)* file_name, const(char)* format);
 Ihandle* IupLoadAnimation(const(char)* file_name);
 Ihandle* IupLoadAnimationFrames(const(char)** file_name_list, int file_count);
 
-version(IM) {
+version(IM) { // without IM-binding, type imImage is not known
 	import im.im_image : imImage;
-	imImage* IupGetNativeHandleImage(void* handle);
-	void* IupGetImageNativeHandle(const(imImage)* image);
-	Ihandle* IupImageFromImImage(const(imImage)* image);
+	imImage* IupGetNativeHandleImage(void* handle);       // in libiupim.so
+	void* IupGetImageNativeHandle(const(imImage)* image); // in libiupim.so
+	Ihandle* IupImageFromImImage(const(imImage)* image);  // in libiupim.so
 }

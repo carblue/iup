@@ -13,7 +13,7 @@ public import iup.iupkey;
 public import iup.iupdef;
 
 version(DigitalMars) version(Windows) { pragma(lib, "iup.lib"); }
-//version(DigitalMars) version(Windows) { pragma(lib, "iupimglib"); } // not necessarily required, but how to make shure it gets linked (when IupImageLibOpen() is used) without a setting in dub.json?
+//version(DigitalMars) version(Windows) { pragma(lib, "iupimglib"); } // required only if function IupImageLibOpen() is called
 
 extern(C) {
 

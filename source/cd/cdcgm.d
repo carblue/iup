@@ -7,7 +7,7 @@ module cd.cdcgm;
 
 version(CD) :
 
-import cd.cd : cdContext;
+import cd.cd : cdContext, CD_ABORT, CD_CONTINUE;
 
 //version(DigitalMars) version(Windows) { pragma(lib, "cd.lib"); } // import cd.cd required anyway, that comes with this pragma
 
@@ -24,5 +24,5 @@ enum CD_CGMBEGPICTBCB = 5;
 enum CD_CGMBEGMTFCB = 6;
 
 /* OLD definitions, defined for backward compatibility */
-//#define CDPLAY_ABORT CD_ABORT
-//#define CDPLAY_GO CD_CONTINUE
+enum CDPLAY_ABORT = CD_ABORT;
+enum CDPLAY_GO    = CD_CONTINUE;
