@@ -23,15 +23,13 @@ The version identifiers (if any) are to be specified in the app's dub.json and g
 
 A remark on linking to IUP, CD, IM binaries: The modularity of the IUP, CD, IM toolkit is nice, each toolkit even splits into several library binaries, but what you win on the swings you lose on the roundabouts: It may be tricky in some corner cases to get right the tailored set of "required" libraries depending on the features used (there is no automatism as of now); maybe You'll need the documentation for that (controls head section in the guide  with 'Initialization and Usage').
 The set of libraries/features available also may depend on OS, on a kernel version, on additional software available.<br>
-For DMD, there is a pragma, that should select libs for linkage depending on which binding source file(s) got imported by Your app's source code. Nice theory, but AFAIK not suited for Linux and on Windows (tested on Win32) I couldn't make use of it either. Thus currently I'm left with listing (supplementary/other than the 'basic') libs in my app's dub.json, but the pragma(lib, "library") helps to know which one(s);
+For DMD, there is a pragma, that should select libs for linkage depending on which binding source file(s) got imported by Your app's source code. Nice theory, but AFAIK not suited for Linux and on Windows (tested on Win32) I couldn't make use of it either. Thus currently I'm left with listing (supplementary/other than the 'basic') libs in my app's dub.json, but the pragma(lib, "library") helps to know which one(s).<br>
 Linux: Place all .so required in section "libs-posix" (strip leading 'lib' and trailing '.so'). 
 Windows: Place all required import libraries .lib in architecture-specific sections, e.g. "sourceFiles-windows-x86-dmd" for a Win32 build with DMD (no stripping of import lib names;<br>You will have to create on Your own the import libraries for a Win32 build with DMD due to Digital Mars linker OPTLINK (and the format OMF used; look at lib/windows-x86-dmd/README for a howto).
 The locations, where the binding expects to find the import libraries for Windows are lib/windows-x86-dmd and/or lib/windows-x86_64. The folders include a README with more infos.
 
 Section "lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.1/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.1/lib/posix-x86_64"],<br>
 Without this, it is very likely, that You'll get unresolved references to 'ftglGetFontMaxWidth' and 'ftglSetNearestFilter', e.g. when using IupPlotOpen(), because the systems libftgl.so is not sufficient. Copy the libftgl.so from the IUP or CD library package to the matching folder lib/posix-x86_64 or lib/posix-x86; thus it will be used instead of the system's one.
-
-The sections "copyFiles-windows..." are for a dub feature I currently use to pick from all .dll (I placed next to the import libraries i.e. not in a 'standard' .dll location) only those, that are the minimum to be deployed for this special build. Remove this if You don't need/like it.
 
 Some C-examples are translated to D code, look at dir examples/C or examples/tutorial (make shure, the D files have access right execute and You have rdmd) and run e.g. ./list2.d
 
