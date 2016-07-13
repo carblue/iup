@@ -6,10 +6,8 @@
 	"authors": ["Carsten Blüggel"],
 	"targetType": "library",
 	"targetPath": "lib",
-	"sourcePaths": ["source/"],
-	"importPaths": ["source/"],
-	"versions": [],
-	"lflags-posix": ["-L/path/to/extracted/folder/cd-5.10_Linux44_64_lib_OR_WHATEVER/ftgl/lib/Linux44_64"],
+	"lflags-posix-x86": ["-L$HOME/.dub/packages/iup-0.0.1/lib/posix-x86", "-rpath=$HOME/.dub/packages/iup-0.0.1/lib/posix-x86"],
+	"lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.1/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.1/lib/posix-x86_64"],
 	"libs-posix": ["ftgl", "iup", "iupcontrols"],
 	"sourceFiles-windows-x86-dmd": [
 		"lib/windows-x86-dmd/ftgl.lib",

@@ -1,0 +1,1 @@
+Copy the libftgl.so from the IUP or CD library package to the matching folder lib/posix-x86_64 or lib/posix-x86; thus it will be used instead of the system's one.

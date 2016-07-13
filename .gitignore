@@ -26,14 +26,16 @@ dub.selections.json
 
 .directory
 # not necessary to be done or later:
+dub_saved.json
+reasoning
 private/
 di/iup/*.di
 di/cd/*.di
 di/im/*.di
 
 lib/windows-x86_64/vcruntime140_dll
+lib/*.txt
 source/im
 source/iup/private
 source/cd/private
 source/im/private
-dub_saved.json
