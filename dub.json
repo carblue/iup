@@ -1,6 +1,6 @@
 {
 	"name": "iup",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Deimos-like binding to IUP, Portable graphical User Interface",
 	"authors": ["Carsten Blüggel"],
 	"copyright": "Copyright © 2016, Carsten Blüggel",
@@ -8,8 +8,8 @@
 	"homepage": "https://github.com/carblue/iup",
 	"targetType": "library",
 	"targetPath": "lib",
-	"lflags-posix-x86": ["-L$HOME/.dub/packages/iup-0.0.2/lib/posix-x86", "-rpath=$HOME/.dub/packages/iup-0.0.2/lib/posix-x86"],
-	"lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.2/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.2/lib/posix-x86_64"],
+	"lflags-posix-x86": ["-L$HOME/.dub/packages/iup-0.0.3/iup/lib/posix-x86", "-rpath=$HOME/.dub/packages/iup-0.0.3/iup/lib/posix-x86"],
+	"lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.3/iup/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.3/iup/lib/posix-x86_64"],
 	"libs-posix": ["ftgl", "iup", "iupcontrols"],
 	"sourceFiles-windows-x86-dmd": [
 		"lib/windows-x86-dmd/ftgl.lib",
