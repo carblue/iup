@@ -8,6 +8,7 @@ module im.im;
 version(IM) :
 
 import core.stdc.config : c_long;
+import im.im_file : _imFile;
 
 version(DigitalMars) version(Windows) { pragma(lib, "im.lib"); }
 
@@ -93,7 +94,7 @@ mixin FreeEnumMembers!imErrorCodes;
 
 /** \brief Image File Structure (Private).
  * \ingroup file */
-struct _imFile;
+//struct _imFile;
 alias imFile = _imFile; // ATTENTION usage: im/im_format.h:21:class imFileFormatBase: public _imFile
 
 /** Opens the file for reading. It must exists. Also reads file header.
