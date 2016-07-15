@@ -1,6 +1,6 @@
 /** \file
  * \brief Attributes Table Flat API.
- * This will simplify the DLL export, and can be used for C aplications.
+ * This will simplify the DLL export, and can be used for C applications.
  *
  * See Copyright Notice in im_lib.h
  */

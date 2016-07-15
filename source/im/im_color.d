@@ -11,6 +11,7 @@ version(IM) :
 
 //import std.exception : enforce;
 import std.traits : isNumeric;
+import core.stdc.math : powf;
 import im.im_util : IM_CROPMINMAX, IM_FLOATCROP;
 
 /** \defgroup color Color Manipulation

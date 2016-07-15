@@ -1,6 +1,6 @@
 module cd;
 
-//public import cd.cd_old;
+//public import cd.cd_old; CD_NO_OLD_INTERFACE dependent public import by cd.wd_old
 //public import cd.cd_private;
 public import cd.cd;
 public import cd.cdcairo;
@@ -28,4 +28,7 @@ public import cd.cdps;
 public import cd.cdsvg;
 public import cd.cdwmf;
 public import cd.wd;
-//public import cd.wd_old;
+//public import cd.wd_old; CD_NO_OLD_INTERFACE dependent public import by cd.wd
+
+//public import cd.cd_canvas;
+//public import cd.cd_plus;
