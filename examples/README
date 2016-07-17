@@ -1,2 +1,2 @@
 The examples are suitable for Linux users.
-Windows users will have to adapt file cmdfile, cmdfile1 and each .d file's first line, the shebang line (from #!/usr/bin/rdmd to #!rdmd)
+Windows users will have to adapt file cmdfile and each .d file's first line, the shebang line (from #!/usr/bin/rdmd to #!rdmd)

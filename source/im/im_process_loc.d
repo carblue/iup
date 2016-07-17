@@ -37,7 +37,7 @@ int imProcessReduce(const(imImage)* src_image, imImage* dst_image, int order);
 /** Change the image size using the given interpolation order. \n
  * Supported interpolation orders:
  * \li 0 - zero order (near neighborhood) [default in Lua for MAP and BINARY]
- * \li 1 - first order (bilinear interpolation) [default in Lua] 
+ * \li 1 - first order (bilinear interpolation) [default in Lua]
  * \li 3 - third order (bicubic interpolation)
  * Images must be of the same type. If image type is IM_MAP or IM_BINARY, must use order=0. \n
  * Returns zero if the counter aborted.
@@ -260,7 +260,7 @@ int imProcessGrayMorphGradient(const(imImage)* src_image, imImage* dst_image, in
  * Images are all IM_BINARY. Kernel is IM_INT, but values can be only 1, 0 or -1. Use kernel size odd for better results. \n
  * Hit white means hit=1 and miss=0, or else hit=0 and miss=1. \n
  * Use -1 for don't care positions in kernel. Kernel values are simply compared with image values. \n
- * The operation can be repeated by a number of iterations. 
+ * The operation can be repeated by a number of iterations.
  * The border is zero extended. \n
  * Almost all the binary morphology operations use this function.\n
  * If the kernel image attribute "Description" exists it is used by the counter.
@@ -323,7 +323,7 @@ void imProcessBinMorphThin(const(imImage)* src_image, imImage* dst_image);
 
 /** \defgroup rank Rank Convolution Operations
  * \par
- * All the rank convolution use the same base function. Near the border the base function 
+ * All the rank convolution use the same base function. Near the border the base function
  * includes only the real image pixels in the rank. No border extensions are used.
  * \par
  * See \ref im_process_loc.h
@@ -380,7 +380,7 @@ int imProcessRankMinConvolve(const(imImage)* src_image, imImage* dst_image, int 
  * Extracted from XITE, Copyright 1991, Blab, UiO \n
  * http://www.ifi.uio.no/~blab/Software/Xite/
 \verbatim
-  Reference:	
+  Reference:
     Bernsen, J: "Dynamic thresholding of grey-level images"
 		Proc. of the 8th ICPR, Paris, Oct 1986, 1251-1255.
   Author:     Oivind Due Trier
@@ -467,7 +467,7 @@ int imProcessCompassConvolve(const(imImage)* src_image, imImage* dst_image, imIm
 void imProcessRotateKernel(imImage* kernel);
 
 /** Difference(Gaussian1, Gaussian2). \n
- * Supports all data types, 
+ * Supports all data types,
  * but if source is IM_BYTE or IM_USHORT target image must be of type IM_INT.
  *
  * \verbatim im.ProcessDiffOfGaussianConvolve(src_image: imImage, dst_image: imImage, stddev1: number, stddev2: number) -> counter: boolean [in Lua 5] \endverbatim
@@ -476,7 +476,7 @@ void imProcessRotateKernel(imImage* kernel);
 int imProcessDiffOfGaussianConvolve(const(imImage)* src_image, imImage* dst_image, float stddev1, float stddev2);
 
 /** Convolution with a laplacian of a gaussian kernel. \n
- * Supports all data types, 
+ * Supports all data types,
  * but if source is IM_BYTE or IM_USHORT target image must be of type IM_INT.
  *
  * \verbatim im.ProcessLapOfGaussianConvolve(src_image: imImage, dst_image: imImage, stddev: number) -> counter: boolean [in Lua 5] \endverbatim
@@ -571,7 +571,7 @@ int imGaussianStdDev2KernelSize(float stddev);
  * \ingroup convolve */
 float imGaussianKernelSize2StdDev(int kernel_size);
 
-/** Edge enhancement using Unsharp mask. stddev control the gaussian filter, 
+/** Edge enhancement using Unsharp mask. stddev control the gaussian filter,
  *  amount controls how much the edges will enhance the image (0<amount<1), and
  *  threshold controls which edges will be considered, it compares to twice of the absolute size of the edge.
  *  Although very similar to \ref imProcessSharp, produces better results.
@@ -581,7 +581,7 @@ float imGaussianKernelSize2StdDev(int kernel_size);
  * \ingroup convolve */
 int imProcessUnsharp(const(imImage)* src_image, imImage* dst_image, float stddev, float amount, float threshold);
 
-/** Edge enhancement using Laplacian8 mask. 
+/** Edge enhancement using Laplacian8 mask.
  *  amount controls how much the edges will enhance the image (0<amount<1), and
  *  threshold controls which edges will be considered, it compares to twice of the absolute size of the edge.
  *

@@ -37,7 +37,7 @@ extern(C) {
  * An image representation than supports all the color spaces, 
  * but planes are always unpacked and the orientation is always bottom up.
  * \ingroup imgclass */
-struct imImage // typedef struct _imImage  imImage;
+struct _imImage // typedef struct _imImage  imImage;
 {
   /* main parameters */
   int width;          /**< Number of columns. image:Width() -> width: number [in Lua 5]. */
@@ -70,7 +70,7 @@ struct imImage // typedef struct _imImage  imImage;
 
   void* attrib_table; /**< in fact is an imAttribTable, but we hide this here */
 }
-
+alias imImage = _imImage;
 
 /** Creates a new image.
  * See also \ref imDataType and \ref imColorSpace. Image data is cleared as \ref imImageClear. \n

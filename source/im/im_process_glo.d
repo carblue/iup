@@ -23,10 +23,10 @@ extern(C) @nogc nothrow :
  * \ingroup process */
 
 /** Hough Lines Transform. \n
- * It will detect white lines in a black background. So the source image must be a IM_BINARY image 
- * with the white lines of interest enhanced. The better the threshold with the white lines the better 
+ * It will detect white lines in a black background. So the source image must be a IM_BINARY image
+ * with the white lines of interest enhanced. The better the threshold with the white lines the better
  * the line detection. \n
- * The target image must have IM_GRAY, IM_INT, hg_width=180, hg_height=2*rmax+1, 
+ * The target image must have IM_GRAY, IM_INT, hg_width=180, hg_height=2*rmax+1,
  * where rmax is the image diagonal/2 (rmax = srqrt(width*width + height*height)). \n
  * The hough transform defines  "cos(theta) * X  + sin(theta) * Y = rho" and the parameters are in the interval: \n
  * theta = "0 .. 179", rho = "-hg_height/2 .. hg_height/2" .\n
@@ -47,9 +47,9 @@ int imProcessHoughLines(const(imImage)* src_image, imImage* dst_image);
  * Can be done in-place. \n
  * If the hough transform is not NULL, then the hough points are filtered to include only lines
  * that are significally different from each other. \n
- * The hough image is the hough transform image, but it is optional and can be NULL. 
+ * The hough image is the hough transform image, but it is optional and can be NULL.
  * If not NULL then it will be used to filter lines that are very similar. \n
- * The hough points image is a hough transform image that was thresholded to a IM_BINARY image, 
+ * The hough points image is a hough transform image that was thresholded to a IM_BINARY image,
  * usually using a Local Max threshold operation (see \ref imProcessLocalMaxThreshold). Again the better the threshold the better the results. \n
  * The detected lines will be drawn using a red color.
  * If the target image is IM_GRAY, it will be changed to IM_MAP. \n
@@ -62,7 +62,7 @@ int imProcessHoughLines(const(imImage)* src_image, imImage* dst_image);
  * \ingroup transform */
 int imProcessHoughLinesDraw(const(imImage)* src_image, const(imImage)* hough, const(imImage)* hough_points, imImage* dst_image);
 
-/** Calculates the Cross Correlation in the frequency domain. \n 
+/** Calculates the Cross Correlation in the frequency domain. \n
  * CrossCorr(a,b) = IFFT(Conj(FFT(a))*FFT(b)) \n
  * Images must be of the same size and only target image must be of type complex.
  *
@@ -71,7 +71,7 @@ int imProcessHoughLinesDraw(const(imImage)* src_image, const(imImage)* hough, co
  * \ingroup transform */
 void imProcessCrossCorrelation(const(imImage)* src_image1, const(imImage)* src_image2, imImage* dst_image);
 
-/** Calculates the Auto Correlation in the frequency domain. \n 
+/** Calculates the Auto Correlation in the frequency domain. \n
  * Uses the cross correlation.
  * Images must be of the same size and only target image must be of type complex.
  *
@@ -80,7 +80,7 @@ void imProcessCrossCorrelation(const(imImage)* src_image1, const(imImage)* src_i
  * \ingroup transform */
 void imProcessAutoCorrelation(const(imImage)* src_image, imImage* dst_image);
 
-/** Calculates the Distance Transform of a binary image 
+/** Calculates the Distance Transform of a binary image
  * using an aproximation of the euclidian distance.\n
  * Each white pixel in the binary image is
  * assigned a value equal to its distance from the nearest
@@ -118,7 +118,7 @@ void imProcessRegionalMaximum(const(imImage)* src_image, imImage* dst_image);
  * Must link with "im_fftw" library. \n
  * \par
  * IMPORTANT: The FFTW lib has a GPL license. The license of the "im_fftw" library is automatically the GPL.
- * So you cannot use it for commercial applications without contacting the authors. 
+ * So you cannot use it for commercial applications without contacting the authors.
  * \par
  * FFTW 2.x can have float or double functions, not both. \n
  * FFTW 3.x can have both, but we use only one to keep the
@@ -151,7 +151,7 @@ void imProcessIFFT(const(imImage)* src_image, imImage* dst_image);
 /** Raw in-place FFT (forward or inverse). \n
  * The lowest frequency can be centered after forward, or
  * can be restored to the origin before inverse. \n
- * The result can be normalized after the transform by sqrt(w*h) [1] or by (w*h) [2], 
+ * The result can be normalized after the transform by sqrt(w*h) [1] or by (w*h) [2],
  * or left unnormalized [0]. \n
  * Images must be of the same size and both must be of type float complex.
  *
@@ -159,9 +159,9 @@ void imProcessIFFT(const(imImage)* src_image, imImage* dst_image);
  * \ingroup fourier */
 void imProcessFFTraw(imImage* image, int inverse, int center, int normalize);
 
-/** Auxiliary function for the raw FFT. \n 
+/** Auxiliary function for the raw FFT. \n
  * This is the function used internally to change the lowest frequency position in the image. \n
- * If the image size has even dimensions the flag "center2origin" is useless. But if it is odd, 
+ * If the image size has even dimensions the flag "center2origin" is useless. But if it is odd,
  * you must specify if its from center to origin (usually used before inverse) or
  * from origin to center (usually used after forward). \n
  * Notice that this function is used for images in the the frequency domain. \n
@@ -176,7 +176,7 @@ void imProcessSwapQuadrants(imImage* image, int center2origin);
 /** \defgroup openmp OpenMP Utilities
  * \par
  * Used inside im_process_omp only. But also exported to Lua.
- * These functions do not use OpenMP, 
+ * These functions do not use OpenMP,
  * they are used when OpenMP is enabled in im_process.
  * See \ref im_util.h
  * \ingroup process */

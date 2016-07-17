@@ -1,4 +1,4 @@
-#!/usr/bin/rdmd @cmdfile1
+#!/usr/bin/rdmd @cmdfile
 module iupmain;
 
 import core.stdc.config : c_ulong, c_long;
@@ -43,7 +43,7 @@ import cd.cddebug;
 import cd.wd;
 import cd.cdgdiplus;
 
-version(none)
+version(USE_OPENGL)
 {
 import cd.cdgl;
 import iup.iupgl;
@@ -508,7 +508,7 @@ int SimpleDrawImageRGB()
   return 0;
 }
 
-version(none) {
+version(USE_OPENGL) {
 //#ifdef USE_OPENGL
 int SimpleDrawGL()
 {
@@ -534,7 +534,7 @@ int SimpleDrawGL()
   return 0;
 }
 //#endif
-} // version(none)
+} // version(USE_OPENGL)
 
 int SimpleDrawSimulate()
 {
@@ -571,7 +571,7 @@ void SimpleDrawTest(cdCanvas* canvas);
 
 void SimpleDraw(cdCanvas* canvas)
 {
-version(none)
+version(USE_OPENGL)
 {
 //#ifdef USE_OPENGL
   if (use_opengl)
@@ -589,7 +589,7 @@ version(none)
 
   cdCanvasFlush(canvas);
 
-version(none)
+version(USE_OPENGL)
 {
 //#ifdef USE_OPENGL
   if (use_opengl)
@@ -1512,7 +1512,7 @@ int cmdExit() nothrow
 
 //void simple_loadled ();
 
-version(none)
+version(USE_OPENGL)
 {
 //#ifdef USE_OPENGL
 /* USE_OPENGL - add to linker:
@@ -1550,7 +1550,8 @@ void SimpleFlush()
   IupGLSwapBuffers(IupGetHandle("SimpleCanvas"));
 }
 //#endif
-}
+} // version(USE_OPENGL)
+
 int main(string[] args) { // C: int main(int argc, char** argv)
     // Load OpenGL versions 1.0 and 1.1.
 //    DerelictGL3.load();
@@ -1574,21 +1575,24 @@ int main(string[] args) { // C: int main(int argc, char** argv)
 //#ifdef USE_CONTEXTPLUS
   cdInitContextPlus();
 //#endif
-  // Load versions 1.2+ and all supported ARB and EXT extensions.
-//  DerelictGL.reload();
-  // Now OpenGL functions can be called.
+version(USE_OPENGL) {
 //#ifdef USE_OPENGL
-//  IupGLCanvasOpen();
+  // Load versions 1.2+ and all supported ARB and EXT extensions.
+  DerelictGL.reload();
+  // Now OpenGL functions can be called.
+  IupGLCanvasOpen();
 //#endif
+} // version(USE_OPENGL)
 
 //  simple_loadled();
+
 	char* error = null;
 	if ((error = IupLoad("simple.led")) != null) {
 		IupMessage("LED Fehler", error);
 		exit(EXIT_FAILURE);
 	}
 
-version(none)
+version(USE_OPENGL)
 {
 //#ifdef USE_OPENGL
   {
@@ -1596,12 +1600,12 @@ version(none)
     Ihandle* canvas = IupGetHandle("SimpleCanvas");
     IupDestroy(canvas);
     canvas = IupGLCanvas("SimpleRepaint");
-    DerelictGL.reload();
+//    DerelictGL.reload();
     IupSetHandle("SimpleCanvas", canvas);
     IupAppend(dialog, canvas);
   }
 //#endif
-}
+} // version(USE_OPENGL)
   IupSetAttribute(IupGetHandle("SimpleDialog"), "PLACEMENT", "MAXIMIZED");
   IupShow(IupGetHandle("SimpleDialog"));
 
@@ -1638,7 +1642,7 @@ version(none)
   IupSetFunction("SimpleDrawImageRGB", cast(Icallback) &SimpleDrawImageRGB);
   IupSetFunction("SimpleDrawSimulate", cast(Icallback) &SimpleDrawSimulate);
 
-version(none)
+version(USE_OPENGL)
 {
 //#ifdef USE_OPENGL
   IupSetFunction("SimpleDrawGL", cast(Icallback) &SimpleDrawGL);
@@ -1664,7 +1668,7 @@ version(none)
 
   SimpleDrawWindow();
 
-version(none)
+version(USE_OPENGL)
 {
 //#ifdef USE_OPENGL
   SimpleUpdateSize(null);

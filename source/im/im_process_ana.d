@@ -151,7 +151,7 @@ void imCalcHistogramStatistics(const(imImage)* image, imStats* stats);
  * \ingroup stats */
 void imCalcHistoImageStatistics(const(imImage)* image, int* median, int* mode);
 
-/** Calculates the minimum and maximum levels 
+/** Calculates the minimum and maximum levels
  * ignoring a given percentage of the histogram count.\n
  * Used by \ref imProcessExpandHistogram. \n
  * Only IM_BYTE, IM_SHORT and IM_USHORT images are supported. \n
@@ -183,7 +183,7 @@ int imAnalyzeFindRegions(const(imImage)* src_image, imImage* dst_image, int conn
  * area has size the number of regions.
  *
  * \verbatim im.AnalyzeMeasureArea(image: imImage, [region_count: number]) -> area: table of numbers [in Lua 5] \endverbatim
- * The returned table is zero indexed. 
+ * The returned table is zero indexed.
  * \ingroup analyze */
 void imAnalyzeMeasureArea(const(imImage)* image, int* area, int region_count);
 
@@ -193,7 +193,7 @@ void imAnalyzeMeasureArea(const(imImage)* image, int* area, int region_count);
  * perimarea has size the number of regions.
  *
  * \verbatim im.AnalyzeMeasurePerimArea(image: imImage, [region_count: number]) -> perimarea: table of numbers [in Lua 5] \endverbatim
- * The returned table is zero indexed. 
+ * The returned table is zero indexed.
  * \ingroup analyze */
 void imAnalyzeMeasurePerimArea(const(imImage)* image, float* perimarea, int region_count);
 
@@ -202,7 +202,7 @@ void imAnalyzeMeasurePerimArea(const(imImage)* image, float* perimarea, int regi
  * area, cx and cy have size the number of regions. If area is NULL will be internally calculated.
  *
  * \verbatim im.AnalyzeMeasureCentroid(image: imImage, [area: table of numbers], [region_count: number]) -> cx: table of numbers, cy: table of numbers [in Lua 5] \endverbatim
- * The returned tables are zero indexed. 
+ * The returned tables are zero indexed.
  * \ingroup analyze */
 void imAnalyzeMeasureCentroid(const(imImage)* image, const(int)* area, int region_count, float* cx, float* cy);
 
@@ -213,12 +213,12 @@ void imAnalyzeMeasureCentroid(const(imImage)* image, const(int)* area, int regio
  * centroid, about which the moment of inertia of the region is, respectively maximal or minimal.
  * Partially using OpenMP when enabled.
  *
- * \verbatim im.AnalyzeMeasurePrincipalAxis(image: imImage, [area: table of numbers], [cx: table of numbers], [cy: table of numbers], [region_count: number]) 
+ * \verbatim im.AnalyzeMeasurePrincipalAxis(image: imImage, [area: table of numbers], [cx: table of numbers], [cy: table of numbers], [region_count: number])
                               -> major_slope: table of numbers, major_length: table of numbers, minor_slope: table of numbers, minor_length: table of numbers [in Lua 5] \endverbatim
- * The returned tables are zero indexed. 
+ * The returned tables are zero indexed.
  * \ingroup analyze */
-void imAnalyzeMeasurePrincipalAxis(const(imImage)* image, const(int)* area, const(float)* cx, const(float)* cy, 
-                                   const int region_count, float* major_slope, float* major_length, 
+void imAnalyzeMeasurePrincipalAxis(const(imImage)* image, const(int)* area, const(float)* cx, const(float)* cy,
+                                   const int region_count, float* major_slope, float* major_length,
                                                            float* minor_slope, float* minor_length);
 
 /** Measure the number of holes of all regions. Optionally computes the holes area and holes perimeter of all regions. \n
@@ -227,7 +227,7 @@ void imAnalyzeMeasurePrincipalAxis(const(imImage)* image, const(int)* area, cons
  * Not using OpenMP when enabled.
  *
  * \verbatim im.AnalyzeMeasureHoles(image: imImage, connect: number, [region_count: number]) -> holes_count: number, holes_area: table of numbers, holes_perim: table of numbers [in Lua 5] \endverbatim
- * The returned tables are zero indexed. 
+ * The returned tables are zero indexed.
  * \ingroup analyze */
 void imAnalyzeMeasureHoles(const(imImage)* image, int connect, int region_count, int* holes_count, int* holes_area, float* holes_perim);
 
@@ -261,7 +261,7 @@ void imProcessRemoveByArea(const(imImage)* src_image, imImage* dst_image, int co
 
 /** Fill holes inside white regions. \n
  * Source and target are a binary images. Regions can be 4 connected or 8 connected. \n
- * Can be done in-place. 
+ * Can be done in-place.
  *
  * \verbatim im.ProcessFillHoles(src_image: imImage, dst_image: imImage, connect: number) [in Lua 5] \endverbatim
  * \verbatim im.ProcessFillHolesNew(image: imImage, connect: number) -> new_image: imImage [in Lua 5] \endverbatim

@@ -15,7 +15,7 @@ import im.im_image : imImage;
 extern(C) :
 @nogc nothrow {
 
-/** \defgroup point Point Based Custom Operations 
+/** \defgroup point Point Based Custom Operations
  * \par
  * See \ref im_process_pnt.h
  * \ingroup process */
@@ -31,14 +31,14 @@ alias imUnaryPointOpFunc = int function(float src_value, float* dst_value, float
 
 /** Apply an unary point operation using a custom function.
  * One pixel from the source affects the same pixel on target. \n
- * Can be done in-place, images must match size and depth. 
+ * Can be done in-place, images must match size and depth.
  * Data type can be different, but complex is not supported. \n
- * op_name is used only by the counter and can be NULL.  
+ * op_name is used only by the counter and can be NULL.
  * Returns zero if the counter aborted.
  *
  * \verbatim im.ProcessUnaryPointOp(src_image: imImage, dst_image: imImage, func: function, params: table, [op_name: string]) -> counter: boolean [in Lua 5] \endverbatim
  * \verbatim im.ProcessUnaryPointOpNew(image: imImage, func: function, params: table, [op_name: string]) -> counter: boolean, new_image: imImage [in Lua 5] \endverbatim
- * In Lua, the params table is passed to the function by using the Lua stack, 
+ * In Lua, the params table is passed to the function by using the Lua stack,
  * so its table can contain any type of objects, but they all must be unnamed.
  * \ingroup point */
 int imProcessUnaryPointOp(const(imImage)* src_image, imImage* dst_image, imUnaryPointOpFunc func, float* params, void* userdata, const(char)* op_name);
@@ -61,7 +61,7 @@ alias imUnaryPointColorOpFunc = int function(const(float)* src_value, float* dst
  *
  * \verbatim im.ProcessUnaryPointColorOp(src_image: imImage, dst_image: imImage, func: function, params: table, [op_name: string]) -> counter: boolean [in Lua 5] \endverbatim
  * \verbatim im.ProcessUnaryPointColorOpNew(image: imImage, func: function, params: table, [op_name: string]) -> counter: boolean, new_image: imImage [in Lua 5] \endverbatim
- * In Lua, the params table is passed to the function by using the Lua stack, 
+ * In Lua, the params table is passed to the function by using the Lua stack,
  * so its table can contain any type of objects, but they all must be unnamed.
  * \ingroup point */
 int imProcessUnaryPointColorOp(const(imImage)* src_image, imImage* dst_image, imUnaryPointColorOpFunc func, float* params, void* userdata, const(char)* op_name);
@@ -105,19 +105,19 @@ alias imMultiPointColorOpFunc = int function(float* src_value, float* dst_value,
  * All source images must match in size, depth and data type.
  * Can be done in-place, source and target must match size, depth can be different.
  * Data type can be different between sources and target, but complex is not supported. \n
- * op_name is used only by the counter and can be NULL. 
+ * op_name is used only by the counter and can be NULL.
  * Returns zero if the counter aborted.
  *
  * \verbatim im.ProcessMultiPointColorOp(src_image: table of imImage, dst_image: imImage, func: function, params: table, [op_name: string]) -> counter: boolean [in Lua 5] \endverbatim
  * \verbatim im.ProcessMultiPointColorOpNew(src_image: table of imImage, func: function, params: table, [op_name: string]) -> counter: boolean, new_image: imImage [in Lua 5] \endverbatim
- * In Lua, the params table is passed to the function by using the Lua stack, 
+ * In Lua, the params table is passed to the function by using the Lua stack,
  * so its table can contain any type of objects, but they all must be unnamed.
  * \ingroup point */
 int imProcessMultiPointColorOp(const(imImage)** src_image_list, int src_image_count, imImage* dst_image, imMultiPointColorOpFunc func, float* params, void* userdata, const(char)* op_name);
 
 } // @nogc nothrow
 
-/** \defgroup arithm Arithmetic Operations 
+/** \defgroup arithm Arithmetic Operations
  * \par
  * Simple math operations for images.
  * \par
@@ -307,7 +307,7 @@ void imProcessMultiplyConj(const(imImage)* src_image1, const(imImage)* src_image
  * See \ref im_process_pnt.h
  * \ingroup process */
 
-/** Converts a RGB image to a MAP image using uniform quantization 
+/** Converts a RGB image to a MAP image using uniform quantization
  * with an optional 8x8 ordered dither. The RGB image must have data type IM_BYTE.
  *
  * \verbatim im.ProcessQuantizeRGBUniform(src_image: imImage, dst_image: imImage, do_dither: boolean) [in Lua 5] \endverbatim
@@ -364,7 +364,7 @@ void imProcessEqualizeHistogram(const(imImage)* src_image, imImage* dst_image);
 /** Split a RGB image into luma and chroma. \n
  * Chroma is calculated as R-Y,G-Y,B-Y. Source image must be IM_RGB/IM_BYTE. \n
  * luma image is IM_GRAY/IM_BYTE and chroma is IM_RGB/IM_BYTE. \n
- * Source and target must have the same size. 
+ * Source and target must have the same size.
  *
  * \verbatim im.ProcessSplitYChroma(src_image: imImage, y_image: imImage, chroma_image: imImage) [in Lua 5] \endverbatim
  * \verbatim im.ProcessSplitYChromaNew(src_image: imImage) -> y_image: imImage, chroma_image: imImage [in Lua 5] \endverbatim
@@ -373,9 +373,9 @@ void imProcessSplitYChroma(const(imImage)* src_image, imImage* y_image, imImage*
 
 /** Split a RGB image into HSI planes. \n
  * Source image can be IM_RGB/IM_BYTE or IM_RGB/IM_FLOAT only. Target images are all IM_GRAY/IM_FLOAT. \n
- * Source images must normalized to 0-1 if type is IM_FLOAT (\ref imProcessToneGamut can be used). 
+ * Source images must normalized to 0-1 if type is IM_FLOAT (\ref imProcessToneGamut can be used).
  * See \ref hsi for a definition of the color conversion.\n
- * Source and target must have the same size. 
+ * Source and target must have the same size.
  *
  * \verbatim im.ProcessSplitHSI(src_image: imImage, h_image: imImage, s_image: imImage, i_image: imImage) [in Lua 5] \endverbatim
  * \verbatim im.ProcessSplitHSINew(src_image: imImage) -> h_image: imImage, s_image: imImage, i_image: imImage [in Lua 5] \endverbatim
@@ -442,7 +442,7 @@ void imProcessSetAlphaColor(const(imImage)* src_image, imImage* dst_image, float
 
 } // @nogc nothrow
 
-/** \defgroup logic Logical Arithmetic Operations 
+/** \defgroup logic Logical Arithmetic Operations
  * \par
  * Logical binary math operations for images.
  * \par
@@ -461,7 +461,7 @@ mixin FreeEnumMembers!imLogicOp;
 @nogc nothrow {
 
 /** Apply a logical operation.\n
- * Images must have data type integer. Can be done in-place. 
+ * Images must have data type integer. Can be done in-place.
  *
  * \verbatim im.ProcessBitwiseOp(src_image1: imImage, src_image2: imImage, dst_image: imImage, op: number) [in Lua 5] \endverbatim
  * \verbatim im.ProcessBitwiseOpNew(src_image1: imImage, src_image2: imImage, op: number) -> new_image: imImage [in Lua 5] \endverbatim
@@ -469,7 +469,7 @@ mixin FreeEnumMembers!imLogicOp;
 void imProcessBitwiseOp(const(imImage)* src_image1, const(imImage)* src_image2, imImage* dst_image, int op);
 
 /** Apply a logical NOT operation.\n
- * Images must have data type integer. Can be done in-place. 
+ * Images must have data type integer. Can be done in-place.
  *
  * \verbatim im.ProcessBitwiseNot(src_image: imImage, dst_image: imImage) [in Lua 5] \endverbatim
  * \verbatim im.ProcessBitwiseNotNew(src_image: imImage) -> new_image: imImage [in Lua 5] \endverbatim
@@ -487,7 +487,7 @@ void imProcessBitwiseNot(const(imImage)* src_image, imImage* dst_image);
 void imProcessBitMask(const(imImage)* src_image, imImage* dst_image, ubyte mask, int op);
 
 /** Extract or Reset a bit plane. For ex: 000X0000 or XXX0XXXX (plane=3).\n
- * Images must have data type IM_BYTE. Can be done in-place. 
+ * Images must have data type IM_BYTE. Can be done in-place.
  *
  * \verbatim im.ProcessBitPlane(src_image: imImage, dst_image: imImage, plane: number, do_reset: boolean) [in Lua 5] \endverbatim
  * \verbatim im.ProcessBitPlaneNew(src_image: imImage, plane: number, do_reset: boolean) -> new_image: imImage [in Lua 5] \endverbatim
@@ -498,7 +498,7 @@ void imProcessBitPlane(const(imImage)* src_image, imImage* dst_image, int plane,
 
 /** \defgroup render Synthetic Image Render
  * \par
- * Renders some 2D mathematical functions as images. All the functions operates in-place 
+ * Renders some 2D mathematical functions as images. All the functions operates in-place
  * and supports all data types except complex.
  * \par
  * See \ref im_process_pnt.h
@@ -515,7 +515,7 @@ alias imRenderFunc = float function(int x, int y, int d, float* params);
 alias imRenderCondFunc = float function(int x, int y, int d, int* cond, float* params);
 
 /** Render a synthetic image using a render function. \n
- * plus will make the render be added to the current image data, 
+ * plus will make the render be added to the current image data,
  * or else all data will be replaced. All the render functions use this or the conditional function. \n
  * Returns zero if the counter aborted.
  *
@@ -717,7 +717,7 @@ void imProcessDirectConv(const(imImage)* src_image, imImage* dst_image);
 
 /** A negative effect. Uses \ref imProcessToneGamut with IM_GAMUT_INVERT for non MAP images. \n
  * Supports all color spaces and all data types except complex. \n
- * Can be done in-place. 
+ * Can be done in-place.
  *
  * \verbatim im.ProcessNegative(src_image: imImage, dst_image: imImage) [in Lua 5] \endverbatim
  * \verbatim im.ProcessNegativeNew(src_image: imImage) -> new_image: imImage [in Lua 5] \endverbatim
@@ -887,7 +887,7 @@ void imProcessSliceThreshold(const(imImage)* src_image, imImage* dst_image, floa
  * \ingroup effects */
 void imProcessPixelate(const(imImage)* src_image, imImage* dst_image, int box_size);
 
-/** A simple Posterize effect. It reduces the number of colors in the image eliminating 
+/** A simple Posterize effect. It reduces the number of colors in the image eliminating
  * less significant bit planes. Can have 1 to 7 levels. See \ref imProcessBitMask. \n
  * Images must have data type IM_BYTE.
  *
@@ -917,12 +917,12 @@ void imProcessNormDiffRatio(const(imImage)* image1, const(imImage)* image2, imIm
 
 /** Applies the abnormal pixel correction as described in the article. (Since 3.8) \n
  * Images must be IM_GRAY. Source and Target must have the same datatype, and complex is not supported. \n
- * image_abnormal is optional, can be NULL. If not NULL, must be IM_BINARY and 
+ * image_abnormal is optional, can be NULL. If not NULL, must be IM_BINARY and
  * it will store the abnormal pixels distribution. \n
  * Can be done in-place. \n
  * threshold_percent is the percentage of the height that must have abnormal pixels candidates. \n
- * threshold_consecutive is the minimum number of consecutive abnormal pixels candidates to be considered an abnormal range. 
- * (usually the longest vertical ground feature in pixels)\n 
+ * threshold_consecutive is the minimum number of consecutive abnormal pixels candidates to be considered an abnormal range.
+ * (usually the longest vertical ground feature in pixels)\n
  * \par
  * Based on "Detection and Correction of Abnormal Pixels in Hyperion Images"
  * from T. Han, D. G. Goodenough, A. Dyk, and J. Love
