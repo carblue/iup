@@ -10,7 +10,7 @@ public import im.im_colorhsi;
 public import im.im_convert;
 public import im.im_counter;
 public import im.im_dib;
-//public import im.im_file;
+public import im.im_file;
 //public import im.im_format;
 public import im.im_format_all;
 public import im.im_format_avi;

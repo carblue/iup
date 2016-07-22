@@ -447,13 +447,13 @@ alias isbutton5   = iup_isbutton5;
 /************************************************************************/
 /*                      Pre-Defined Masks                               */
 /************************************************************************/
-enum IUP_MASK_FLOAT       = "[+/-]?(/d+/.?/d*|/./d+)";
-enum IUP_MASK_UFLOAT            = "(/d+/.?/d*|/./d+)";
-enum IUP_MASK_EFLOAT      = "[+/-]?(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?";
-enum IUP_MASK_FLOATCOMMA  = "[+/-]?(/d+/,?/d*|/,/d+)";
-enum IUP_MASK_UFLOATCOMMA =       "(/d+/,?/d*|/,/d+)";
-enum IUP_MASK_INT         =  "[+/-]?/d+";
-enum IUP_MASK_UINT        =        "/d+";
+const(char)* IUP_MASK_FLOAT       = "[+/-]?(/d+/.?/d*|/./d+)";
+const(char)* IUP_MASK_UFLOAT            = "(/d+/.?/d*|/./d+)";
+const(char)* IUP_MASK_EFLOAT      = "[+/-]?(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?";
+const(char)* IUP_MASK_FLOATCOMMA  = "[+/-]?(/d+/,?/d*|/,/d+)";
+const(char)* IUP_MASK_UFLOATCOMMA =       "(/d+/,?/d*|/,/d+)";
+const(char)* IUP_MASK_INT         =  "[+/-]?/d+";
+const(char)* IUP_MASK_UINT        =        "/d+";
 
 /* Old definitions for backward compatibility */
 alias IUPMASK_FLOAT     = IUP_MASK_FLOAT;
