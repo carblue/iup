@@ -12,7 +12,7 @@ import im.im : imFile;
 
 //version(DigitalMars) version(Windows) { pragma(lib, "im.lib"); } // required anyway
 
-extern @nogc nothrow :
+extern(C) @nogc nothrow :
 
 
 /** \defgroup filesdk File Format SDK

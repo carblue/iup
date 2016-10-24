@@ -21,9 +21,9 @@ extern "C" {
 #define IUP_NAME "IUP - Portable User Interface"
 #define IUP_DESCRIPTION	"Multi-platform Toolkit for Building Graphical User Interfaces"
 #define IUP_COPYRIGHT "Copyright (C) 1994-2016 Tecgraf/PUC-Rio"
-#define IUP_VERSION "3.19"         /* bug fixes are reported only by IupVersion functions */
-#define IUP_VERSION_NUMBER 319000
-#define IUP_VERSION_DATE "2016/06/20"  /* does not include bug fix releases */
+#define IUP_VERSION "3.20"         /* bug fixes are reported only by IupVersion functions */
+#define IUP_VERSION_NUMBER 320000
+#define IUP_VERSION_DATE "2016/09/30"  /* does not include bug fix releases */
 
 typedef struct Ihandle_ Ihandle;
 typedef int (*Icallback)(Ihandle*);
@@ -53,6 +53,7 @@ void      IupRefresh       (Ihandle* ih);
 void      IupRefreshChildren(Ihandle* ih);
 
 int       IupExecute(const char *filename, const char* parameters);
+int       IupExecuteWait(const char *filename, const char* parameters);
 int       IupHelp(const char* url);
 
 char*     IupLoad          (const char *filename);
@@ -207,6 +208,7 @@ Ihandle*  IupDetachBox  (Ihandle *child);
 Ihandle*  IupBackgroundBox(Ihandle *child);
 
 Ihandle*  IupFrame      (Ihandle* child);
+Ihandle*  IupFlatFrame  (Ihandle* child);
 
 Ihandle*  IupImage      (int width, int height, const unsigned char *pixmap);
 Ihandle*  IupImageRGB   (int width, int height, const unsigned char *pixmap);

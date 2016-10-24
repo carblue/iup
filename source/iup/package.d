@@ -7,7 +7,7 @@ public import iup.iup_plot;
 public import iup.iup_scintilla;
 public import iup.iupcbs;
 public import iup.iupcontrols;
-public import iup.iupdef;
+//public import iup.iupdef;
 public import iup.iupdraw;
 public import iup.iupgl;
 public import iup.iupglcontrols;

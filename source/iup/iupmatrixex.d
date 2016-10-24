@@ -8,7 +8,10 @@ module iup.iupmatrixex;
 
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iupmatrixex.lib"); } // libiupmatrixex.so depends on libiup.so,...
+version(DigitalMars) {
+  version(Posix)   { pragma(lib, "iupmatrixex"); }     // libiupmatrixex.so depends on libiup.so,...
+  version(Windows) { pragma(lib, "iupmatrixex.lib"); }
+}
 
 extern(C) @nogc nothrow :
 

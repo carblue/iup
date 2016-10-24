@@ -30,25 +30,16 @@ enum CD_VERSION = "5.10";              /* bug fixes are reported only by cdVersi
 enum CD_VERSION_NUMBER = 510000;
 enum CD_VERSION_DATE = "2019/06/25";  /* does not include bug fix releases */
 
-//typedef struct _cdContext cdContext;
-//struct _cdContext;
-//alias cdContext = _cdContext;
-struct cdContext;
+struct _cdContext;
+alias cdContext = _cdContext;
 
-//typedef struct _cdCanvas cdCanvas;
-//struct _cdCanvas;
-//alias cdCanvas = _cdCanvas;
-struct cdCanvas;
+struct _cdCanvas;
+alias cdCanvas = _cdCanvas;
 
-//typedef struct _cdCanvas cdState;
-//struct _cdCanvas;
-//alias cdState = _cdCanvas;
-struct cdState;
+alias cdState = _cdCanvas;
 
-//typedef struct _cdImage cdImage;
-//struct _cdImage;
-//alias cdImage = _cdImage;
-struct cdImage;
+struct _cdImage;
+alias cdImage = _cdImage;
 
 /* client images using bitmap structure */
 struct cdBitmap { // typedef struct _cdBitmap cdBitmap;

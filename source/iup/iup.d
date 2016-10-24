@@ -20,9 +20,9 @@ extern(C) {
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
 enum IUP_COPYRIGHT = "Copyright (C) 1994-2016 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.19";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 319000;
-enum IUP_VERSION_DATE = "2016/06/20";  /* does not include bug fix releases */
+enum IUP_VERSION = "3.20";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 320000;
+enum IUP_VERSION_DATE = "2016/09/30";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -58,6 +58,7 @@ void      IupRefresh       (Ihandle* ih);
 void      IupRefreshChildren(Ihandle* ih);
 
 int       IupExecute       (const(char)* filename, const(char)* parameters);
+int       IupExecuteWait   (const(char)* filename, const(char)* parameters);
 int       IupHelp          (const(char)* url);
 char*     IupLoad          (const(char)* filename);
 char*     IupLoadBuffer    (const(char)* buffer);
@@ -211,6 +212,7 @@ Ihandle*  IupDetachBox  (Ihandle* child);
 Ihandle*  IupBackgroundBox(Ihandle* child);
 
 Ihandle*  IupFrame      (Ihandle* child);
+Ihandle*  IupFlatFrame  (Ihandle* child);
 
 Ihandle*  IupImage      (int width, int height, const(ubyte)* pixmap);
 Ihandle*  IupImageRGB   (int width, int height, const(ubyte)* pixmap);

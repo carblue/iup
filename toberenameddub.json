@@ -1,17 +1,22 @@
 {
 	"name": "iup",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Deimos-like binding to IUP, Portable graphical User Interface",
 	"copyright": "Copyright © 2016, Carsten Blüggel",
 	"authors": ["Carsten Blüggel"],
 	"targetType": "library",
 	"targetPath": "lib",
-	"lflags-posix-x86": ["-L$HOME/.dub/packages/iup-0.0.6/iup/lib/posix-x86", "-rpath=$HOME/.dub/packages/iup-0.0.6/iup/lib/posix-x86"],
-	"lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.6/iup/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.6/iup/lib/posix-x86_64"],
+	"versions": ["IUP_MGLPLOT", "IUP_PLOT", "IUP_SCINTILLA", "IUP_GL", "IUP_GLCONTROLS", "IUP_MATRIXEX", "IUP_OLE", "IUP_TUIO", "IUP_WEB",
+				"CD", "CD_CONTEXTPLUS", "IM"],
+	"lflags-posix-x86": ["-L$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86", "-rpath=$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86"],
+	"lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86_64"],
 	"libs-posix": [
 		"ftgl",
 		"iup",
 		"iupcontrols",
+
+		"iupimglib",
+
 		"iup_mglplot",
 		"iup_plot",
 		"iup_scintilla",
@@ -19,15 +24,15 @@
 		"iupglcontrols",
 		"iupmatrixex",
 		"iuptuio",
-		"iupimglib",
+		"iupweb",
+
 		"iupcd",
 		"iupim",
 
 		"cd",
-		"cdgl",
 		"cdcontextplus",
+		"cdgl",
 		"cdpdf",
-		"pdflib",
 		"cdim",
 
 		"im",
@@ -40,23 +45,26 @@
 		"lib/windows-x86_64/ftgl.lib",
 		"lib/windows-x86_64/iup.lib",
 		"lib/windows-x86_64/iupcontrols.lib",
+
+		"lib/windows-x86_64/iupimglib.lib",
+
 		"lib/windows-x86_64/iup_mglplot.lib",
 		"lib/windows-x86_64/iup_plot.lib",
 		"lib/windows-x86_64/iup_scintilla.lib",
 		"lib/windows-x86_64/iupgl.lib",
 		"lib/windows-x86_64/iupglcontrols.lib",
 		"lib/windows-x86_64/iupmatrixex.lib",
-		"lib/windows-x86_64/iuptuio.lib",
 		"lib/windows-x86_64/iupole.lib",
-		"lib/windows-x86_64/iupimglib.lib",
+		"lib/windows-x86_64/iuptuio.lib",
+		"lib/windows-x86_64/iupweb.lib",
+
 		"lib/windows-x86_64/iupcd.lib",
 		"lib/windows-x86_64/iupim.lib",
 
 		"lib/windows-x86_64/cd.lib",
-		"lib/windows-x86_64/cdgl.lib",
 		"lib/windows-x86_64/cdcontextplus.lib",
+		"lib/windows-x86_64/cdgl.lib",
 		"lib/windows-x86_64/cdpdf.lib",
-		"lib/windows-x86_64/pdflib.lib",
 		"lib/windows-x86_64/cdim.lib",
 
 		"lib/windows-x86_64/im.lib",
@@ -72,23 +80,26 @@
 		"lib/windows-x86-dmd/ftgl.lib",
 		"lib/windows-x86-dmd/iup.lib",
 		"lib/windows-x86-dmd/iupcontrols.lib",
+
+		"lib/windows-x86-dmd/iupimglib.lib",
+
 		"lib/windows-x86-dmd/iup_mglplot.lib",
 		"lib/windows-x86-dmd/iup_plot.lib",
 		"lib/windows-x86-dmd/iup_scintilla.lib",
 		"lib/windows-x86-dmd/iupgl.lib",
 		"lib/windows-x86-dmd/iupglcontrols.lib",
 		"lib/windows-x86-dmd/iupmatrixex.lib",
-		"lib/windows-x86-dmd/iuptuio.lib",
 		"lib/windows-x86-dmd/iupole.lib",
-		"lib/windows-x86-dmd/iupimglib.lib",
+		"lib/windows-x86-dmd/iuptuio.lib",
+		"lib/windows-x86-dmd/iupweb.lib",
+
 		"lib/windows-x86-dmd/iupcd.lib",
 		"lib/windows-x86-dmd/iupim.lib",
 
 		"lib/windows-x86-dmd/cd.lib",
-		"lib/windows-x86-dmd/cdgl.lib",
 		"lib/windows-x86-dmd/cdcontextplus.lib",
+		"lib/windows-x86-dmd/cdgl.lib",
 		"lib/windows-x86-dmd/cdpdf.lib",
-		"lib/windows-x86-dmd/pdflib.lib",
 		"lib/windows-x86-dmd/cdim.lib",
 
 		"lib/windows-x86-dmd/im.lib",
