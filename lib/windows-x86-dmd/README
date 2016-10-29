@@ -2,9 +2,9 @@ This folder has to be populated with .lib files (generated from .dll files):
 
 .dll files to be downloaded from (adapt to Your compiler/linker, but stick with Windows x86 here; I prefer dependency on MSVCRT.DLL only, but if You have a vcruntime???.dll dependency anyway, take a VS related download!):
 
-https://sourceforge.net/projects/iup/files/3.19.1/Windows%20Libraries/Dynamic/iup-3.19.1_Win32_dllw4_lib.zip/download
-https://sourceforge.net/projects/canvasdraw/files/5.10/Windows%20Libraries/Dynamic/cd-5.10_Win32_dllw4_lib.zip/download
-https://sourceforge.net/projects/imtoolkit/files/3.11/Windows%20Libraries/Dynamic/im-3.11_Win32_dllw4_lib.zip/download
+https://sourceforge.net/projects/iup/files/3.20/Windows%20Libraries/Dynamic/iup-3.20_Win32_dllw4_lib.zip/download
+https://sourceforge.net/projects/canvasdraw/files/5.11/Windows%20Libraries/Dynamic/cd-5.11_Win32_dllw4_lib.zip/download
+https://sourceforge.net/projects/imtoolkit/files/3.12/Windows%20Libraries/Dynamic/im-3.12_Win32_dllw4_lib.zip/download
 
 .lib files to be generated with Digital Mars tool : implib
 http://www.digitalmars.com/ctg/implib.html

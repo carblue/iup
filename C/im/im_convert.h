@@ -98,7 +98,7 @@ int imConvertColorSpace(const imImage* src_image, imImage* dst_image);
  * \ingroup convert */
 int imConvertToBitmap(const imImage* src_image, imImage* dst_image, int cpx2real, float gamma, int absolute, int cast_mode);
 
-/** Returns an OpenGL compatible data buffer. Also returns the correspondant pixel format. \n
+/** Returns an OpenGL compatible data buffer. Also returns the correspondent pixel format. \n
  * The memory allocated is stored in the attribute "GLDATA" with BYTE type. And it will exists while the image exists. \n
  * It can be cleared by setting the attribute to NULL. \n
  * MAP images are converted to RGB, and BINARY images are converted to GRAY.

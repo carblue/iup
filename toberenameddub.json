@@ -1,6 +1,6 @@
 {
 	"name": "iup",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "Deimos-like binding to IUP, Portable graphical User Interface",
 	"copyright": "Copyright © 2016, Carsten Blüggel",
 	"authors": ["Carsten Blüggel"],
@@ -8,8 +8,8 @@
 	"targetPath": "lib",
 	"versions": ["IUP_MGLPLOT", "IUP_PLOT", "IUP_SCINTILLA", "IUP_GL", "IUP_GLCONTROLS", "IUP_MATRIXEX", "IUP_OLE", "IUP_TUIO", "IUP_WEB",
 				"CD", "CD_CONTEXTPLUS", "IM"],
-	"lflags-posix-x86": ["-L$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86", "-rpath=$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86"],
-	"lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.7/iup/lib/posix-x86_64"],
+	"lflags-posix-x86": ["-L$HOME/.dub/packages/iup-0.0.8/iup/lib/posix-x86", "-rpath=$HOME/.dub/packages/iup-0.0.8/iup/lib/posix-x86"],
+	"lflags-posix-x86_64": ["-L$HOME/.dub/packages/iup-0.0.8/iup/lib/posix-x86_64", "-rpath=$HOME/.dub/packages/iup-0.0.8/iup/lib/posix-x86_64"],
 	"libs-posix": [
 		"ftgl",
 		"iup",

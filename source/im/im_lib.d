@@ -33,9 +33,9 @@ enum IM_NAME = "IM - An Imaging Toolkit";
 enum IM_DESCRIPTION =  "Toolkit for Image Representation, Storage, Capture and Processing";
 enum IM_COPYRIGHT = "Copyright (C) 1994-2016 Tecgraf/PUC-Rio";
 enum IM_AUTHOR = "Antonio Scuri";
-enum IM_VERSION = "3.11";      /* bug fixes are reported only by imVersion functions */
-enum IM_VERSION_NUMBER = 311000;
-enum IM_VERSION_DATE = "2016/06/20";  /* does not include bug fix releases */
+enum IM_VERSION = "3.12";      /* bug fixes are reported only by imVersion functions */
+enum IM_VERSION_NUMBER = 312000;
+enum IM_VERSION_DATE = "2016/09/30";  /* does not include bug fix releases */
 /** @} */
 
 

@@ -391,16 +391,28 @@ bool iup_isbutton1(string _s){
 	return false;
 }
 
+bool iup_isbutton1(char* _s) nothrow {
+	return _s[2]=='1';
+}
+
 bool iup_isbutton2(string _s){
 	if (_s.length > 3)
 		return _s[3]=='2';
 	return false;
 }
 
+bool iup_isbutton2(char* _s) nothrow {
+	return _s[3]=='2';
+}
+
 bool iup_isbutton3(string _s){
 	if (_s.length > 4)
 		return _s[4]=='3';
 	return false;
+}
+
+bool iup_isbutton3(char* _s) nothrow {
+	return _s[4]=='3';
 }
 
 bool iup_isdouble(string _s){

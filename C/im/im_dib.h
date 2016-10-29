@@ -50,7 +50,8 @@ extern "C" {
 typedef struct _imDib 
 {
   HGLOBAL           handle;        /**< The windows memory handle */
-  BYTE*             dib;           /**< The DIB as it is defined in memory */
+  BYTE*             buffer;        /**< The DIB as it is defined in memory */
+  int               free_buffer;   /**< Free the memory buffer, used only for DIB section */
   int               size;          /**< Full size in memory */
                                   
   BITMAPINFO*       bmi;           /**< Bitmap Info = Bitmap Info Header + Palette */
@@ -62,29 +63,32 @@ typedef struct _imDib
   int               bits_size;     /**< size in bytes of the Bitmap Bits */
   int               line_size;     /**< size in bytes of one line, includes padding */
   int               pad_size;      /**< number of bytes remaining in the line, lines are in a word boundary */
-                                  
-  int               is_reference;  /**< only a reference, do not free pointer */
 } imDib; 
 
 /** Creates a new DIB. \n
- * use bpp=-16/-32 to allocate space for BITFLIEDS.
+ * use bpp=-16/-32 to allocate space for BITFLIEDS. \n
+ * Allocates all fields.
  * \ingroup dib */
 imDib* imDibCreate(int width, int height, int bpp);     
 
-/** Duplicates the DIB contents in a new DIB.
+/** Duplicates the DIB contents in a new DIB. \n
+ * A Reference DIB will be copied into a full DIB structure.
  * \ingroup dib */
 imDib* imDibCreateCopy(const imDib* dib);
 
 /** Creates a DIB using an already allocated memory. \n
  * "bmi" must be a pointer to BITMAPINFOHEADER. \n
- * "bits" can be NULL if it is inside "bmi" after the palette.
+ * "bits" can be NULL if it is inside "bmi" after the palette. \n
+ * "handle" is not allocated. buffer will point to bmi.
  * \ingroup dib */
 imDib* imDibCreateReference(BYTE* bmi, BYTE* bits);     
 
-/** Creates a DIB section for drawing porposes. \n
- * Returns the image handle also created.
+/** Creates a DIB section for drawing purposes. \n
+ * Returns the bitmap that is also created. \n
+ * "handle" is not allocated. \n
+ * You cannot paste a DIB section from one application into another application.
  * \ingroup dib */
-imDib* imDibCreateSection(HDC hDC, HBITMAP *image, int width, int height, int bpp);
+imDib* imDibCreateSection(HDC hDC, HBITMAP *bitmap, int width, int height, int bpp);
 
 /** Destroy the DIB
  * \ingroup dib */
@@ -125,9 +129,10 @@ HPALETTE imDibLogicalPalette(const imDib* dib);
 imDib* imDibCaptureScreen(int x, int y, int width, int height);
 
 /** Transfer the DIB to the clipboard. \n 
- * "dib" pointer can not be used after, or use imDibCopyClipboard(imDibCreateCopy(dib)).
+ * "dib" pointer can not be used after, or use imDibCopyClipboard(imDibCreateCopy(dib)). \n
+ * You cannot paste a DIB section from one application into another application. \n
  * Warning: Clipboard functions in C++ can fail with Visual C++ /EHsc (Enable C++ Exceptions)
-* \ingroup dib */
+ * \ingroup dib */
 void imDibCopyClipboard(imDib* dib); 
 
 /** Creates a reference for the DIB in the clipboard if any. Returns NULL otherwise.
@@ -186,7 +191,11 @@ imImage* imDibToImage(const imDib* dib);
  * \ingroup dib */
 imDib* imDibFromImage(const imImage* image);
 
-/** Creates a imImage from a RCDATA in the executable/dll resources. (Since 3.9) \n
+/** Creates a Dib Section from the image. It must be a bitmap image.
+* \ingroup dib */
+imDib* imDibSectionFromImage(HDC hDC, HBITMAP *bitmap, const imImage* image);
+
+/** Creates an imImage from a RCDATA in the executable/dll resources. (Since 3.9) \n
  * module can be NULL, it will use GetModuleHandle(NULL). \n
  * name is the name of the resource. If using IDs, then can be obtained from MAKEINTRESOURCE(id). \n
  * index is the image index in the file, 0 will return the first image.
