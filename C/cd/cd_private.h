@@ -300,6 +300,20 @@ int cdStrTmpFileName(char* filename);
 int cdMakeDirectory(const char *path);
 int cdIsDirectory(const char* path);
 int cdRemoveDirectory(const char *path);
+void cdCopyFile(const char* srcFile, const char* destFile);
+
+typedef struct _cdDirData
+{
+  const char* path;
+  char filename[1024];
+  int isDir;
+  int closed;
+  void* handle;
+} cdDirData;
+
+cdDirData* cdDirIterOpen(const char *path);
+int cdDirIter(cdDirData * dirData);
+void cdDirClose(cdDirData* dirData);
 
 void cdPoly(cdCanvas* canvas, int mode, cdPoint* points, int n);
 

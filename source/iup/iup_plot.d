@@ -55,6 +55,7 @@ void IupPlotTransform(Ihandle* ih, double x, double y, double* cnv_x, double* cn
 void IupPlotTransformTo(Ihandle* ih, double cnv_x, double cnv_y, double* x, double* y);
 
 int  IupPlotFindSample(Ihandle* ih, double cnv_x, double cnv_y, int* ds_index, int* sample_index);
+int  IupPlotFindSegment(Ihandle* ih, double cnv_x, double cnv_y, int* ds_index, int* sample_index1, int* sample_index2);
 
 version(CD)
 {

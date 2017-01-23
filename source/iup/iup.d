@@ -19,10 +19,10 @@ extern(C) {
 
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
-enum IUP_COPYRIGHT = "Copyright (C) 1994-2016 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.20";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 320000;
-enum IUP_VERSION_DATE = "2016/09/30";  /* does not include bug fix releases */
+enum IUP_COPYRIGHT = "Copyright (C) 1994-2017 Tecgraf/PUC-Rio";
+enum IUP_VERSION = "3.21";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 321000;
+enum IUP_VERSION_DATE = "2017/01/20";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -169,6 +169,10 @@ char*     IupGetName      (Ihandle* ih);
 
 void      IupSetAttributeHandle(Ihandle* ih, const(char)* name, Ihandle* ih_named);
 Ihandle*  IupGetAttributeHandle(Ihandle* ih, const(char)* name);
+void      IupSetAttributeHandleId(Ihandle* ih, const(char)* name, int id, Ihandle* ih_named);
+Ihandle*  IupGetAttributeHandleId(Ihandle* ih, const(char)* name, int id);
+void      IupSetAttributeHandleId2(Ihandle* ih, const(char)* name, int lin, int col, Ihandle* ih_named);
+Ihandle*  IupGetAttributeHandleId2(Ihandle* ih, const(char)* name, int lin, int col);
 
 char*     IupGetClassName(Ihandle* ih);
 char*     IupGetClassType(Ihandle* ih);
@@ -225,6 +229,7 @@ Ihandle*  IupMenu       (Ihandle* child,...);
 Ihandle*  IupMenuv      (Ihandle** children);
 
 Ihandle*  IupButton     (const(char)* title, const(char)* action);
+Ihandle*  IupFlatButton (const(char)* title);
 Ihandle*  IupCanvas     (const(char)* action);
 Ihandle*  IupDialog     (Ihandle* child);
 Ihandle*  IupUser       ();
@@ -239,9 +244,10 @@ Ihandle*  IupProgressBar();
 Ihandle*  IupVal        (const(char)* type);
 Ihandle*  IupTabs       (Ihandle* child, ...);
 Ihandle*  IupTabsv      (Ihandle** children);
+Ihandle*  IupFlatTabs   (Ihandle* first, ...);
+Ihandle*  IupFlatTabsv  (Ihandle** children);
 Ihandle*  IupTree       ();
 Ihandle*  IupLink       (const(char)* url, const(char)* title);
-Ihandle*  IupFlatButton (const(char)* title);
 Ihandle*  IupAnimatedLabel(Ihandle* animation);
 Ihandle*  IupDatePick   ();
 Ihandle*  IupCalendar   ();
@@ -281,7 +287,9 @@ void IupSetfAttributeId2(Ihandle* ih, const(char)* name, int lin, int col, const
 int   IupTreeSetUserId(Ihandle* ih, int id, void* userid);
 void* IupTreeGetUserId(Ihandle* ih, int id);
 int   IupTreeGetId(Ihandle* ih, void* userid);
+deprecated("use IupSetAttributeHandleId")
 void  IupTreeSetAttributeHandle(Ihandle* ih, const(char)* name, int id, Ihandle* ih_named);
+
 
 /************************************************************************/
 /*                      Pre-definided dialogs                           */
@@ -373,73 +381,104 @@ enum : char {
 	IUP_BUTTON5   = '5',
 }
 
-bool iup_isshift(string _s) {
+//#define iup_isshift(_s)    (_s[0]=='S')
+bool iup_isshift()(string _s) {
 	if (_s.length > 0)
 		return _s[0] == 'S';
 	return false;
 }
 
-bool iup_iscontrol(string _s){
+//#define iup_iscontrol(_s)  (_s[1]=='C')
+bool iup_iscontrol()(string _s){
 	if (_s.length > 1)
 		return _s[1]=='C';
 	return false;
 }
 
-bool iup_isbutton1(string _s){
-	if (_s.length > 2)
+//#define iup_isbutton1(_s)  (_s[2]=='1')
+bool iup_isbutton1(T)(T _s) nothrow
+  if (is (T : string) || is (T : char*))
+{
+	static if (is (T : string)) {
+		if (_s.length > 2)
+			return _s[2]=='1';
+		return false;
+	}
+	else {
 		return _s[2]=='1';
-	return false;
+	}
 }
 
-bool iup_isbutton1(char* _s) nothrow {
-	return _s[2]=='1';
-}
+//bool iup_isbutton1(char* _s) nothrow {
+//	return _s[2]=='1';
+//}
 
-bool iup_isbutton2(string _s){
-	if (_s.length > 3)
+//#define iup_isbutton2(_s)  (_s[3]=='2')
+bool iup_isbutton2(T)(T _s) nothrow
+  if (is (T : string) || is (T : char*))
+{
+	static if (is (T : string)) {
+		if (_s.length > 3)
+			return _s[3]=='2';
+		return false;
+	}
+	else {
 		return _s[3]=='2';
-	return false;
+	}
 }
 
-bool iup_isbutton2(char* _s) nothrow {
-	return _s[3]=='2';
-}
+//bool iup_isbutton2(char* _s) nothrow {
+//	return _s[3]=='2';
+//}
 
-bool iup_isbutton3(string _s){
-	if (_s.length > 4)
+//#define iup_isbutton3(_s)  (_s[4]=='3')
+bool iup_isbutton3(T)(T _s) nothrow
+  if (is (T : string) || is (T : char*))
+{
+	static if (is (T : string)) {
+		if (_s.length > 4)
+			return _s[4]=='3';
+		return false;
+	}
+	else {
 		return _s[4]=='3';
-	return false;
+	}
 }
 
-bool iup_isbutton3(char* _s) nothrow {
-	return _s[4]=='3';
-}
+//bool iup_isbutton3(char* _s) nothrow {
+//	return _s[4]=='3';
+//}
 
-bool iup_isdouble(string _s){
+//#define iup_isdouble(_s)   (_s[5]=='D')
+bool iup_isdouble()(string _s) {
 	if (_s.length > 5)
 		return _s[5]=='D';
 	return false;
 }
 
-bool iup_isalt(string _s){
+//#define iup_isalt(_s)      (_s[6]=='A')
+bool iup_isalt()(string _s) {
 	if (_s.length > 6)
 		return _s[6]=='A';
 	return false;
 }
 
-bool iup_issys(string _s){
+//#define iup_issys(_s)      (_s[7]=='Y')
+bool iup_issys()(string _s) {
 	if (_s.length > 7)
 		return _s[7]=='Y';
 	return false;
 }
 
-bool iup_isbutton4(string _s){
+//#define iup_isbutton4(_s)  (_s[8]=='4')
+bool iup_isbutton4()(string _s) {
 	if (_s.length > 8)
 		return _s[8]=='4';
 	return false;
 }
 
-bool iup_isbutton5(string _s){
+//#define iup_isbutton5(_s)  (_s[9]=='5')
+bool iup_isbutton5()(string _s) {
 	if (_s.length > 9)
 		return _s[9]=='5';
 	return false;
@@ -461,13 +500,13 @@ alias isbutton5   = iup_isbutton5;
 /************************************************************************/
 /*                      Pre-Defined Masks                               */
 /************************************************************************/
-const(char)* IUP_MASK_FLOAT       = "[+/-]?(/d+/.?/d*|/./d+)";
-const(char)* IUP_MASK_UFLOAT            = "(/d+/.?/d*|/./d+)";
-const(char)* IUP_MASK_EFLOAT      = "[+/-]?(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?";
-const(char)* IUP_MASK_FLOATCOMMA  = "[+/-]?(/d+/,?/d*|/,/d+)";
-const(char)* IUP_MASK_UFLOATCOMMA =       "(/d+/,?/d*|/,/d+)";
-const(char)* IUP_MASK_INT         =  "[+/-]?/d+";
-const(char)* IUP_MASK_UINT        =        "/d+";
+enum /* const(char)* */ IUP_MASK_FLOAT       = "[+/-]?(/d+/.?/d*|/./d+)";
+enum /* const(char)* */ IUP_MASK_UFLOAT            = "(/d+/.?/d*|/./d+)";
+enum /* const(char)* */ IUP_MASK_EFLOAT      = "[+/-]?(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?";
+enum /* const(char)* */ IUP_MASK_FLOATCOMMA  = "[+/-]?(/d+/,?/d*|/,/d+)";
+enum /* const(char)* */ IUP_MASK_UFLOATCOMMA =       "(/d+/,?/d*|/,/d+)";
+enum /* const(char)* */ IUP_MASK_INT         =  "[+/-]?/d+";
+enum /* const(char)* */ IUP_MASK_UINT        =        "/d+";
 
 /* Old definitions for backward compatibility */
 alias IUPMASK_FLOAT     = IUP_MASK_FLOAT;
@@ -486,6 +525,7 @@ enum {
 	IUP_GETPARAM_BUTTON2 = -3,
 	IUP_GETPARAM_BUTTON3 = -4,
 	IUP_GETPARAM_CLOSE   = -5,
+	IUP_GETPARAM_MAP     = -6,
 	IUP_GETPARAM_OK     = IUP_GETPARAM_BUTTON1,
 	IUP_GETPARAM_CANCEL = IUP_GETPARAM_BUTTON2,
 	IUP_GETPARAM_HELP   = IUP_GETPARAM_BUTTON3,

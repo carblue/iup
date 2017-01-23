@@ -19,9 +19,9 @@ extern "C" {
 #define CD_NAME "CD - A 2D Graphics Library"
 #define CD_DESCRIPTION "Vector Graphics Toolkit with Device Independent Output"
 #define CD_COPYRIGHT "Copyright (C) 1994-2016 Tecgraf/PUC-Rio"
-#define CD_VERSION "5.10"              /* bug fixes are reported only by cdVersion functions */
-#define CD_VERSION_NUMBER 510000
-#define CD_VERSION_DATE "2019/06/25"  /* does not include bug fix releases */
+#define CD_VERSION "5.11"              /* bug fixes are reported only by cdVersion functions */
+#define CD_VERSION_NUMBER 511000
+#define CD_VERSION_DATE "2016/09/30"  /* does not include bug fix releases */
 
 typedef struct _cdContext cdContext;
 typedef struct _cdCanvas cdCanvas;

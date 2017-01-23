@@ -26,9 +26,9 @@ alias cdSizeCB = int function(cdCanvas* canvas, int w, int h, double w_mm, doubl
 enum CD_NAME = "CD - A 2D Graphics Library";
 enum CD_DESCRIPTION = "Vector Graphics Toolkit with Device Independent Output";
 enum CD_COPYRIGHT = "Copyright (C) 1994-2016 Tecgraf/PUC-Rio";
-enum CD_VERSION = "5.10";              /* bug fixes are reported only by cdVersion functions */
-enum CD_VERSION_NUMBER = 510000;
-enum CD_VERSION_DATE = "2019/06/25";  /* does not include bug fix releases */
+enum CD_VERSION = "5.11";              /* bug fixes are reported only by cdVersion functions */
+enum CD_VERSION_NUMBER = 511000;
+enum CD_VERSION_DATE = "2016/09/30";  /* does not include bug fix releases */
 
 struct _cdContext;
 alias cdContext = _cdContext;

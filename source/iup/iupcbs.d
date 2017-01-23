@@ -55,15 +55,16 @@ alias IFniinsii = int function(Ihandle*, int, int, Ihandle*, char*, int, int); /
 alias IFnccc    = int function(Ihandle*, ubyte, ubyte, ubyte); /* drag_cb, change_cb */
 alias IFniIIII  = int function(Ihandle*, int, int*, int*, int*, int*); /* multitouch_cb */
 
-alias IFnC      = int function(Ihandle*, _cdCanvas*); /* postdraw_cb, predraw_cb */
-alias IFniiff   = int function(Ihandle*, int, int, float, float); /* delete_cb (pplot) */
-alias IFniiffi  = int function(Ihandle*, int, int, float, float, int); /* select_cb (pplot) */
-alias IFniidd   = int function(Ihandle*, int, int, double, double); /* delete_cb */
-alias IFniiddi  = int function(Ihandle*, int, int, double, double, int); /* select_cb */
-alias IFniiffFF = int function(Ihandle*, int, int, float, float, float*, float*); /* edit_cb */
-alias IFniiffs  = int function(Ihandle*, int, int, float, float, char*);  /* plotbutton_cb (pplot) */
-alias IFniidds  = int function(Ihandle*, int, int, double, double, char*);  /* plotbutton_cb */
-alias IFndds    = int function(Ihandle*, double, double, char*);    /* plotmotion_cb */
+alias IFnC        = int function(Ihandle*, _cdCanvas*); /* postdraw_cb, predraw_cb */
+alias IFniiff     = int function(Ihandle*, int, int, float, float); /* delete_cb (pplot) */
+alias IFniiffi    = int function(Ihandle*, int, int, float, float, int); /* select_cb (pplot) */
+alias IFniidd     = int function(Ihandle*, int, int, double, double); /* delete_cb */
+alias IFniiddi    = int function(Ihandle*, int, int, double, double, int); /* select_cb */
+alias IFniiddiddi = int function(Ihandle*, int, int, double, double, int, double, double, int); /* clicksegment_cb */
+alias IFniiffFF   = int function(Ihandle*, int, int, float, float, float*, float*); /* edit_cb */
+alias IFniiffs    = int function(Ihandle*, int, int, float, float, char*);  /* plotbutton_cb (pplot) */
+alias IFniidds    = int function(Ihandle*, int, int, double, double, char*);  /* plotbutton_cb */
+alias IFndds      = int function(Ihandle*, double, double, char*);    /* plotmotion_cb */
 
 alias sIFnii  = char* function(Ihandle*, int, int);  /* value_cb, font_cb */
 alias sIFni   = char* function(Ihandle*, int);  /* cell_cb */
