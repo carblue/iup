@@ -21,9 +21,9 @@ extern "C" {
 #define IUP_NAME "IUP - Portable User Interface"
 #define IUP_DESCRIPTION	"Multi-platform Toolkit for Building Graphical User Interfaces"
 #define IUP_COPYRIGHT "Copyright (C) 1994-2017 Tecgraf/PUC-Rio"
-#define IUP_VERSION "3.21"         /* bug fixes are reported only by IupVersion functions */
-#define IUP_VERSION_NUMBER 321000
-#define IUP_VERSION_DATE "2017/01/20"  /* does not include bug fix releases */
+#define IUP_VERSION "3.23"         /* bug fixes are reported only by IupVersion functions */
+#define IUP_VERSION_NUMBER 323000
+#define IUP_VERSION_DATE "2017/10/11"  /* does not include bug fix releases */
 
 typedef struct Ihandle_ Ihandle;
 typedef int (*Icallback)(Ihandle*);
@@ -55,6 +55,7 @@ void      IupRefreshChildren(Ihandle* ih);
 int       IupExecute(const char *filename, const char* parameters);
 int       IupExecuteWait(const char *filename, const char* parameters);
 int       IupHelp(const char* url);
+void      IupLog(const char* type, const char* format, ...);
 
 char*     IupLoad          (const char *filename);
 char*     IupLoadBuffer    (const char *buffer);
@@ -194,7 +195,7 @@ Ihandle*  IupVbox       (Ihandle* child, ...);
 Ihandle*  IupVboxv      (Ihandle* *children);
 Ihandle*  IupZbox       (Ihandle* child, ...);
 Ihandle*  IupZboxv      (Ihandle* *children);
-Ihandle*  IupHbox       (Ihandle* child,...);
+Ihandle*  IupHbox       (Ihandle* child, ...);
 Ihandle*  IupHboxv      (Ihandle* *children);
 
 Ihandle*  IupNormalizer (Ihandle* ih_first, ...);
@@ -205,6 +206,7 @@ Ihandle*  IupCboxv      (Ihandle* *children);
 Ihandle*  IupSbox       (Ihandle* child);
 Ihandle*  IupSplit      (Ihandle* child1, Ihandle* child2);
 Ihandle*  IupScrollBox  (Ihandle* child);
+Ihandle*  IupFlatScrollBox(Ihandle* child);
 Ihandle*  IupGridBox    (Ihandle* child, ...);
 Ihandle*  IupGridBoxv   (Ihandle* *children);
 Ihandle*  IupExpander   (Ihandle* child);
@@ -221,7 +223,7 @@ Ihandle*  IupImageRGBA  (int width, int height, const unsigned char *pixmap);
 Ihandle*  IupItem       (const char* title, const char* action);
 Ihandle*  IupSubmenu    (const char* title, Ihandle* child);
 Ihandle*  IupSeparator  (void);
-Ihandle*  IupMenu       (Ihandle* child,...);
+Ihandle*  IupMenu       (Ihandle* child, ...);
 Ihandle*  IupMenuv      (Ihandle* *children);
 
 Ihandle*  IupButton     (const char* title, const char* action);
@@ -299,6 +301,8 @@ Ihandle* IupProgressDlg(void);
 int  IupGetFile(char *arq);
 void IupMessage(const char *title, const char *msg);
 void IupMessagef(const char *title, const char *format, ...);
+void IupMessageError(Ihandle* parent, const char* message);
+int IupMessageAlarm(Ihandle* parent, const char* title, const char *message, const char *buttons);
 int  IupAlarm(const char *title, const char *msg, const char *b1, const char *b2, const char *b3);
 int  IupScanf(const char *format, ...);
 int  IupListDialog(int type, const char *title, int size, const char** list,
@@ -307,11 +311,11 @@ int  IupGetText(const char* title, char* text, int maxsize);
 int  IupGetColor(int x, int y, unsigned char* r, unsigned char* g, unsigned char* b);
 
 typedef int (*Iparamcb)(Ihandle* dialog, int param_index, void* user_data);
-int IupGetParam(const char* title, Iparamcb action, void* user_data, const char* format,...);
+int IupGetParam(const char* title, Iparamcb action, void* user_data, const char* format, ...);
 int IupGetParamv(const char* title, Iparamcb action, void* user_data, const char* format, int param_count, int param_extra, void** param_data);
 Ihandle* IupParam(const char* format);
-Ihandle*  IupParamBox(Ihandle* child, ...);
-Ihandle*  IupParamBoxv(Ihandle* *children);
+Ihandle*  IupParamBox(Ihandle* param, ...);
+Ihandle*  IupParamBoxv(Ihandle* *param_array);
 
 Ihandle* IupLayoutDialog(Ihandle* dialog);
 Ihandle* IupElementPropertiesDialog(Ihandle* elem);
@@ -401,6 +405,7 @@ enum{IUP_SBUP,   IUP_SBDN,    IUP_SBPGUP,   IUP_SBPGDN,    IUP_SBPOSV, IUP_SBDRA
 #define IUP_MASK_FLOAT       "[+/-]?(/d+/.?/d*|/./d+)"
 #define IUP_MASK_UFLOAT            "(/d+/.?/d*|/./d+)"
 #define IUP_MASK_EFLOAT      "[+/-]?(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?"
+#define IUP_MASK_UEFLOAT           "(/d+/.?/d*|/./d+)([eE][+/-]?/d+)?"
 #define IUP_MASK_FLOATCOMMA  "[+/-]?(/d+/,?/d*|/,/d+)"
 #define IUP_MASK_UFLOATCOMMA       "(/d+/,?/d*|/,/d+)"
 #define IUP_MASK_INT          "[+/-]?/d+"
@@ -449,7 +454,7 @@ int IupMain (int argc, char** argv); /* In C++ we have to declare the prototype 
 #endif
 
 /******************************************************************************
-* Copyright (C) 1994-2016 Tecgraf/PUC-Rio.
+* Copyright (C) 1994-2017 Tecgraf/PUC-Rio.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the

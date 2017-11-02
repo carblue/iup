@@ -5,6 +5,7 @@ public import iup.iup_config;
 public import iup.iup_mglplot;
 public import iup.iup_plot;
 public import iup.iup_scintilla;
+public import iup.iup_varg;
 public import iup.iupcbs;
 public import iup.iupcontrols;
 //public import iup.iupdef;

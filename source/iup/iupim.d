@@ -24,4 +24,5 @@ version(IM) { // without IM-binding, type imImage is not known
 	imImage* IupGetNativeHandleImage(void* handle);       // in libiupim.so
 	void* IupGetImageNativeHandle(const(imImage)* image); // in libiupim.so
 	Ihandle* IupImageFromImImage(const(imImage)* image);  // in libiupim.so
+	imImage* IupImageToImImage(Ihandle* iup_image);
 }

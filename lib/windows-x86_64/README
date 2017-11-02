@@ -1,7 +1,7 @@
 This folder has to be populated with .lib files, to be downloaded from (adapt to Your compiler/linker, but stick with Windows x86_64 here):
 
-https://sourceforge.net/projects/iup/files/3.20/Windows%20Libraries/Dynamic/iup-3.20_Win64_dll14_lib.zip/download
-https://sourceforge.net/projects/canvasdraw/files/5.11/Windows%20Libraries/Dynamic/cd-5.11_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/iup/files/3.23/Windows%20Libraries/Dynamic/iup-3.23_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/canvasdraw/files/5.11.1/Windows%20Libraries/Dynamic/cd-5.11.1_Win64_dll14_lib.zip/download
 https://sourceforge.net/projects/imtoolkit/files/3.12/Windows%20Libraries/Dynamic/im-3.12_Win64_dll14_lib.zip/download
 
 DMD for x86_64 uses the MS Visual Studio linker and it's COFF-formatted import libraries, thus we have to stick with MS's .lib files.

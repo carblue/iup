@@ -37,6 +37,7 @@ alias IFnsViii = int function(Ihandle*, char*, void*, int, int, int);  /* dropda
 alias IFnsiii  = int function(Ihandle*, char*, int, int, int);  /* dropfiles_cb */
 
 alias IFnnii     = int function(Ihandle*, Ihandle*, int, int); /* drop_cb */
+alias IFnn       = int function(Ihandle*, Ihandle*); /* savemarkers_cb, restoremarkers_cb */
 alias IFnnn      = int function(Ihandle*, Ihandle*, Ihandle*); /* tabchange_cb */
 alias IFnss      = int function(Ihandle*, char*, char*);  /* file_cb */
 alias IFns       = int function(Ihandle*, char*);  /* multiselect_cb */

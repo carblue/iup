@@ -17,5 +17,6 @@ extern(C) @nogc nothrow :
 void IupScintillaOpen();
 
 Ihandle* IupScintilla();
+Ihandle* IupScintillaDlg();
 
 c_long IupScintillaSendMessage(Ihandle* ih, uint iMessage, c_ulong wParam, c_long lParam);

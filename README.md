@@ -2,8 +2,8 @@
 
 D language: A "Deimos"-like binding for IUP, CD and IM 
 
-IUP, a Portable graphical User Interface toolkit, latest source code version 3.21 supported,  http://webserver2.tecgraf.puc-rio.br/iup/<br>
-CD, a 2D Graphics Library, latest source code version 5.11 supported,  http://webserver2.tecgraf.puc-rio.br/cd/<br>
+IUP, a Portable graphical User Interface toolkit, latest source code version 3.23 supported,  http://webserver2.tecgraf.puc-rio.br/iup/<br>
+CD, a 2D Graphics Library, source code version 5.11 supported,  http://webserver2.tecgraf.puc-rio.br/cd/<br>
 IM, an Imaging Toolkit, latest source code version 3.12 supported,  http://webserver2.tecgraf.puc-rio.br/im/
 
 After installing IUP, CD and IM, using the script install from a prebuilt '...Libraries' binary, I recommend to download 'Tools Executables', run iuptest and pick some test cases like Sample, Tabs, Expander, Plot... for a live impression of IUP's look and feel. https://sourceforge.net/projects/iup/files/3.20/Tools%20Executables/
