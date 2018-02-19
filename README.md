@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/carblue/iup.svg?branch=master)](https://travis-ci.org/carblue/iup)
+
 # iup
 
 D language: A "Deimos"-like binding for IUP, CD and IM

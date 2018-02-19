@@ -1,8 +1,8 @@
 language: d
 d:
   - dmd
-  - ldc
-  - gdc
+#  - ldc
+#  - gdc
 
 script:
   - cd source && dmd -c -version=CD -version=IM -o- -H -Hd../di/iup  iup/iup_config.d iup/iup_mglplot.d iup/iup_plot.d iup/iup_scintilla.d iup/iup.d iup/iupcbs.d iup/iupcontrols.d iup/iupdef.d iup/iupdraw.d iup/iupgl.d iup/iupglcontrols.d iup/iupim.d iup/iupkey.d iup/iupole.d iup/iuptuio.d iup/iupweb.d iup/package.d iup/iup_varg.d
