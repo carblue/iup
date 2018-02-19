@@ -13,7 +13,6 @@
 #include "iupdraw.h"
 #include "iup_class_cbs.hpp"
 #include "iupcontrols.h"
-#include "iupmatrixex.h"
 #include "iupgl.h"
 #include "iupglcontrols.h"
 #include "iupim.h"
@@ -814,8 +813,6 @@ namespace Iup
     MatrixEx() : Control(IupMatrixEx()) {}
     MatrixEx(Ihandle* _ih) : Control(_ih) {}
     MatrixEx(const Element& elem) : Control(elem.GetHandle()) {}
-
-    static void Open() { IupMatrixExOpen(); }
   };
   class GLControls
   {

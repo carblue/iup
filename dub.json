@@ -2,7 +2,7 @@
 	"name": "iup",
 	"description": "Deimos-like binding to IUP, Portable graphical User Interface",
 	"license": "MIT",
-	"copyright": "Copyright © 2017, Carsten Blüggel",
+	"copyright": "Copyright © 2016-2018, Carsten Blüggel",
 	"homepage": "https://github.com/carblue/iup",
 	"authors": [
 		"Carsten Blüggel"
@@ -37,5 +37,10 @@
 		"lib/windows-x86-dmd/ftgl.lib",
 		"lib/windows-x86-dmd/iup.lib",
 		"lib/windows-x86-dmd/iupcontrols.lib"
+	],
+	"copyFiles-windows-x86_64": [
+		"lib/windows-x86_64/ftgl.dll",
+		"lib/windows-x86_64/iup.dll",
+		"lib/windows-x86_64/iupcontrols.dll"
 	]
 }

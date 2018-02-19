@@ -20,10 +20,10 @@ extern "C" {
 
 #define IUP_NAME "IUP - Portable User Interface"
 #define IUP_DESCRIPTION	"Multi-platform Toolkit for Building Graphical User Interfaces"
-#define IUP_COPYRIGHT "Copyright (C) 1994-2017 Tecgraf/PUC-Rio"
-#define IUP_VERSION "3.23"         /* bug fixes are reported only by IupVersion functions */
-#define IUP_VERSION_NUMBER 323000
-#define IUP_VERSION_DATE "2017/10/11"  /* does not include bug fix releases */
+#define IUP_COPYRIGHT "Copyright (C) 1994-2018 Tecgraf/PUC-Rio"
+#define IUP_VERSION "3.24"         /* bug fixes are reported only by IupVersion functions */
+#define IUP_VERSION_NUMBER 324000
+#define IUP_VERSION_DATE "2018/01/22"  /* does not include bug fix releases */
 
 typedef struct Ihandle_ Ihandle;
 typedef int (*Icallback)(Ihandle*);
@@ -249,6 +249,10 @@ Ihandle*  IupLink       (const char* url, const char* title);
 Ihandle*  IupAnimatedLabel(Ihandle* animation);
 Ihandle*  IupDatePick   (void);
 Ihandle*  IupCalendar   (void);
+Ihandle*  IupColorbar   (void);
+Ihandle*  IupGauge      (void);
+Ihandle*  IupDial       (const char* type);
+Ihandle*  IupColorBrowser(void);
 
 /* Old controls, use SPIN attribute of IupText */
 Ihandle*  IupSpin       (void);
@@ -432,6 +436,11 @@ enum{IUP_SBUP,   IUP_SBDN,    IUP_SBPGUP,   IUP_SBPGDN,    IUP_SBPOSV, IUP_SBDRA
 #define IUP_GETPARAM_CANCEL IUP_GETPARAM_BUTTON2
 #define IUP_GETPARAM_HELP   IUP_GETPARAM_BUTTON3
 
+/************************************************************************/
+/*                   Used by IupColorbar                                */
+/************************************************************************/
+#define IUP_PRIMARY -1
+#define IUP_SECONDARY -2
 
 /************************************************************************/
 /*                   Record Input Modes                                 */
@@ -454,7 +463,7 @@ int IupMain (int argc, char** argv); /* In C++ we have to declare the prototype 
 #endif
 
 /******************************************************************************
-* Copyright (C) 1994-2017 Tecgraf/PUC-Rio.
+* Copyright (C) 1994-2018 Tecgraf/PUC-Rio.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the

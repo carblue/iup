@@ -19,10 +19,10 @@ extern(C) {
 
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
-enum IUP_COPYRIGHT = "Copyright (C) 1994-2017 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.23";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 323000;
-enum IUP_VERSION_DATE = "2017/10/11";  /* does not include bug fix releases */
+enum IUP_COPYRIGHT = "Copyright (C) 1994-2018 Tecgraf/PUC-Rio";
+enum IUP_VERSION = "3.24";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 324000;
+enum IUP_VERSION_DATE = "2018/01/22";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -37,12 +37,12 @@ alias Iparamcb  = int function(Ihandle* dialog, int param_index, void* user_data
 /*                        Main API                                      */
 /************************************************************************/
 
-int       IupOpen          (int* argc, char*** argv);
-void      IupClose         ();
-void      IupImageLibOpen  (); // libiupimglib.so
+int       IupOpen          (int* argc, char*** argv); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/sys_guide.html <br> https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupopen.html
+void      IupClose         ();                        /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/sys_guide.html <br> https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupclose.html
+void      IupImageLibOpen  ();                        /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/iupimglib.html
 
-int       IupMainLoop      ();
-int       IupLoopStep      ();
+int       IupMainLoop      (); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupmainloop.html
+int       IupLoopStep      (); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuploopstep.html
 int       IupLoopStepWait  ();
 int       IupMainLoopLevel ();
 void      IupFlush         ();
@@ -254,6 +254,10 @@ Ihandle*  IupLink       (const(char)* url, const(char)* title);
 Ihandle*  IupAnimatedLabel(Ihandle* animation);
 Ihandle*  IupDatePick   ();
 Ihandle*  IupCalendar   ();
+Ihandle*  IupColorbar   ();
+Ihandle*  IupGauge      ();
+Ihandle*  IupDial       (const(char)* type);
+Ihandle*  IupColorBrowser();
 
 /* Old controls, use SPIN attribute of IupText */
 Ihandle*  IupSpin       ();
@@ -298,7 +302,7 @@ void  IupTreeSetAttributeHandle(Ihandle* ih, const(char)* name, int id, Ihandle*
 /*                      Pre-definided dialogs                           */
 /************************************************************************/
 
-Ihandle* IupFileDlg();
+Ihandle* IupFileDlg(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupfiledlg.html
 Ihandle* IupMessageDlg();
 Ihandle* IupColorDlg();
 Ihandle* IupFontDlg();
@@ -538,13 +542,19 @@ enum {
 }
 
 /************************************************************************/
+/*                   Used by IupColorbar                                */
+/************************************************************************/
+enum IUP_PRIMARY   = -1;
+enum IUP_SECONDARY = -2;
+
+/************************************************************************/
 /*                   Record Input Modes                                 */
 /************************************************************************/
 enum {IUP_RECBINARY, IUP_RECTEXT};
 
 
 /******************************************************************************
-* Copyright (C) 1994-2017 Tecgraf, PUC-Rio.
+* Copyright (C) 1994-2018 Tecgraf, PUC-Rio.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the

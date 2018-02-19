@@ -14,7 +14,6 @@ public import iup.iupgl;
 public import iup.iupglcontrols;
 public import iup.iupim;
 public import iup.iupkey;
-public import iup.iupmatrixex;
 public import iup.iupole;
 public import iup.iuptuio;
 public import iup.iupweb;

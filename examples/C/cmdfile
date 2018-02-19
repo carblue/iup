@@ -1,1 +1,1 @@
--de -w -I../../source/ -L-liup -L-liupcontrols
+-de -w -version=CD -I../../source/ -L-liup -L-liupcontrols -L-lcd

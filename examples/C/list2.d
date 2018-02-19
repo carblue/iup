@@ -236,21 +236,21 @@ int main(string[] args) { // C: int main(int argc, char **argv)
   IupSetCallback(list3, "ACTION", cast(Icallback)&list_cb);
   IupSetCallback(list4, "ACTION", cast(Icallback)&list_cb);
 
-  IupSetAttributes(list1, "1=\"US$ 1000\", 2=\"US$ 2000\", 3=\"US$ 30000000\", 4=\"US$ 4000\", 5=\"US$ 5000\", 6=\"US$ 6000\", 7=\"US$ 7000\","
+  IupSetAttributes(list1, "1=\"US$ 1000\", 2=\"US$ 2000\", 3=\"US$ 30000000\", 4=\"US$ 4000\", 5=\"US$ 5000\", 6=\"US$ 6000\", 7=\"US$ 7000\"," ~
                           "EXPAND=HORIZONTAL, EDITBOX=YES, DROPDOWN=YES, VISIBLE_ITEMS=5, SHOWIMAGE=YES");
   IupSetAttributeHandle(list1, "IMAGE1", load_image_LogoTecgraf());
   IupSetAttributeHandle(list1, "IMAGE2", load_image_LogoTecgraf());
   IupSetAttributeHandle(list1, "IMAGE3", load_image_Tecgraf());
   IupSetAttributeHandle(list1, "IMAGE4", load_image_LogoTecgraf());
 
-  IupSetAttributes(list2, "1=\"R$ 1000\", 2=\"R$ 2000\", 3=\"R$ 3000\", 4=\"R$ 4000\", 5=\"R$ 5000\", 6=\"R$ 6000\", 7=\"R$ 7000\","
+  IupSetAttributes(list2, "1=\"R$ 1000\", 2=\"R$ 2000\", 3=\"R$ 3000\", 4=\"R$ 4000\", 5=\"R$ 5000\", 6=\"R$ 6000\", 7=\"R$ 7000\"," ~
                           "EXPAND=HORIZONTAL, DROPDOWN=YES, VISIBLE_ITEMS=5, SHOWIMAGE=YES");
   IupSetAttributeHandle(list2, "IMAGE1", load_image_LogoTecgraf());
   IupSetAttributeHandle(list2, "IMAGE2", load_image_LogoTecgraf());
   IupSetAttributeHandle(list2, "IMAGE3", load_image_Tecgraf());
   IupSetAttributeHandle(list2, "IMAGE4", load_image_LogoTecgraf());
 
-  IupSetAttributes(list3, "1=\"Char A\", 2=\"Char B\", 3=\"Char CCCCC\", 4=\"Char D\", 5=\"Char F\", 6=\"Char G\", 7=\"Char H\","
+  IupSetAttributes(list3, "1=\"Char A\", 2=\"Char B\", 3=\"Char CCCCC\", 4=\"Char D\", 5=\"Char F\", 6=\"Char G\", 7=\"Char H\"," ~
                           "EXPAND=YES, EDITBOX=YES, XXX_SPACING=4, SHOWIMAGE=YES");
   IupSetAttributeHandle(list3, "IMAGE1", load_image_Test());
   //IupSetAttributeHandle(list3, "IMAGE3", load_image_Test());
@@ -258,7 +258,7 @@ int main(string[] args) { // C: int main(int argc, char **argv)
   IupSetAttributeHandle(list3, "IMAGE7", load_image_Test());
 //  IupSetAttributeHandle(list1, "IMAGE3", load_image_Tecgraf());
 
-  IupSetAttributes(list4, "1=\"Number 1\", 2=\"Number 2\", 3=\"Number 3\", 4=\"Number 4\", 5=\"Number 5\", 6=\"Number 6\", 7=\"Number 7\","
+  IupSetAttributes(list4, "1=\"Number 1\", 2=\"Number 2\", 3=\"Number 3\", 4=\"Number 4\", 5=\"Number 5\", 6=\"Number 6\", 7=\"Number 7\","  ~
                           "EXPAND=YES");
 
   /* DRAG AND DROP TESTS ////////////////////////////////////*/
