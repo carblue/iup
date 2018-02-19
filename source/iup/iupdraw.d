@@ -3,7 +3,7 @@
  *
  * See Copyright Notice in "iup.h"
  */
- 
+
 module iup.iupdraw;
 
 import iup.iup : Ihandle;
@@ -14,8 +14,8 @@ extern(C) @nogc nothrow :
 
 /* all functions can be used only in IUP canvas and inside the ACTION callback */
 
-void IupDrawBegin(Ihandle* ih);
-void IupDrawEnd(Ihandle* ih);
+void IupDrawBegin(Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupdraw.html
+void IupDrawEnd(Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupdraw.html
 
 /* all primitives can be called only between calls to Begin and End */
 

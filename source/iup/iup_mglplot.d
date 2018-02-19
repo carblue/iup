@@ -3,7 +3,7 @@
  *
  * See Copyright Notice in "iup.h"
  */
- 
+
 module iup.iup_mglplot;
 
 import iup.iup : Ihandle;
@@ -13,7 +13,7 @@ version(DigitalMars) version(Windows) { pragma(lib, "iup_mglplot.lib"); } // lib
 extern(C) @nogc nothrow :
 
 /* Initialize IupMglPlot widget class */
-void IupMglPlotOpen();
+void IupMglPlotOpen(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iup_mglplot.html
 
 /* Create an IupMglPlot widget instance */
 Ihandle* IupMglPlot();
@@ -61,4 +61,4 @@ void IupMglPlotPaintTo(Ihandle* ih, const(char)* format, int w, int h, double dp
 /***********************************************/
 
 /* Utility label for showing TeX labels */
-Ihandle* IupMglLabel(const(char)* title);
+Ihandle* IupMglLabel(const(char)* title); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iup_mgllabel.html

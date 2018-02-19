@@ -18,6 +18,6 @@ version(DigitalMars) version(Windows)
 
 extern(C) @nogc nothrow :
 
-int IupWebBrowserOpen();
+int IupWebBrowserOpen();  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupweb.html
 
-Ihandle* IupWebBrowser();
+Ihandle* IupWebBrowser(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupweb.html

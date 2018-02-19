@@ -102,6 +102,7 @@ void cdlua_register_funcs(lua_State *L, const luaL_Reg* funcs);
 
 void cdlua_kill_active(lua_State* L, cdCanvas* canvas);
 void cdlua_open_active(lua_State* L, cdluaLuaState* cdL);
+void cdlua_close_active(cdluaLuaState* cdL);
 
 void cdlua_open_canvas(lua_State* L);
 

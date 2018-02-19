@@ -14,24 +14,24 @@ extern(C) @nogc nothrow :
 
 Ihandle* IupConfig();
 
-int IupConfigLoad(Ihandle* ih);
-int IupConfigSave(Ihandle* ih);
+int IupConfigLoad(Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupconfig.html
+int IupConfigSave(Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupconfig.html
 
 /****************************************************************/
 
-void IupConfigSetVariableStr(Ihandle* ih, const(char)* group, const(char)* key, const(char)* value);
-void IupConfigSetVariableStrId(Ihandle* ih, const(char)* group, const(char)* key, int id, const(char)* value);
-void IupConfigSetVariableInt(Ihandle* ih, const(char)* group, const(char)* key, int value);
-void IupConfigSetVariableIntId(Ihandle* ih, const(char)* group, const(char)* key, int id, int value);
-void IupConfigSetVariableDouble(Ihandle* ih, const(char)* group, const(char)* key, double value);
-void IupConfigSetVariableDoubleId(Ihandle* ih, const(char)* group, const(char)* key, int id, double value);
+void IupConfigSetVariableStr(Ihandle* ih, const(char)* group, const(char)* key, const(char)* value);           /// See_Also:
+void IupConfigSetVariableStrId(Ihandle* ih, const(char)* group, const(char)* key, int id, const(char)* value); /// See_Also:
+void IupConfigSetVariableInt(Ihandle* ih, const(char)* group, const(char)* key, int value);                    /// See_Also:
+void IupConfigSetVariableIntId(Ihandle* ih, const(char)* group, const(char)* key, int id, int value);          /// See_Also:
+void IupConfigSetVariableDouble(Ihandle* ih, const(char)* group, const(char)* key, double value);              /// See_Also:
+void IupConfigSetVariableDoubleId(Ihandle* ih, const(char)* group, const(char)* key, int id, double value);    /// See_Also:
 
-const(char)* IupConfigGetVariableStr(Ihandle* ih, const(char)* group, const(char)* key);
-const(char)* IupConfigGetVariableStrId(Ihandle* ih, const(char)* group, const(char)* key, int id);
-int    IupConfigGetVariableInt(Ihandle* ih, const(char)* group, const(char)* key);
-int    IupConfigGetVariableIntId(Ihandle* ih, const(char)* group, const(char)* key, int id);
-double IupConfigGetVariableDouble(Ihandle* ih, const(char)* group, const(char)* key);
-double IupConfigGetVariableDoubleId(Ihandle* ih, const(char)* group, const(char)* key, int id);
+const(char)* IupConfigGetVariableStr(Ihandle* ih, const(char)* group, const(char)* key);           /// See_Also:
+const(char)* IupConfigGetVariableStrId(Ihandle* ih, const(char)* group, const(char)* key, int id); /// See_Also:
+int    IupConfigGetVariableInt(Ihandle* ih, const(char)* group, const(char)* key);                 /// See_Also:
+int    IupConfigGetVariableIntId(Ihandle* ih, const(char)* group, const(char)* key, int id);       /// See_Also:
+double IupConfigGetVariableDouble(Ihandle* ih, const(char)* group, const(char)* key);              /// See_Also:
+double IupConfigGetVariableDoubleId(Ihandle* ih, const(char)* group, const(char)* key, int id);    /// See_Also:
 
 const(char)* IupConfigGetVariableStrDef(Ihandle* ih, const(char)* group, const(char)* key, const(char)* def);
 const(char)* IupConfigGetVariableStrIdDef(Ihandle* ih, const(char)* group, const(char)* key, int id, const(char)* def);

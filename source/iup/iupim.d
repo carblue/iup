@@ -14,7 +14,7 @@ version(DigitalMars) version(Windows) { pragma(lib, "iupim.lib"); } // libiupim.
 
 extern(C) @nogc nothrow :
 
-Ihandle* IupLoadImage(const(char)* file_name);
+Ihandle* IupLoadImage(const(char)* file_name); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/iupim.html
 int IupSaveImage(Ihandle* ih, const(char)* file_name, const(char)* format);
 Ihandle* IupLoadAnimation(const(char)* file_name);
 Ihandle* IupLoadAnimationFrames(const(char)** file_name_list, int file_count);

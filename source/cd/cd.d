@@ -2,7 +2,7 @@
  * \brief User API
  * CD - Canvas Draw
  * Tecgraf: Computer Graphics Technology Group, PUC-Rio, Brazil
- * http://www.tecgraf.puc-rio.br/cd	
+ * http://www.tecgraf.puc-rio.br/cd
  * mailto:cd@tecgraf.puc-rio.br
  *
  * See Copyright Notice at the end of this file
@@ -25,7 +25,7 @@ alias cdSizeCB = int function(cdCanvas* canvas, int w, int h, double w_mm, doubl
 
 enum CD_NAME = "CD - A 2D Graphics Library";
 enum CD_DESCRIPTION = "Vector Graphics Toolkit with Device Independent Output";
-enum CD_COPYRIGHT = "Copyright (C) 1994-2016 Tecgraf/PUC-Rio";
+enum CD_COPYRIGHT = "Copyright (C) 1994-2017 Tecgraf/PUC-Rio";
 enum CD_VERSION = "5.11";              /* bug fixes are reported only by cdVersion functions */
 enum CD_VERSION_NUMBER = 511000;
 enum CD_VERSION_DATE = "2016/09/30";  /* does not include bug fix releases */
@@ -275,7 +275,7 @@ enum CD_QUERY = -1;             /* query value */
 enum {                        /* bitmap type */
  CD_RGB,                      /* these definitions are compatible with the IM library */
  CD_MAP,
- CD_RGBA = 0x100 
+ CD_RGBA = 0x100
 }
 
 enum {                         /* bitmap data */
@@ -343,7 +343,7 @@ enum {                          /* line join  */
 }
 
 enum {                          /* line cap  */
- CD_CAPFLAT,  
+ CD_CAPFLAT,
  CD_CAPSQUARE,
  CD_CAPROUND
 }
@@ -470,9 +470,9 @@ enum CD_CAP_BEZIER           = 0x8000_0000;
 enum CD_CAP_ALL              = 0xFFFF_FFFF;
 
 /* Context Types */
-enum { 
-  CD_CTX_WINDOW, 
-  CD_CTX_DEVICE, 
+enum {
+  CD_CTX_WINDOW,
+  CD_CTX_DEVICE,
   CD_CTX_IMAGE,
   CD_CTX_FILE
 }

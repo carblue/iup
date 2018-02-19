@@ -12,7 +12,7 @@ import iup.iup : Ihandle, Icallback, Iparamcb;
 extern(C) @nogc nothrow :
 
 
-void      IupLogV(const(char)* type, const(char)* format, ...);
+void      IupLogV(const(char)* type, const(char)* format, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuplog.html
 
 Ihandle*  IupSetAttV(const(char)* handle_name, Ihandle* ih, const(char)* name, ...);
 

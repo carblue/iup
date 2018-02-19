@@ -13,12 +13,12 @@ version(DigitalMars) version(Windows) { pragma(lib, "iupcontrols.lib"); } // lib
 extern(C) @nogc nothrow :
 
 
-int  IupControlsOpen();
+int  IupControlsOpen(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/iupcontrols.html
 
-Ihandle* IupCells();
-Ihandle* IupMatrix(const(char)* action);
-Ihandle* IupMatrixList();
-Ihandle* IupMatrixEx();
+Ihandle* IupCells(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupcells.html
+Ihandle* IupMatrix(const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupmatrix.html
+Ihandle* IupMatrixList(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupmatrixlist.html
+Ihandle* IupMatrixEx(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupmatrixex.html
 
 /* available only when linking with "iupluamatrix" * /
 void IupMatrixSetFormula(Ihandle* ih, int col, const(char)* formula, const(char)* init);

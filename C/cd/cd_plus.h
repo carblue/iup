@@ -81,12 +81,14 @@ namespace cd
 
   class Canvas
   {
+    /* forbidden */
+    Canvas(const Canvas&) {}
+
   protected:
     cdCanvas* canvas;
+    bool release;
 
-    /* forbidden */
-    Canvas() { canvas = 0; }
-    Canvas(const Canvas&) {}
+    Canvas() { canvas = 0; release  = true; }
 
     static inline int PlaySize_CB(cdCanvas *cd_canvas, int w, int h, double w_mm, double h_mm) { 
       Canvas* canvas = (Canvas*)cdCanvasGetAttribute(cd_canvas, "USERDATA");
@@ -94,13 +96,18 @@ namespace cd
     }
 
   public:
-    Canvas(cdCanvas* ref_canvas) { canvas = ref_canvas; }
-    ~Canvas() { 
-      if (canvas) 
+    Canvas(cdCanvas* ref_canvas) { canvas = ref_canvas; release = false; }
+
+    virtual ~Canvas() { 
+      if (canvas && release)
         cdKillCanvas(canvas); 
     }
 
     cdCanvas* GetHandle() const { return canvas; }
+
+    bool Failed() const {
+      return canvas == 0;
+    }
 
     Context GetContext() { return cdCanvasGetContext(canvas); }
     int Activate() { return cdCanvasActivate(canvas); }

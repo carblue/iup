@@ -14,6 +14,6 @@ version(DigitalMars) { pragma(lib, "iupole.lib"); }
 
 extern(C) @nogc nothrow :
 
-Ihandle* IupOleControl(const(char)* progid);
+Ihandle* IupOleControl(const(char)* progid); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupole.html
 
-int IupOleControlOpen();
+int IupOleControlOpen(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupole.html

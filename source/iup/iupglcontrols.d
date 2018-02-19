@@ -3,7 +3,7 @@
  *
  * See Copyright Notice in "iup.h"
  */
- 
+
 module iup.iupglcontrols;
 
 import iup.iup : Ihandle;
@@ -12,7 +12,7 @@ version(DigitalMars) version(Windows) { pragma(lib, "iupglcontrols.lib"); } // l
 
 extern(C) @nogc nothrow :
 
-int  IupGLControlsOpen();
+int  IupGLControlsOpen(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/iupglcontrols.html
 
 Ihandle* IupGLCanvasBoxv(Ihandle** children);
 Ihandle* IupGLCanvasBox(Ihandle* child, ...);

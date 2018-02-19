@@ -3,7 +3,7 @@
  *
  * See Copyright Notice in "iup.h"
  */
- 
+
 module iup.iupgl;
 
 import iup.iup : Ihandle;
@@ -13,7 +13,7 @@ version(DigitalMars) version(Windows) { pragma(lib, "opengl32.lib"); } // link w
 
 extern(C) @nogc nothrow :
 
-/* Attributes 
+/* Attributes
 ** To set the appropriate visual (pixel format) the following
 ** attributes may be specified. Their values should be set
 ** before the canvas is mapped to the scrren.
@@ -55,7 +55,7 @@ enum IUP_RGBA   = "RGBA";
 enum IUP_YES    = "YES";
 enum IUP_NO     = "NO";
 
-void IupGLCanvasOpen();
+void IupGLCanvasOpen(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iupglcanvas.html
 
 Ihandle* IupGLCanvas(const(char)* action);
 Ihandle* IupGLBackgroundBox(Ihandle* child);

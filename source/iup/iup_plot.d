@@ -13,7 +13,7 @@ version(DigitalMars) version(Windows) { pragma(lib, "iup_plot.lib"); } // libiup
 extern(C) @nogc nothrow :
 
 /* Initialize IupPlot widget class */
-void IupPlotOpen();
+void IupPlotOpen(); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iup_plot.html
 
 /* Create an IupPlot widget instance */
 Ihandle* IupPlot();
@@ -60,7 +60,7 @@ int  IupPlotFindSegment(Ihandle* ih, double cnv_x, double cnv_y, int* ds_index, 
 version(CD)
 {
   import cd.cd : _cdCanvas;
-  void IupPlotPaintTo(Ihandle* ih, _cdCanvas* cnv);
+  void IupPlotPaintTo(Ihandle* ih, _cdCanvas* cnv); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/ctrl/iup_plot.html
 }
 
 /***********************************************/
