@@ -28,19 +28,26 @@
 		"iup",
 		"iupcontrols"
 	],
+	"dflags-windows-x86_64" : ["-m64"],
+	"dflags-windows-x86" : ["-m32mscoff"],
 	"sourceFiles-windows-x86_64": [
 		"lib/windows-x86_64/ftgl.lib",
 		"lib/windows-x86_64/iup.lib",
 		"lib/windows-x86_64/iupcontrols.lib"
 	],
-	"sourceFiles-windows-x86-dmd": [
-		"lib/windows-x86-dmd/ftgl.lib",
-		"lib/windows-x86-dmd/iup.lib",
-		"lib/windows-x86-dmd/iupcontrols.lib"
+	"sourceFiles-windows-x86": [
+		"lib/windows-x86/ftgl.lib",
+		"lib/windows-x86/iup.lib",
+		"lib/windows-x86/iupcontrols.lib"
 	],
 	"copyFiles-windows-x86_64": [
 		"lib/windows-x86_64/ftgl.dll",
 		"lib/windows-x86_64/iup.dll",
 		"lib/windows-x86_64/iupcontrols.dll"
+	],
+	"copyFiles-windows-x86": [
+		"lib/windows-x86/ftgl.dll",
+		"lib/windows-x86/iup.dll",
+		"lib/windows-x86/iupcontrols.dll"
 	]
 }

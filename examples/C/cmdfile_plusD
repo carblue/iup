@@ -1,0 +1,1 @@
+-de -w -I../../source/ -I../../wrapper/ -L-liup -L-liupcontrols -L-lcd

@@ -167,8 +167,8 @@ Ihandle*  IupSetCallbacks(Ihandle* ih, const(char)* name, Icallback func, ...); 
 Icallback IupGetFunction(const(char)* name); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetfunction.html
 Icallback IupSetFunction(const(char)* name, Icallback func); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupsetfunction.html
 
-Ihandle*  IupGetHandle    (const(char)* name); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgethandle.html
-Ihandle*  IupSetHandle    (const(char)* name, Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgethandle.html
+Ihandle*  IupGetHandle    (const(char)* name);              /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgethandle.html
+Ihandle*  IupSetHandle    (const(char)* name, Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupsethandle.html
 int       IupGetAllNames  (char** names, int n); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetallnames.html
 int       IupGetAllDialogs(char** names, int n); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetalldialogs.html
 char*     IupGetName      (Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetname.html
