@@ -7,9 +7,10 @@
 
 import core.stdc.stdio : printf, sprintf;
 //import std.stdio : write, writeln, writefln, stdout, stdout;
-import core.stdc.stdlib : EXIT_SUCCESS, EXIT_FAILURE, exit, getenv; //, div_t, div, malloc, free;
+//import core.stdc.stdlib : EXIT_SUCCESS, EXIT_FAILURE, exit, getenv; //, div_t, div, malloc, free;
 import core.stdc.string;
 import std.string;
+
 import iup.iup_plusD;
 
 /* Callback called when a leaf is added by the menu. */
@@ -149,11 +150,11 @@ void init_tree()
   auto tree = new Tree("tree");
   with (tree) {
     SetCallback("EXECUTELEAF_CB", cast(Icallback) &executeleaf_cb);
-    SetCallback("RENAME_CB", cast(Icallback) &rename_cb);
+//    SetCallback("RENAME_CB", cast(Icallback) &rename_cb);
     SetCallback("BRANCHCLOSE_CB", cast(Icallback) &branchclose_cb);
     SetCallback("BRANCHOPEN_CB", cast(Icallback) &branchopen_cb);
-    SetCallback("DRAGDROP_CB", cast(Icallback) &dragdrop_cb);
-    SetCallback("RIGHTCLICK_CB", cast(Icallback) &rightclick_cb);
+//    SetCallback("DRAGDROP_CB", cast(Icallback) &dragdrop_cb);
+//    SetCallback("RIGHTCLICK_CB", cast(Icallback) &rightclick_cb);
     SetCallback("K_ANY", cast(Icallback) &k_any_cb);
 
 //  SetAttribute("FONT","COURIER_NORMAL");
@@ -183,27 +184,28 @@ void init_tree_atributes()
 {
   Ihandle* tree = IupGetHandle("tree");
 
-  IupSetAttribute(tree, "TITLE","Figures");
-  IupSetAttribute(tree, "ADDBRANCH","3D");
-  IupSetAttribute(tree, "ADDBRANCH","2D");
-  IupSetAttribute(tree, "ADDLEAF","test");
-  IupSetAttribute(tree, "ADDBRANCH1","parallelogram");
-  IupSetAttribute(tree, "ADDLEAF2","diamond");
-  IupSetAttribute(tree, "ADDLEAF2","square");
-  IupSetAttribute(tree, "ADDBRANCH1","triangle");
-  IupSetAttribute(tree, "ADDLEAF2","scalenus");
-  IupSetAttribute(tree, "ADDLEAF2","isoceles");
-  IupSetAttribute(tree, "ADDLEAF2","equilateral");
-  IupSetAttribute(tree, "VALUE","6");
+  IupSetAttribute(tree, "TITLE","Figures"); //
+  IupSetAttribute(tree, "ADDBRANCH","3D");  // 0
+  IupSetAttribute(tree, "ADDBRANCH","2D");  // 1
+  IupSetAttribute(tree, "ADDLEAF","test");  // 2
+
+  IupSetAttributeId(tree, "ADDBRANCH", 1, "parallelogram"); //IupSetAttribute(tree, "ADDBRANCH1","parallelogram"); (( 6
+  IupSetAttributeId(tree, "ADDLEAF", 2, "diamond");         //IupSetAttribute(tree, "ADDLEAF2","diamond");
+  IupSetAttributeId(tree, "ADDLEAF", 2, "square");          //IupSetAttribute(tree, "ADDLEAF2","square");
+  IupSetAttributeId(tree, "ADDBRANCH", 1, "triangle");      //IupSetAttribute(tree, "ADDBRANCH1","triangle");
+  IupSetAttributeId(tree, "ADDLEAF", 2, "scalenus");        //IupSetAttribute(tree, "ADDLEAF2","scalenus");
+  IupSetAttributeId(tree, "ADDLEAF", 2, "isoceles");        //IupSetAttribute(tree, "ADDLEAF2","isoceles");
+  IupSetAttributeId(tree, "ADDLEAF", 2, "equilateral");     //IupSetAttribute(tree, "ADDLEAF2","equilateral");
+  IupSetAttribute(tree, "VALUE","1");
 }
 
 /* Main program */
-int main(string[] args) { // C: int main(int argc, char **argv)
+void main() {
   Ihandle* dlg;
 
 //  IupOpen(&argc, &argv);
-  IupOpenD(args);                       /* IUP initialization */
-  scope(exit)  IupClose();
+  IupOpenD();                       /* IUP initialization */
+  scope(exit)  IupClose();          /* Ends IUP */
 
   init_tree();                          /* Initializes IupTree */
   init_dlg();                           /* Initializes the dialog */
@@ -214,6 +216,5 @@ int main(string[] args) { // C: int main(int argc, char **argv)
   IupMainLoop();                         /* Main loop */
 //  IupClose();                            /* Ends IUP */
 
-  return EXIT_SUCCESS;
-
+//  return EXIT_SUCCESS;
 }

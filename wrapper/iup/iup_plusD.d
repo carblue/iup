@@ -82,7 +82,12 @@ void IupTreeSetAttributeHandle(Ihandle* ih, const(char)* name, int id, Ihandle* 
 ////  int VersionNumber() { return IupVersionNumber(); }
 
 ////  int Open(ref int argc, ref char** argv) { return IupOpen(&argc, &argv); }
-int IupOpenD(in string[] args) // ... main(string[] args) // C: int main(int argc, char **argv)
+int IupOpenD()
+{
+    import core.runtime : Runtime;
+    return  IupOpen(&Runtime.cArgs.argc, &Runtime.cArgs.argv);
+}
+deprecated int IupOpenD(in string[] args) // ... main(string[] args) // C: int main(int argc, char **argv)
 {
 //  TODO check if there is a smarter (library supported?) solution to get from string[] to char*[]
 //  passing local adresses/pointers seemed to work as well, but better not to; inform the GC not to collect
@@ -635,7 +640,7 @@ class AnimatedLabel : Control
 class Toggle : Control
 {
   nothrow:
-  this(           const(char)* title = null) { super(IupToggle(title, null)); }
+  this(           const(char)* title = null) { super(IupToggle(title, null /*no action set by constructor */)); }
   this(string CN, const(char)* title)        { this(title); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } }
 }
 
@@ -867,7 +872,8 @@ class Tabs : Container
   this(Control child0, Control child1 = null, Control child2 = null, Control child3 = null, Control child4 = null,
     Control child5 = null, Control child6 = null, Control child7 = null, Control child8 = null, Control child9 = null)
     { super(IupTabs(null), child0, child1, child2, child3, child4, child5, child6, child7, child8, child9); }
-  this(Control[] child_array) { super(IupTabs(null), child_array); }
+  this(           Control[] child_array) { super(IupTabs(null), child_array); }
+  this(string CN, Control[] child_array) { this(child_array); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } }
 }
 
 class GridBox : Container
