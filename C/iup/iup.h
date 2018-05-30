@@ -21,9 +21,9 @@ extern "C" {
 #define IUP_NAME "IUP - Portable User Interface"
 #define IUP_DESCRIPTION	"Multi-platform Toolkit for Building Graphical User Interfaces"
 #define IUP_COPYRIGHT "Copyright (C) 1994-2018 Tecgraf/PUC-Rio"
-#define IUP_VERSION "3.24"         /* bug fixes are reported only by IupVersion functions */
-#define IUP_VERSION_NUMBER 324000
-#define IUP_VERSION_DATE "2018/01/22"  /* does not include bug fix releases */
+#define IUP_VERSION "3.25"         /* bug fixes are reported only by IupVersion functions */
+#define IUP_VERSION_NUMBER 325000
+#define IUP_VERSION_DATE "2018/05/28"  /* does not include bug fix releases */
 
 typedef struct Ihandle_ Ihandle;
 typedef int (*Icallback)(Ihandle*);
@@ -189,7 +189,9 @@ Ihandle*  IupCreatep(const char *classname, void* first, ...);
 /*                        Elements                                      */
 /************************************************************************/
 
-Ihandle*  IupFill       (void);
+Ihandle*  IupFill (void);
+Ihandle*  IupSpace(void);
+
 Ihandle*  IupRadio      (Ihandle* child);
 Ihandle*  IupVbox       (Ihandle* child, ...);
 Ihandle*  IupVboxv      (Ihandle* *children);
@@ -228,7 +230,11 @@ Ihandle*  IupMenuv      (Ihandle* *children);
 
 Ihandle*  IupButton     (const char* title, const char* action);
 Ihandle*  IupFlatButton (const char* title);
-Ihandle*  IupCanvas     (const char* action);
+Ihandle*  IupFlatToggle (const char* title);
+Ihandle*  IupDropButton (Ihandle* dropchild);
+Ihandle*  IupFlatLabel  (const char* title);
+Ihandle*  IupFlatSeparator(void);
+Ihandle*  IupCanvas(const char* action);
 Ihandle*  IupDialog     (Ihandle* child);
 Ihandle*  IupUser       (void);
 Ihandle*  IupLabel      (const char* title);

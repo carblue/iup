@@ -1,5 +1,5 @@
 /** \file
- * \brief Callbacks, Attributes and Attribute Values definitions.    
+ * \brief Callbacks, Attributes and Attribute Values definitions.
  * Avoid using these definitions. Use the strings instead.
  *
  * See Copyright Notice in iup.h
@@ -636,7 +636,7 @@ enum IUP_DELNODE          = "DELNODE";
 enum IUP_IMAGELEAF        = "IMAGELEAF";
 enum IUP_IMAGEBRANCHCOLLAPSED = "IMAGEBRANCHCOLLAPSED";
 enum IUP_IMAGEBRANCHEXPANDED  = "IMAGEBRANCHEXPANDED";
-enum IUP_IMAGEEXPANDED     = "IMAGEEXPANDED";
+enum IUP_IMAGEEXPANDED    = "IMAGEEXPANDED";
 enum IUP_KIND             = "KIND";
 enum IUP_PARENT           = "PARENT";
 enum IUP_DEPTH            = "DEPTH";
@@ -665,14 +665,27 @@ enum IUP_INVERTALL        = "INVERTALL";
 //enum IUP_REDRAW           = "REDRAW";
 enum IUP_COLLAPSED        = "COLLAPSED";
 enum IUP_EXPANDED         = "EXPANDED";
-enum IUP_SELECTION_CB = "SELECTION_CB";
+enum IUP_SELECTION_CB     = "SELECTION_CB";
 enum IUP_BRANCHOPEN_CB    = "BRANCHOPEN_CB";
 enum IUP_BRANCHCLOSE_CB   = "BRANCHCLOSE_CB";
 enum IUP_RIGHTCLICK_CB    = "RIGHTCLICK_CB";
 enum IUP_EXECUTELEAF_CB   = "EXECUTELEAF_CB";
 enum IUP_RENAMENODE_CB    = "RENAMENODE_CB";
-enum IUP_IMGLEAF             = "IMGLEAF";
-enum IUP_IMGCOLLAPSED        = "IMGCOLLAPSED";
-enum IUP_IMGEXPANDED         = "IMGEXPANDED";
-enum IUP_IMGBLANK            = "IMGBLANK";
-enum IUP_IMGPAPER            = "IMGPAPER";
+enum IUP_IMGLEAF          = "IMGLEAF";
+enum IUP_IMGCOLLAPSED     = "IMGCOLLAPSED";
+enum IUP_IMGEXPANDED      = "IMGEXPANDED";
+enum IUP_IMGBLANK         = "IMGBLANK";
+enum IUP_IMGPAPER         = "IMGPAPER";
+
+// bindings additions
+enum IUP_TOGGLECENTERED   = "TOGGLECENTERED";
+enum IUP_MULTILINE        = "MULTILINE";
+enum IUP_VISIBLELINES     = "VISIBLELINES";
+enum IUP_WORDWRAP         = "WORDWRAP";
+enum IUP_VISIBLEITEMS     = "VISIBLEITEMS"; // IupList: VISIBLE_ITEMS renamed to VISIBLEITEMS in IupList. Old names still supported
+enum IUP_VALUECHANGED_CB  = "VALUECHANGED_CB";
+enum IUP_TOGGLEVALUE_CB   = "TOGGLEVALUE_CB";
+enum IUP_SHOWTOGGLE       = "SHOWTOGGLE";
+enum IUP_PADDING          = "PADDING";
+enum IUP_REMOVEITEM       = "REMOVEITEM";
+enum IUP_APPENDITEM       = "APPENDITEM";

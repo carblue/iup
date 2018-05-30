@@ -24,9 +24,9 @@ extern(C) {
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
 enum IUP_COPYRIGHT = "Copyright (C) 1994-2018 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.24";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 324000;
-enum IUP_VERSION_DATE = "2018/01/22";  /* does not include bug fix releases */
+enum IUP_VERSION = "3.25";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 325000;
+enum IUP_VERSION_DATE = "2018/05/28";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -199,6 +199,8 @@ Ihandle*  IupCreatep(const(char)* classname, void* first, ...); /// See_Also: ht
 /************************************************************************/
 
 Ihandle*  IupFill       ();                    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupfill.html
+Ihandle*  IupSpace      ();
+
 Ihandle*  IupRadio      (Ihandle* child);      /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupradio.html
 Ihandle*  IupVbox       (Ihandle* child, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupvbox.html
 Ihandle*  IupVboxv      (Ihandle** children);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupvbox.html
@@ -237,6 +239,10 @@ Ihandle*  IupMenuv      (Ihandle** children);  /// See_Also: https://webserver2.
 
 Ihandle*  IupButton     (const(char)* title, const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupbutton.html
 Ihandle*  IupFlatButton (const(char)* title);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupflatbutton.html
+Ihandle*  IupFlatToggle (const(char)* title);
+Ihandle*  IupDropButton (Ihandle* dropchild);
+Ihandle*  IupFlatLabel  (const(char)* title);
+Ihandle*  IupFlatSeparator();
 Ihandle*  IupCanvas     (const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupcanvas.html
 Ihandle*  IupDialog     (Ihandle* child);      /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupdialog.html
 Ihandle*  IupUser       ();                    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupuser.html
@@ -325,11 +331,11 @@ int  IupGetText(const(char)* title, char* text, int maxsize); /// See_Also: http
 int  IupGetColor(int x, int y, ubyte* r, ubyte* g, ubyte* b); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupgetcolor.html
 
 //alias Iparamcb = int function(Ihandle* dialog, int param_index, void* user_data) nothrow;
-int IupGetParam(const(char)* title, Iparamcb action, void* user_data, const(char)* format, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupgetparam.html
-int IupGetParamv(const(char)* title, Iparamcb action, void* user_data, const(char)* format, int param_count, int param_extra, void** param_data); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupgetparam.html
-Ihandle* IupParam(const(char)* format);        /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupparam.html
-Ihandle*  IupParamBox(Ihandle* param, ...);    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupparambox.html
-Ihandle*  IupParamBoxv(Ihandle** param_array); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupparambox.html
+int  IupGetParam(const(char)* title, Iparamcb action, void* user_data, const(char)* format, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupgetparam.html
+int  IupGetParamv(const(char)* title, Iparamcb action, void* user_data, const(char)* format, int param_count, int param_extra, void** param_data); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupgetparam.html
+Ihandle* IupParam(const(char)* format);       /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupparam.html
+Ihandle* IupParamBox(Ihandle* param, ...);    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupparambox.html
+Ihandle* IupParamBoxv(Ihandle** param_array); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupparambox.html
 
 Ihandle* IupLayoutDialog(Ihandle* dialog);          /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/.../iuplayoutdialog.html
 Ihandle* IupElementPropertiesDialog(Ihandle* elem); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupelementpropdialog.html

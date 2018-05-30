@@ -17,9 +17,10 @@ extern(C) @nogc nothrow :
 void IupDrawBegin(Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupdraw.html
 void IupDrawEnd(Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupdraw.html
 
-/* all primitives can be called only between calls to Begin and End */
+/* all functions can be called only between calls to Begin and End */
 
-void IupDrawSetClipRect(Ihandle* ih, int x1, int y1, int x2, int y2);
+void IupDrawSetClipRect(Ihandle* ih, int  x1, int  y1, int  x2, int  y2);
+void IupDrawGetClipRect(Ihandle* ih, int* x1, int* y1, int* x2, int* y2);
 void IupDrawResetClip(Ihandle* ih);
 
 /* color controlled by the attribute DRAWCOLOR */
@@ -30,11 +31,11 @@ void IupDrawLine(Ihandle* ih, int x1, int y1, int x2, int y2);
 void IupDrawRectangle(Ihandle* ih, int x1, int y1, int x2, int y2);
 void IupDrawArc(Ihandle* ih, int x1, int y1, int x2, int y2, double a1, double a2);
 void IupDrawPolygon(Ihandle* ih, int* points, int count);
-void IupDrawText(Ihandle* ih, const(char)* text, int len, int x, int y);
-void IupDrawImage(Ihandle* ih, const(char)* name, int make_inactive, int x, int y);
+void IupDrawText(Ihandle* ih, const(char)* text, int len, int x, int y, int w, int h); // signature changed from 3.24 to 3.25
+void IupDrawImage(Ihandle* ih, const(char)* name, int x, int y, int w, int h); // signature changed from 3.24 to 3.25
 void IupDrawSelectRect(Ihandle* ih, int x1, int y1, int x2, int y2);
 void IupDrawFocusRect(Ihandle* ih, int x1, int y1, int x2, int y2);
 
 void IupDrawGetSize(Ihandle* ih, int *w, int *h);
-void IupDrawGetTextSize(Ihandle* ih, const(char)* str, int *w, int *h);
+void IupDrawGetTextSize(Ihandle* ih, const(char)* text, int len, int *w, int *h); // signature changed from 3.24 to 3.25
 void IupDrawGetImageInfo(const(char)* name, int *w, int *h, int *bpp);

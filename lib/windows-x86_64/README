@@ -3,7 +3,7 @@ This folder has to be populated with .lib files, to be downloaded from (adapt to
 (Optionally also place the .dll here as well)
 
 For example:
-https://sourceforge.net/projects/iup/files/3.24/Windows%20Libraries/Dynamic/iup-3.24_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/iup/files/3.25/Windows%20Libraries/Dynamic/iup-3.25_Win64_dll14_lib.zip/download
 https://sourceforge.net/projects/canvasdraw/files/5.11.1/Windows%20Libraries/Dynamic/cd-5.11.1_Win64_dll14_lib.zip/download
 https://sourceforge.net/projects/imtoolkit/files/3.12/Windows%20Libraries/Dynamic/im-3.12_Win64_dll14_lib.zip/download
 
