@@ -19,7 +19,7 @@ int IupSaveImage(Ihandle* ih, const(char)* file_name, const(char)* format);
 Ihandle* IupLoadAnimation(const(char)* file_name);
 Ihandle* IupLoadAnimationFrames(const(char)** file_name_list, int file_count);
 
-version(IM) { // without IM-binding, type imImage is not known
+version(IM) { // without IM-binding, type imImage is unknown
 	import im.im_image : imImage;
 	imImage* IupGetNativeHandleImage(void* handle);       // in libiupim.so
 	void* IupGetImageNativeHandle(const(imImage)* image); // in libiupim.so

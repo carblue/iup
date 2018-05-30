@@ -6,7 +6,7 @@
 
 module iup.iupdraw_cd;
 
-version(CD) :
+version(CD) :  // without CD-binding, type cdContext is unknown
 
 import cd.cd : cdContext;
 
