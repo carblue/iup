@@ -6,6 +6,9 @@
 
 module iup.iupdraw_cd;
 
+version(CD) :
+
+import cd.cd : cdContext;
 
 extern(C) @nogc nothrow :
 
