@@ -13,7 +13,7 @@ public import iup.iup;
 public import iup.iupcontrols;
 public import iup.iup_config;
 
-public import iup.iupkey;
+//public import iup.iupkey;
 public import iup.iupdraw;
 
 /+
@@ -107,7 +107,9 @@ deprecated int IupOpenD(in string[] args) // ... main(string[] args) // C: int m
 
 	return IupOpen(argc_ptr, argv_ptr);
 }
-////  void Close() { IupClose(); }
+
+// Avoid functions, that do nothing else than simply introducing new names/aliasing
+////  void Close() { IupClose(); }  or  alias Close = IupClose;
 ////  void ImageLibOpen() { IupImageLibOpen(); }
 
 ////  int MainLoop() { return IupMainLoop(); }
@@ -373,6 +375,17 @@ class Control : Handle
   override int Hide() { return IupHide(_ih); }
 }
 
+ptrdiff_t index_first_null(ref Control[] child_array) nothrow {
+    import std.algorithm.searching : countUntil;
+    ptrdiff_t  result;
+    result = child_array.countUntil!"a is null";
+    if (result == -1) {
+        result = child_array.length;
+        child_array ~= new Control(null); // used as Terminator
+    }
+    return result;
+}
+
 Control GetFocus() nothrow {
   Ihandle* ih_focus = IupGetFocus();
   if (ih_focus==null)
@@ -564,8 +577,8 @@ class Timer : Handle
   this()          { super(IupTimer); }
   this(string CN) { this(); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } }
 
-  override void start() @nogc { SetAttribute("RUN", "YES"); }
-  override void stop()  @nogc { SetAttribute("RUN", "NO"); }
+  override void start() @nogc { SetAttribute(IUP_RUN, IUP_YES); }
+  override void stop()  @nogc { SetAttribute(IUP_RUN, IUP_NO);  }
 }
 
 class MenuSeparator : Control
@@ -588,18 +601,19 @@ class Canvas : Control
   void DrawBegin() { IupDrawBegin(_ih); }
   void DrawEnd() { IupDrawEnd(_ih); }
   void DrawSetClipRect(int x1, int y1, int x2, int y2) { IupDrawSetClipRect(_ih, x1, y1, x2, y2); }
+  void DrawGetClipRect(ref int x1, ref int y1, ref int x2, ref int y2) { IupDrawGetClipRect(_ih, &x1, &y1, &x2, &y2); }
   void DrawResetClip() { IupDrawResetClip(_ih); }
   void DrawParentBackground() { IupDrawParentBackground(_ih); }
   void DrawLine(int x1, int y1, int x2, int y2) { IupDrawLine(_ih, x1, y1, x2, y2); }
   void DrawRectangle(int x1, int y1, int x2, int y2) { IupDrawRectangle(_ih, x1, y1, x2, y2); }
   void DrawArc(int x1, int y1, int x2, int y2, double a1, double a2) { IupDrawArc(_ih, x1, y1, x2, y2, a1, a2); }
-  void DrawPolygon(int* points, int count) { IupDrawPolygon(_ih, points, count); }
-  void DrawText(const(char)* text, int len, int x, int y) { IupDrawText(_ih, text, len, x, y); }
-  void DrawImage(const(char)* name, int make_inactive, int x, int y) { IupDrawImage(_ih, name, make_inactive, x, y); }
+  void DrawPolygon(ref int points, int count) { IupDrawPolygon(_ih, &points, count); }
+  void DrawText(const(char)* text, int len, int x, int y, int w, int h) { IupDrawText(_ih, text, len, x, y, w, h); } // signature changed from 3.24 to 3.25
+  void DrawImage(const(char)* name, int x, int y, int w, int h) { IupDrawImage(_ih, name, x, y, w, h); } // signature changed from 3.24 to 3.25
   void DrawSelectRect(int x1, int y1, int x2, int y2) { IupDrawSelectRect(_ih, x1, y1, x2, y2); }
   void DrawFocusRect(int x1, int y1, int x2, int y2) { IupDrawFocusRect(_ih, x1, y1, x2, y2); }
   void DrawGetSize(ref int w, ref int h) { IupDrawGetSize(_ih, &w, &h); }
-  void DrawGetTextSize(const(char)* str, ref int w, ref int h) { IupDrawGetTextSize(_ih, str, &w, &h); }
+  void DrawGetTextSize(const(char)* str, int len, ref int w, ref int h) { IupDrawGetTextSize(_ih, str, len, &w, &h); } // signature changed from 3.24 to 3.25
   void DrawGetImageInfo(const(char)* name, ref int w, ref int h, ref int bpp) { IupDrawGetImageInfo(name, &w, &h, &bpp); }
 }
 
@@ -628,6 +642,47 @@ class FlatButton : Control
   nothrow:
   this(           const(char)* title = null) { super(IupFlatButton(title)); }
   this(string CN, const(char)* title)        { this(title); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } }
+}
+
+class FlatToggle : Control
+{
+    nothrow:
+    this(const(char)* title = null) { super(IupFlatToggle(title)); }
+    this(Ihandle* ih) { super(ih); }
+    this(/*Element*/Handle elem) { this(elem._ih); }
+}
+
+class FlatSeparator : Control
+{
+    nothrow:
+    this() { super(IupFlatSeparator()); }
+    this(Ihandle* ih) { super(ih); }
+    this(/*Element*/Handle elem) { this(elem._ih); }
+}
+
+class Space : Control
+{
+    nothrow:
+    this() { super(IupSpace()); }
+    this(Ihandle* ih) { super(ih); }
+    this(/*Element*/Handle elem) { this(elem._ih); }
+}
+
+class DropButton : Control
+{
+    nothrow:
+    this() { super(IupDropButton(null)); }
+    this(Control child) { super(IupDropButton(child.GetHandle())); }
+    this(Ihandle* ih) { super(ih); }
+    this(/*Element*/Handle elem) { this(elem._ih); }
+}
+
+class FlatLabel : Control
+{
+    nothrow:
+    this(const(char)* title = null) { super(IupFlatLabel(title)); }
+    this(Ihandle* ih) { super(ih); }
+    this(/*Element*/Handle elem) { this(elem._ih); }
 }
 
 class AnimatedLabel : Control
@@ -722,6 +777,7 @@ class Radio : Container
   nothrow:
   this()              { super(IupRadio(null)); }
   this(Control child) { super(IupRadio(child.GetHandle())); }
+  this(string CN, Control child) { super(IupRadio(child.GetHandle())); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } }
 }
 
 class Sbox : Container
@@ -770,18 +826,19 @@ class DetachBox : Container
     void DrawBegin() { IupDrawBegin(_ih); }
     void DrawEnd() { IupDrawEnd(_ih); }
     void DrawSetClipRect(int x1, int y1, int x2, int y2) { IupDrawSetClipRect(_ih, x1, y1, x2, y2); }
+    void DrawGetClipRect(ref int x1, ref int y1, ref int x2, ref int y2) { IupDrawGetClipRect(_ih, &x1, &y1, &x2, &y2); }
     void DrawResetClip() { IupDrawResetClip(_ih); }
     void DrawParentBackground() { IupDrawParentBackground(_ih); }
     void DrawLine(int x1, int y1, int x2, int y2) { IupDrawLine(_ih, x1, y1, x2, y2); }
     void DrawRectangle(int x1, int y1, int x2, int y2) { IupDrawRectangle(_ih, x1, y1, x2, y2); }
     void DrawArc(int x1, int y1, int x2, int y2, double a1, double a2) { IupDrawArc(_ih, x1, y1, x2, y2, a1, a2); }
     void DrawPolygon(int* points, int count) { IupDrawPolygon(_ih, points, count); }
-    void DrawText(const(char)* text, int len, int x, int y) { IupDrawText(_ih, text, len, x, y); }
-    void DrawImage(const(char)* name, int make_inactive, int x, int y) { IupDrawImage(_ih, name, make_inactive, x, y); }
+    void DrawText(const(char)* text, int len, int x, int y, int w, int h) { IupDrawText(_ih, text, len, x, y, w, h); } // signature changed from 3.24 to 3.25
+    void DrawImage(const(char)* name, int x, int y, int w, int h) { IupDrawImage(_ih, name, x, y, h, h); } // signature changed from 3.24 to 3.25
     void DrawSelectRect(int x1, int y1, int x2, int y2) { IupDrawSelectRect(_ih, x1, y1, x2, y2); }
     void DrawFocusRect(int x1, int y1, int x2, int y2) { IupDrawFocusRect(_ih, x1, y1, x2, y2); }
     void DrawGetSize(ref int w, ref int h) { IupDrawGetSize(_ih, &w, &h); }
-    void DrawGetTextSize(const(char)* str, ref int w, ref int h) { IupDrawGetTextSize(_ih, str, &w, &h); }
+    void DrawGetTextSize(const(char)* str, int len, ref int w, ref int h) { IupDrawGetTextSize(_ih, str, len, &w, &h); } // signature changed from 3.24 to 3.25
     void DrawGetImageInfo(const(char)* name, ref int w, ref int h, ref int bpp) { IupDrawGetImageInfo(name, &w, &h, &bpp); }
   }
 
@@ -864,15 +921,35 @@ class Hbox : Container
 
 class Tabs : Container
 {
-  nothrow:
-  this()                        { super(IupTabs(null)); }
-  this(Ihandle* ih)             { super(ih); } // temporarily
-  this(string CN, Ihandle* ih)  { super(ih); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } } // temporarily
-  this(Control child) { super(IupTabs(child.GetHandle(), null)); }
-  this(Control child0, Control child1 = null, Control child2 = null, Control child3 = null, Control child4 = null,
-    Control child5 = null, Control child6 = null, Control child7 = null, Control child8 = null, Control child9 = null)
-    { super(IupTabs(null), child0, child1, child2, child3, child4, child5, child6, child7, child8, child9); }
-  this(           Control[] child_array) { super(IupTabs(null), child_array); }
+    nothrow:
+    this()                        { super(IupTabs(null)); }
+//  this(Ihandle* ih)             { super(ih); } // temporarily
+//  this(string CN, Ihandle* ih)  { super(ih); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } } // temporarily
+    this(Control child) { super(IupTabs(child.GetHandle(), null)); }
+    this(Control child0, Control child1 = null, Control child2 = null, Control child3 = null, Control child4 = null,
+        Control child5 = null, Control child6 = null, Control child7 = null, Control child8 = null, Control child9 = null)
+    {
+        Control[] child_array;
+        child_array ~= child0; child_array ~= child1; child_array ~= child2; child_array ~= child3; child_array ~= child4;
+        child_array ~= child5; child_array ~= child6; child_array ~= child7; child_array ~= child8; child_array ~= child9;
+        this(child_array);
+    }
+    this(Control[] child_array)
+    {
+        ptrdiff_t  index = index_first_null(child_array);
+        if      (index==0)
+            this();
+        else if (index==1)
+            this(child_array[0]);
+        else {
+            Ihandle*[] arr_ih = new Ihandle*[index+1];
+            foreach (i; 0..index)
+                arr_ih[i] = child_array[i].GetHandle();
+            arr_ih[index] = null;
+            super(IupTabsv(arr_ih.ptr));
+       }
+//      super(IupTabs(null), child_array);
+  }
   this(string CN, Control[] child_array) { this(child_array); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } }
 }
 
