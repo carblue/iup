@@ -1377,31 +1377,31 @@ version(IUP_TUIO) {
 class Config : Handle
 {
   nothrow:
-  this()          { super(IupConfig); }
+  this()          { super(IupConfig()); }
 //  this(string CN) { this(); if (!CN.empty) { AA[CN] = this; IupSetHandle(CN.toStringz, _ih); } }
 
   int LoadConfig() { return IupConfigLoad(_ih); }
   int SaveConfig() { return IupConfigSave(_ih); }
 
-  void SetVariableStrId(const(char)* group, const(char)* key, int id, const(char)* value) { IupConfigSetVariableStrId(_ih, group, key, id, value); }
-  void SetVariableIntId(const(char)* group, const(char)* key, int id, int value) { IupConfigSetVariableIntId(_ih, group, key, id, value); }
+  void SetVariableStrId   (const(char)* group, const(char)* key, int id, const(char)* value) { IupConfigSetVariableStrId(_ih, group, key, id, value); }
+  void SetVariableIntId   (const(char)* group, const(char)* key, int id, int value)          { IupConfigSetVariableIntId(_ih, group, key, id, value); }
   void SetVariableDoubleId(const(char)* group, const(char)* key, int id, double value) { IupConfigSetVariableDoubleId(_ih, group, key, id, value); }
-  void SetVariableStr(const(char)* group, const(char)* key, const(char)* value) { IupConfigSetVariableStr(_ih, group, key, value); }
-  void SetVariableInt(const(char)* group, const(char)* key, int value) { IupConfigSetVariableInt(_ih, group, key, value); }
-  void SetVariableDouble(const(char)* group, const(char)* key, double value) { IupConfigSetVariableDouble(_ih, group, key, value); }
+  void SetVariableStr(     const(char)* group, const(char)* key, const(char)* value)   { IupConfigSetVariableStr(_ih, group, key, value); }
+  void SetVariableInt     (const(char)* group, const(char)* key, int value)            { IupConfigSetVariableInt(_ih, group, key, value); }
+  void SetVariableDouble  (const(char)* group, const(char)* key, double value)         { IupConfigSetVariableDouble(_ih, group, key, value); }
 
-  char* GetVariableStr(const(char)* group, const(char)* key) { return cast(char*)IupConfigGetVariableStr(_ih, group, key); }
-  int GetVariableInt(const(char)* group, const(char)* key) { return IupConfigGetVariableInt(_ih, group, key); }
-  double GetVariableDouble(const(char)* group, const(char)* key) { return IupConfigGetVariableDouble(_ih, group, key); }
-  char* GetVariableStrId(const(char)* group, const(char)* key, int id) { return cast(char*)IupConfigGetVariableStrId(_ih, group, key, id); }
-  int GetVariableIntId(const(char)* group, const(char)* key, int id) { return IupConfigGetVariableIntId(_ih, group, key, id); }
+  char*  GetVariableStr     (const(char)* group, const(char)* key)         { return cast(char*)IupConfigGetVariableStr(_ih, group, key); }
+  int    GetVariableInt     (const(char)* group, const(char)* key)         { return IupConfigGetVariableInt(_ih, group, key); }
+  double GetVariableDouble  (const(char)* group, const(char)* key)         { return IupConfigGetVariableDouble(_ih, group, key); }
+  char*  GetVariableStrId   (const(char)* group, const(char)* key, int id) { return cast(char*)IupConfigGetVariableStrId(_ih, group, key, id); }
+  int    GetVariableIntId   (const(char)* group, const(char)* key, int id) { return IupConfigGetVariableIntId(_ih, group, key, id); }
   double GetVariableDoubleId(const(char)* group, const(char)* key, int id) { return IupConfigGetVariableDoubleId(_ih, group, key, id); }
 
-  char* GetVariableStrDef(const(char)* group, const(char)* key, const(char)* def) { return cast(char*)IupConfigGetVariableStrDef(_ih, group, key, def); }
-  int GetVariableIntDef(const(char)* group, const(char)* key, int def) { return IupConfigGetVariableIntDef(_ih, group, key, def); }
-  double GetVariableDoubleDef(const(char)* group, const(char)* key, double def) { return IupConfigGetVariableDoubleDef(_ih, group, key, def); }
-  char* GetVariableStrIdDef(const(char)* group, const(char)* key, int id, const(char)* def) { return cast(char*)IupConfigGetVariableStrIdDef(_ih, group, key, id, def); }
-  int GetVariableIntIdDef(const(char)* group, const(char)* key, int id, int def) { return IupConfigGetVariableIntIdDef(_ih, group, key, id, def); }
+  char*  GetVariableStrDef     (const(char)* group, const(char)* key, const(char)* def) { return cast(char*)IupConfigGetVariableStrDef(_ih, group, key, def); }
+  int    GetVariableIntDef     (const(char)* group, const(char)* key, int def) { return IupConfigGetVariableIntDef(_ih, group, key, def); }
+  double GetVariableDoubleDef  (const(char)* group, const(char)* key, double def) { return IupConfigGetVariableDoubleDef(_ih, group, key, def); }
+  char*  GetVariableStrIdDef   (const(char)* group, const(char)* key, int id, const(char)* def) { return cast(char*)IupConfigGetVariableStrIdDef(_ih, group, key, id, def); }
+  int    GetVariableIntIdDef   (const(char)* group, const(char)* key, int id, int def) { return IupConfigGetVariableIntIdDef(_ih, group, key, id, def); }
   double GetVariableDoubleIdDef(const(char)* group, const(char)* key, int id, double def) { return IupConfigGetVariableDoubleIdDef(_ih, group, key, id, def); }
 
   void Copy(Config config2, const(char)* exclude_prefix) { IupConfigCopy(_ih, config2.GetHandle(), exclude_prefix); }

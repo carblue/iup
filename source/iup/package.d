@@ -10,6 +10,8 @@ public import iup.iupcbs;
 public import iup.iupcontrols;
 //public import iup.iupdef;
 public import iup.iupdraw;
+public import iup.iupdraw_cd;
+public import iup.iupfiledlg;
 public import iup.iupgl;
 public import iup.iupglcontrols;
 public import iup.iupim;
@@ -17,7 +19,6 @@ public import iup.iupim;
 public import iup.iupole;
 public import iup.iuptuio;
 public import iup.iupweb;
-public import iup.iupdraw_cd;
 
 //public import iup.iup_plusD;
 //public import iup.iup_class_cbs;

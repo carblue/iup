@@ -23,10 +23,10 @@ extern(C) {
 
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
-enum IUP_COPYRIGHT = "Copyright (C) 1994-2018 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.25";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 325000;
-enum IUP_VERSION_DATE = "2018/05/28";  /* does not include bug fix releases */
+enum IUP_COPYRIGHT = "Copyright (C) 1994-2019 Tecgraf/PUC-Rio";
+enum IUP_VERSION = "3.26";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 326000;
+enum IUP_VERSION_DATE = "2019/01/07";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -103,6 +103,7 @@ void      IupUnmap         (Ihandle* ih); /// See_Also: https://webserver2.tecgr
 
 void      IupResetAttribute(Ihandle* ih, const(char)* name); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupresetattribute.html
 int       IupGetAllAttributes(Ihandle* ih, char** names, int n); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetallattributes.html
+void      IupCopyAttributes(Ihandle* src_ih, Ihandle* dst_ih);
 Ihandle*  IupSetAtt(const(char)* handle_name, Ihandle* ih, const(char)* name, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupsetatt.html
 Ihandle*  IupSetAttributes (Ihandle* ih, const(char)* str); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupsetattributes.html
 char*     IupGetAttributes (Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetattributes.html
@@ -220,6 +221,8 @@ Ihandle*  IupScrollBox  (Ihandle* child);      /// See_Also: https://webserver2.
 Ihandle*  IupFlatScrollBox(Ihandle* child);    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupflatscrollbox.html
 Ihandle*  IupGridBox    (Ihandle* child, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupgridbox.html
 Ihandle*  IupGridBoxv   (Ihandle** children);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupgridbox.html
+Ihandle*  IupMultiBox   (Ihandle* child, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupmultibox.html
+Ihandle*  IupMultiBoxv  (Ihandle** children);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupmultibox.html
 Ihandle*  IupExpander   (Ihandle* child);      /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupexpander.html
 Ihandle*  IupDetachBox  (Ihandle* child);      /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupdetachbox.html
 Ihandle*  IupBackgroundBox(Ihandle* child);    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupbackgroundbox.html
@@ -573,7 +576,7 @@ enum {
 
 
 /******************************************************************************
-* Copyright (C) 1994-2018 Tecgraf, PUC-Rio.
+* Copyright (C) 1994-2019 Tecgraf, PUC-Rio.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the

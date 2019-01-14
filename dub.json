@@ -2,7 +2,7 @@
 	"name": "iup",
 	"description": "Deimos-like binding to IUP, Portable graphical User Interface",
 	"license": "MIT",
-	"copyright": "Copyright © 2016-2018, Carsten Blüggel",
+	"copyright": "Copyright © 2016-2019, Carsten Blüggel",
 	"homepage": "https://github.com/carblue/iup",
 	"authors": [
 		"Carsten Blüggel"
@@ -18,10 +18,6 @@
 	"lflags-posix-x86_64": [
 		"-L$PACKAGE_DIR/iup/lib/posix-x86_64",
 		"-rpath=$PACKAGE_DIR/iup/lib/posix-x86_64"
-	],
-	"lflags-posix-x86": [
-		"-L$PACKAGE_DIR/iup/lib/posix-x86",
-		"-rpath=$PACKAGE_DIR/iup/lib/posix-x86"
 	],
 	"libs-posix": [
 		"ftgl",

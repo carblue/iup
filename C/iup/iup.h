@@ -20,10 +20,10 @@ extern "C" {
 
 #define IUP_NAME "IUP - Portable User Interface"
 #define IUP_DESCRIPTION	"Multi-platform Toolkit for Building Graphical User Interfaces"
-#define IUP_COPYRIGHT "Copyright (C) 1994-2018 Tecgraf/PUC-Rio"
-#define IUP_VERSION "3.25"         /* bug fixes are reported only by IupVersion functions */
-#define IUP_VERSION_NUMBER 325000
-#define IUP_VERSION_DATE "2018/05/28"  /* does not include bug fix releases */
+#define IUP_COPYRIGHT "Copyright (C) 1994-2019 Tecgraf/PUC-Rio"
+#define IUP_VERSION "3.26"         /* bug fixes are reported only by IupVersion functions */
+#define IUP_VERSION_NUMBER 326000
+#define IUP_VERSION_DATE "2019/01/07"  /* does not include bug fix releases */
 
 typedef struct Ihandle_ Ihandle;
 typedef int (*Icallback)(Ihandle*);
@@ -94,6 +94,7 @@ void      IupUnmap         (Ihandle* ih);
 
 void      IupResetAttribute(Ihandle* ih, const char* name);
 int       IupGetAllAttributes(Ihandle* ih, char** names, int n);
+void      IupCopyAttributes(Ihandle* src_ih, Ihandle* dst_ih);
 Ihandle*  IupSetAtt(const char* handle_name, Ihandle* ih, const char* name, ...);
 Ihandle*  IupSetAttributes (Ihandle* ih, const char *str);
 char*     IupGetAttributes (Ihandle* ih);
@@ -211,7 +212,9 @@ Ihandle*  IupScrollBox  (Ihandle* child);
 Ihandle*  IupFlatScrollBox(Ihandle* child);
 Ihandle*  IupGridBox    (Ihandle* child, ...);
 Ihandle*  IupGridBoxv   (Ihandle* *children);
-Ihandle*  IupExpander   (Ihandle* child);
+Ihandle*  IupMultiBox   (Ihandle* child, ...);
+Ihandle*  IupMultiBoxv  (Ihandle **children);
+Ihandle*  IupExpander(Ihandle* child);
 Ihandle*  IupDetachBox  (Ihandle* child);
 Ihandle*  IupBackgroundBox(Ihandle* child);
 
@@ -469,7 +472,7 @@ int IupMain (int argc, char** argv); /* In C++ we have to declare the prototype 
 #endif
 
 /******************************************************************************
-* Copyright (C) 1994-2018 Tecgraf/PUC-Rio.
+* Copyright (C) 1994-2019 Tecgraf/PUC-Rio.
 *
 * Permission is hereby granted, free of charge, to any person obtaining
 * a copy of this software and associated documentation files (the

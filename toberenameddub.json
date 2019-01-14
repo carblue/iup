@@ -1,8 +1,8 @@
 {
 	"name": "iup",
-	"version": "0.0.9",
+	"version": "same as of dub.json",
 	"description": "Deimos-like binding to IUP, Portable graphical User Interface",
-	"copyright": "Copyright © 2016-2018, Carsten Blüggel",
+	"copyright": "Copyright © 2016-2019, Carsten Blüggel",
 	"authors": ["Carsten Blüggel"],
 	"targetType": "sourceLibrary",
 	"versions": ["IUP_MGLPLOT", "IUP_PLOT", "IUP_SCINTILLA", "IUP_GL", "IUP_GLCONTROLS", "IUP_MATRIXEX", "IUP_OLE", "IUP_TUIO", "IUP_WEB",

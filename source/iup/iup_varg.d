@@ -29,6 +29,7 @@ Ihandle*  IupHboxV(Ihandle* child, ...);
 Ihandle*  IupNormalizerV(Ihandle* ih_first, ...);
 Ihandle*  IupCboxV(Ihandle* child, ...);
 Ihandle*  IupGridBoxV(Ihandle* child, ...);
+Ihandle*  IupMultiBoxV(Ihandle* child, ...);
 Ihandle*  IupMenuV(Ihandle* child, ...);
 Ihandle*  IupTabsV(Ihandle* child, ...);
 Ihandle*  IupFlatTabsV(Ihandle* child, ...);

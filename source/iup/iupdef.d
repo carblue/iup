@@ -689,3 +689,4 @@ enum IUP_SHOWTOGGLE       = "SHOWTOGGLE";
 enum IUP_PADDING          = "PADDING";
 enum IUP_REMOVEITEM       = "REMOVEITEM";
 enum IUP_APPENDITEM       = "APPENDITEM";
+enum IUP_IMGEMPTY         = "IMGEMPTY";
