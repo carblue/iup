@@ -11,8 +11,8 @@
 extern "C" {
 #endif
 
-/* NOTICE: implemented done in IUP at the IUPCD library. 
-   Only this files is at the CD files. */
+/* NOTICE: implemented in IUP at the IUPCD library. 
+   Only this file is at the CD includes. */
 
 cdContext* cdContextIup(void);
 cdContext* cdContextIupDBuffer(void);

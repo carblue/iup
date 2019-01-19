@@ -8,6 +8,7 @@ public import cd.cdcgm;
 public import cd.cdclipbd;
 public import cd.cddbuf;
 public import cd.cddebug;
+public import cd.cddirect2d;
 public import cd.cddgn;
 public import cd.cddxf; 
 public import cd.cdemf;

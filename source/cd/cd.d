@@ -25,10 +25,10 @@ alias cdSizeCB = int function(cdCanvas* canvas, int w, int h, double w_mm, doubl
 
 enum CD_NAME = "CD - A 2D Graphics Library";
 enum CD_DESCRIPTION = "Vector Graphics Toolkit with Device Independent Output";
-enum CD_COPYRIGHT = "Copyright (C) 1994-2017 Tecgraf/PUC-Rio";
-enum CD_VERSION = "5.11";              /* bug fixes are reported only by cdVersion functions */
-enum CD_VERSION_NUMBER = 511000;
-enum CD_VERSION_DATE = "2016/09/30";  /* does not include bug fix releases */
+enum CD_COPYRIGHT = "Copyright (C) 1994-2019 Tecgraf/PUC-Rio";
+enum CD_VERSION = "5.12";              /* bug fixes are reported only by cdVersion functions */
+enum CD_VERSION_NUMBER = 512000;
+enum CD_VERSION_DATE = "2019/01/07";  /* does not include bug fix releases */
 
 struct _cdContext;
 alias cdContext = _cdContext;
@@ -296,7 +296,8 @@ enum {                          /* clip mode */
  CD_CLIPOFF,
  CD_CLIPAREA,
  CD_CLIPPOLYGON,
- CD_CLIPREGION
+ CD_CLIPREGION,
+ CD_CLIPPATH
 }
 
 enum {                          /* region combine mode */
@@ -399,7 +400,8 @@ enum {                          /* interior style */
  CD_HATCH,
  CD_STIPPLE,
  CD_PATTERN,
- CD_HOLLOW
+ CD_HOLLOW,
+ CD_CUSTOMPATTERN     /* used only in ContextPlus drivers */
 }
 
 enum {                          /* text alignment */
@@ -520,8 +522,8 @@ enum  CD_BLACK         = 0x00_00_00L;   /*   0,  0,  0 */
 enum  CD_DARK_GRAY     = 0x80_80_80L;   /* 128,128,128 */
 enum  CD_GRAY          = 0xC0_C0_C0L;   /* 192,192,192 */
 
-/* some usefull conversion factors */
-enum CD_MM2PT     = 2.834645669;   /* milimeters to points (pt = CD_MM2PT * mm) */
+/* some useful conversion factors */
+enum CD_MM2PT     = 2.834645669;   /* millimeters to points (pt = CD_MM2PT * mm) */
 enum CD_RAD2DEG  = 57.295779513;   /* radians to degrees (deg = CD_RAD2DEG * rad) */
 enum CD_DEG2RAD  = 0.01745329252;  /* degrees to radians (rad = CD_DEG2RAD * deg) */
 
@@ -540,7 +542,7 @@ enum {
 
 
 /******************************************************************************
-Copyright (C) 1994-2016 Tecgraf/PUC-Rio.
+Copyright (C) 1994-2019 Tecgraf/PUC-Rio.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

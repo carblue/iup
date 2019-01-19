@@ -13,8 +13,8 @@ version(DigitalMars) version(Windows) { pragma(lib, "iupcd.lib"); } // even with
 
 extern(C) @nogc nothrow :
 
-/* NOTICE: implementation done in IUP at the IUPCD library. 
-   Only this file is at the CD files. */
+/* NOTICE: implemented in IUP at the IUPCD library.
+   Only this file is at the CD includes. */
 
 cdContext* cdContextIup();  // even with version=CD defined, cdContext* may not be dereferenced, as it is known only via (non-published) cd_private.d
 cdContext* cdContextIupDBuffer();

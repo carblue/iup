@@ -18,10 +18,10 @@ extern "C" {
 
 #define CD_NAME "CD - A 2D Graphics Library"
 #define CD_DESCRIPTION "Vector Graphics Toolkit with Device Independent Output"
-#define CD_COPYRIGHT "Copyright (C) 1994-2017 Tecgraf/PUC-Rio"
-#define CD_VERSION "5.11"              /* bug fixes are reported only by cdVersion functions */
-#define CD_VERSION_NUMBER 511000
-#define CD_VERSION_DATE "2016/09/30"  /* does not include bug fix releases */
+#define CD_COPYRIGHT "Copyright (C) 1994-2019 Tecgraf/PUC-Rio"
+#define CD_VERSION "5.12"              /* bug fixes are reported only by cdVersion functions */
+#define CD_VERSION_NUMBER 512000
+#define CD_VERSION_DATE "2019/01/07"  /* does not include bug fix releases */
 
 typedef struct _cdContext cdContext;
 typedef struct _cdCanvas cdCanvas;
@@ -279,7 +279,8 @@ enum {                          /* clip mode */
  CD_CLIPOFF,
  CD_CLIPAREA,
  CD_CLIPPOLYGON,
- CD_CLIPREGION
+ CD_CLIPREGION,
+ CD_CLIPPATH
 };
 
 enum {                          /* region combine mode */
@@ -382,7 +383,8 @@ enum {                          /* interior style */
  CD_HATCH,
  CD_STIPPLE,
  CD_PATTERN,
- CD_HOLLOW
+ CD_HOLLOW,
+ CD_CUSTOMPATTERN     /* used only in ContextPlus drivers */
 };
 
 enum {                          /* text alignment */
@@ -503,8 +505,8 @@ typedef int(*cdSizeCB)(cdCanvas *canvas, int w, int h, double w_mm, double h_mm)
 #define  CD_DARK_GRAY     0x808080L   /* 128,128,128 */
 #define  CD_GRAY          0xC0C0C0L   /* 192,192,192 */
 
-/* some usefull conversion factors */
-#define CD_MM2PT     2.834645669   /* milimeters to points (pt = CD_MM2PT * mm) */
+/* some useful conversion factors */
+#define CD_MM2PT     2.834645669   /* millimeters to points (pt = CD_MM2PT * mm) */
 #define CD_RAD2DEG  57.295779513   /* radians to degrees (deg = CD_RAD2DEG * rad) */
 #define CD_DEG2RAD  0.01745329252  /* degrees to radians (rad = CD_DEG2RAD * deg) */
 
@@ -528,7 +530,7 @@ enum {
 
 
 /******************************************************************************
-Copyright (C) 1994-2016 Tecgraf/PUC-Rio.
+Copyright (C) 1994-2019 Tecgraf/PUC-Rio.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

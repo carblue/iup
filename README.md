@@ -5,7 +5,7 @@
 D language: A "Deimos"-like binding for IUP, CD and IM
 
 IUP, a Portable graphical User Interface toolkit, version 3.26 supported (released 2019-01-07),  http://webserver2.tecgraf.puc-rio.br/iup/<br>
-CD, a 2D Graphics Library, version 5.11.1 supported (released 2017-07-01),  http://webserver2.tecgraf.puc-rio.br/cd/<br>
+CD, a 2D Graphics Library, version 5.12 supported (released 2019-01-07),  http://webserver2.tecgraf.puc-rio.br/cd/<br>
 IM, an Imaging Toolkit, version 3.12 supported (released 2016-09-30),  http://webserver2.tecgraf.puc-rio.br/im/
 
 CD and/or IM may be dispensable, depending on GUI-controls to be used.<br>
