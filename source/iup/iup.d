@@ -24,9 +24,9 @@ extern(C) {
 enum IUP_NAME = "IUP - Portable User Interface";
 enum IUP_DESCRIPTION	= "Multi-platform Toolkit for Building Graphical User Interfaces";
 enum IUP_COPYRIGHT = "Copyright (C) 1994-2019 Tecgraf/PUC-Rio";
-enum IUP_VERSION = "3.26";         /* bug fixes are reported only by IupVersion functions */
-enum IUP_VERSION_NUMBER = 326000;
-enum IUP_VERSION_DATE = "2019/01/07";  /* does not include bug fix releases */
+enum IUP_VERSION = "3.27";         /* bug fixes are reported only by IupVersion functions */
+enum IUP_VERSION_NUMBER = 327000;
+enum IUP_VERSION_DATE = "2019/04/30";  /* does not include bug fix releases */
 
 //struct Ihandle_;
 //alias Ihandle = Ihandle_;
@@ -103,7 +103,7 @@ void      IupUnmap         (Ihandle* ih); /// See_Also: https://webserver2.tecgr
 
 void      IupResetAttribute(Ihandle* ih, const(char)* name); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupresetattribute.html
 int       IupGetAllAttributes(Ihandle* ih, char** names, int n); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetallattributes.html
-void      IupCopyAttributes(Ihandle* src_ih, Ihandle* dst_ih);
+void      IupCopyAttributes(Ihandle* src_ih, Ihandle* dst_ih);   /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupcopyattributes.html
 Ihandle*  IupSetAtt(const(char)* handle_name, Ihandle* ih, const(char)* name, ...); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupsetatt.html
 Ihandle*  IupSetAttributes (Ihandle* ih, const(char)* str); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupsetattributes.html
 char*     IupGetAttributes (Ihandle* ih); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iupgetattributes.html
@@ -242,15 +242,16 @@ Ihandle*  IupMenuv      (Ihandle** children);  /// See_Also: https://webserver2.
 
 Ihandle*  IupButton     (const(char)* title, const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupbutton.html
 Ihandle*  IupFlatButton (const(char)* title);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupflatbutton.html
-Ihandle*  IupFlatToggle (const(char)* title);
-Ihandle*  IupDropButton (Ihandle* dropchild);
-Ihandle*  IupFlatLabel  (const(char)* title);
-Ihandle*  IupFlatSeparator();
+Ihandle*  IupFlatToggle (const(char)* title);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupflattoggle.html
+Ihandle*  IupDropButton (Ihandle* dropchild);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupdropbutton.html
+Ihandle*  IupFlatLabel  (const(char)* title);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupflatlabel.html
+Ihandle*  IupFlatSeparator();                  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupflatseparator.html
 Ihandle*  IupCanvas     (const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupcanvas.html
 Ihandle*  IupDialog     (Ihandle* child);      /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupdialog.html
 Ihandle*  IupUser       ();                    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupuser.html
 Ihandle*  IupLabel      (const(char)* title);  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iuplabel.html
 Ihandle*  IupList       (const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iuplist.html
+Ihandle*  IupFlatList   ();                    /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupflatlist.html
 Ihandle*  IupText       (const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iuptext.html
 Ihandle*  IupMultiLine  (const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupmultiline.html
 Ihandle*  IupToggle     (const(char)* title, const(char)* action); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iuptoggle.html
@@ -268,7 +269,7 @@ Ihandle*  IupAnimatedLabel(Ihandle* animation); /// See_Also: https://webserver2
 Ihandle*  IupDatePick   (); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupdatepick.html
 Ihandle*  IupCalendar   (); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupcalendar.html
 Ihandle*  IupColorbar   (); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupcolorbar.html
-Ihandle*  IupGauge      (); //  See_Also: undocumented
+Ihandle*  IupGauge      (); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupgauge.html
 Ihandle*  IupDial       (const(char)* type); /// See_Also: http://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupdial.html
 Ihandle*  IupColorBrowser(); /// See_Also: http://webserver2.tecgraf.puc-rio.br/iup/en/elem/iupcolorbrowser.html
 
@@ -342,6 +343,7 @@ Ihandle* IupParamBoxv(Ihandle** param_array); /// See_Also: https://webserver2.t
 
 Ihandle* IupLayoutDialog(Ihandle* dialog);          /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/.../iuplayoutdialog.html
 Ihandle* IupElementPropertiesDialog(Ihandle* elem); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/dlg/iupelementpropdialog.html
+Ihandle* IupGlobalsDialog();
 
 } // @nogc nothrow
 } // extern(C)
@@ -370,26 +372,26 @@ enum {
 /************************************************************************/
 /*           IupPopup and IupShowXY Parameter Values                    */
 /************************************************************************/
-enum {
-	IUP_CENTER        = 0xFFFF,  /* 65535 */ /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
-	IUP_LEFT          = 0xFFFE,  /* 65534 */ /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
-	IUP_RIGHT         = 0xFFFD,  /* 65533 */ /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
-	IUP_MOUSEPOS      = 0xFFFC,  /* 65532 */ /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
-	IUP_CURRENT       = 0xFFFB,  /* 65531 */ /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
-	IUP_CENTERPARENT  = 0xFFFA,  /* 65530 */ /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
-	IUP_TOP       = IUP_LEFT,                /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
-	IUP_BOTTOM    = IUP_RIGHT,               /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
+enum {                  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/func/iuppopup.html
+	IUP_CENTER        = 0xFFFF,  /* 65535 */
+	IUP_LEFT          = 0xFFFE,  /* 65534 */
+	IUP_RIGHT         = 0xFFFD,  /* 65533 */
+	IUP_MOUSEPOS      = 0xFFFC,  /* 65532 */
+	IUP_CURRENT       = 0xFFFB,  /* 65531 */
+	IUP_CENTERPARENT  = 0xFFFA,  /* 65530 */
+	IUP_TOP       = IUP_LEFT,
+	IUP_BOTTOM    = IUP_RIGHT,
 }
 
 /************************************************************************/
 /*               SHOW_CB Callback Values                                */
 /************************************************************************/
-enum {
-    IUP_SHOW,     /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/call/iup_show_cb.html
-    IUP_RESTORE,  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/call/iup_show_cb.html
-    IUP_MINIMIZE, /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/call/iup_show_cb.html
-    IUP_MAXIMIZE, /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/call/iup_show_cb.html
-    IUP_HIDE      /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/call/iup_show_cb.html
+enum {                  /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/call/iup_show_cb.html
+    IUP_SHOW,
+    IUP_RESTORE,
+    IUP_MINIMIZE,
+    IUP_MAXIMIZE,
+    IUP_HIDE
 }
 
 /************************************************************************/
