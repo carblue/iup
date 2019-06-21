@@ -15,8 +15,9 @@
 	"sourcePaths": [
 		"wrapper/"
 	],
+	"comment-lflags-posix-x86_64": ["The following is required in order to replace system's libftgl.so usage by Tecgraf/PUC-Rio's supplied one. Maybe the same applies for macOS ?"],
 	"lflags-posix-x86_64": [
-		"-L$PACKAGE_DIR/iup/lib/posix-x86_64",
+		     "-L$PACKAGE_DIR/iup/lib/posix-x86_64",
 		"-rpath=$PACKAGE_DIR/iup/lib/posix-x86_64"
 	],
 	"libs-posix": [
@@ -25,25 +26,14 @@
 		"iupcontrols"
 	],
 	"dflags-windows-x86_64" : ["-m64"],
-	"dflags-windows-x86" : ["-m32mscoff"],
 	"sourceFiles-windows-x86_64": [
 		"lib/windows-x86_64/ftgl.lib",
 		"lib/windows-x86_64/iup.lib",
 		"lib/windows-x86_64/iupcontrols.lib"
 	],
-	"sourceFiles-windows-x86": [
-		"lib/windows-x86/ftgl.lib",
-		"lib/windows-x86/iup.lib",
-		"lib/windows-x86/iupcontrols.lib"
-	],
 	"copyFiles-windows-x86_64": [
 		"lib/windows-x86_64/ftgl.dll",
 		"lib/windows-x86_64/iup.dll",
 		"lib/windows-x86_64/iupcontrols.dll"
-	],
-	"copyFiles-windows-x86": [
-		"lib/windows-x86/ftgl.dll",
-		"lib/windows-x86/iup.dll",
-		"lib/windows-x86/iupcontrols.dll"
 	]
 }

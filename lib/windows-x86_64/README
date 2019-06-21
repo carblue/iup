@@ -1,13 +1,15 @@
 arch=x86_64
-This folder has to be populated with .lib files, to be downloaded from (adapt to Your compiler/linker, but stick with Windows x86_64 (Win64) here):
-(Optionally also place the .dll here as well)
+This folder has to be populated with .lib files, to be downloaded from (see below):
+(Optionally also place the .dll here as well and (mandatory) to some location within %PATH%)
 
 For example:
-https://sourceforge.net/projects/iup/files/3.25/Windows%20Libraries/Dynamic/iup-3.25_Win64_dll14_lib.zip/download
-https://sourceforge.net/projects/canvasdraw/files/5.11.1/Windows%20Libraries/Dynamic/cd-5.11.1_Win64_dll14_lib.zip/download
-https://sourceforge.net/projects/imtoolkit/files/3.12/Windows%20Libraries/Dynamic/im-3.12_Win64_dll14_lib.zip/download
+https://sourceforge.net/projects/iup/files/3.27/Windows%20Libraries/Dynamic/iup-3.27_Win64_dll15_lib.zip/download
+https://sourceforge.net/projects/canvasdraw/files/5.12/Windows%20Libraries/Dynamic/cd-5.12_Win64_dll15_lib.zip/download
+https://sourceforge.net/projects/imtoolkit/files/3.13/Windows%20Libraries/Dynamic/im-3.13_Win64_dll15_lib.zip/download
 
 DMD for x86_64 uses the MS Visual Studio linker and it's COFF-formatted import libraries, thus we have to stick with MS's .lib files.
-This will introduce some vcruntime???.dll dependency on top of MSVCRT.DLL: vcruntime140.dll in this case too !
+This will introduce a dependency on top of MSVCRT.DLL: VCRUNTIME140.DLL in this case too !
 
-You will need at least iup.lib and iupcontrols.lib
+You will need at least ftgl.lib, iup.lib and iupcontrols.lib
+
+appveyor.yml: image: Visual Studio 2017
