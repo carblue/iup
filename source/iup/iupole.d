@@ -10,7 +10,7 @@ version(Windows) :
 
 import iup.iup : Ihandle;
 
-version(DigitalMars) { pragma(lib, "iupole.lib"); }
+// pragma(lib, "iupole.lib"); }
 
 extern(C) @nogc nothrow :
 

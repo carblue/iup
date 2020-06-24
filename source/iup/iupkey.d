@@ -171,8 +171,16 @@ enum : wchar {
 			K_F10      = 0xFFC7,
 			K_F11      = 0xFFC8,
 			K_F12      = 0xFFC9,
+			K_F13      = 0xFFCA,
+			K_F14      = 0xFFCB,
+			K_F15      = 0xFFCC,
+			K_F16      = 0xFFCD,
+			K_F17      = 0xFFCE,
+			K_F18      = 0xFFCF,
+			K_F19      = 0xFFD0,
+			K_F20      = 0xFFD1,
 
-/* no Shift/Ctrl/Alt */
+			/* no Shift/Ctrl/Alt */
 			K_LSHIFT   = 0xFFE1,
 			K_RSHIFT   = 0xFFE2,
 			K_LCTRL    = 0xFFE3,
@@ -184,7 +192,12 @@ enum : wchar {
 			K_SCROLL   = 0xFF14,
 			K_CAPS     = 0xFFE5,
 
-/* Also, these are the same as the Latin-1 definition */
+			/* Mac clear button. Value randomly picked trying to avoid clashing with an existing value. */
+			K_CLEAR    = 0xFFD2,
+			/* Help button if anybody has it. Value randomly picked trying to avoid clashing with an existing value. */
+			K_HELP     = 0xFFD3,
+
+			/* Also, these are the same as the Latin-1 definition */
 
 			K_ccedilla  = 0x00E7,
 			K_Ccedilla  = 0x00C7,
@@ -197,16 +210,16 @@ enum : wchar {
 /* These modifiers definitions are specific to IUP    */
 /******************************************************/
 
-bool iup_isShiftXkey(dchar _c)  { return _c & 0x1000_0000; }
-bool iup_isCtrlXkey(dchar _c)   { return _c & 0x2000_0000; }
-bool iup_isAltXkey(dchar _c)    { return _c & 0x4000_0000; }
-bool iup_isSysXkey(dchar _c)    { return _c & 0x8000_0000; }
+bool iup_isShiftXkey()(dchar _c)  { return (_c & 0x1000_0000) != 0; }
+bool iup_isCtrlXkey()(dchar _c)   { return (_c & 0x2000_0000) != 0; }
+bool iup_isAltXkey()(dchar _c)    { return (_c & 0x4000_0000) != 0; }
+bool iup_isSysXkey()(dchar _c)    { return (_c & 0x8000_0000) != 0; }
 
-dchar iup_XkeyBase(dchar _c)     { return _c & 0x0FFF_FFFF; }
-dchar iup_XkeyShift(dchar _c)    { return _c | 0x1000_0000; }   /* Shift  */
-dchar iup_XkeyCtrl(dchar _c)     { return _c | 0x2000_0000; }   /* Ctrl   */
-dchar iup_XkeyAlt(dchar _c)      { return _c | 0x4000_0000; }   /* Alt    */
-dchar iup_XkeySys(dchar _c)      { return _c | 0x8000_0000; }   /* Sys (Win or Apple) */
+dchar iup_XkeyBase()(dchar _c)     { return _c & 0x0FFF_FFFF; }
+dchar iup_XkeyShift()(dchar _c)    { return _c | 0x1000_0000; }   /* Shift  */
+dchar iup_XkeyCtrl()(dchar _c)     { return _c | 0x2000_0000; }   /* Ctrl   */
+dchar iup_XkeyAlt()(dchar _c)      { return _c | 0x4000_0000; }   /* Alt    */
+dchar iup_XkeySys()(dchar _c)      { return _c | 0x8000_0000; }   /* Sys (Win or Apple) - notice that using "int" will display a negative value */
 
 /* These definitions are here for backward compatibility 
    and to simplify some key combination usage.
@@ -231,6 +244,7 @@ enum : dchar {
 			K_sBS      = iup_XkeyShift(K_BS     ),
 			K_sPAUSE   = iup_XkeyShift(K_PAUSE  ),
 			K_sESC     = iup_XkeyShift(K_ESC    ),
+			K_sCLEAR   = iup_XkeyShift(K_CLEAR  ),
 			K_sF1      = iup_XkeyShift(K_F1     ),
 			K_sF2      = iup_XkeyShift(K_F2     ),
 			K_sF3      = iup_XkeyShift(K_F3     ),
@@ -243,6 +257,14 @@ enum : dchar {
 			K_sF10     = iup_XkeyShift(K_F10    ),
 			K_sF11     = iup_XkeyShift(K_F11    ),
 			K_sF12     = iup_XkeyShift(K_F12    ),
+			K_sF13     = iup_XkeyShift(K_F13    ),
+			K_sF14     = iup_XkeyShift(K_F14    ),
+			K_sF15     = iup_XkeyShift(K_F15    ),
+			K_sF16     = iup_XkeyShift(K_F16    ),
+			K_sF17     = iup_XkeyShift(K_F17    ),
+			K_sF18     = iup_XkeyShift(K_F18    ),
+			K_sF19     = iup_XkeyShift(K_F19    ),
+			K_sF20     = iup_XkeyShift(K_F20    ),
 			K_sPrint   = iup_XkeyShift(K_Print  ),
 			K_sMenu    = iup_XkeyShift(K_Menu   ),
 
@@ -263,6 +285,7 @@ enum : dchar {
 			K_cBS      = iup_XkeyCtrl(K_BS      ),
 			K_cPAUSE   = iup_XkeyCtrl(K_PAUSE   ),
 			K_cESC     = iup_XkeyCtrl(K_ESC     ),
+			K_cCLEAR   = iup_XkeyCtrl(K_CLEAR   ),
 			K_cCcedilla= iup_XkeyCtrl(K_Ccedilla),
 			K_cF1      = iup_XkeyCtrl(K_F1      ),
 			K_cF2      = iup_XkeyCtrl(K_F2      ),
@@ -276,6 +299,14 @@ enum : dchar {
 			K_cF10     = iup_XkeyCtrl(K_F10     ),
 			K_cF11     = iup_XkeyCtrl(K_F11     ),
 			K_cF12     = iup_XkeyCtrl(K_F12     ),
+			K_cF13     = iup_XkeyCtrl(K_F13     ),
+			K_cF14     = iup_XkeyCtrl(K_F14     ),
+			K_cF15     = iup_XkeyCtrl(K_F15     ),
+			K_cF16     = iup_XkeyCtrl(K_F16     ),
+			K_cF17     = iup_XkeyCtrl(K_F17     ),
+			K_cF18     = iup_XkeyCtrl(K_F18     ),
+			K_cF19     = iup_XkeyCtrl(K_F19     ),
+			K_cF20     = iup_XkeyCtrl(K_F20     ),
 			K_cPrint   = iup_XkeyCtrl(K_Print   ),
 			K_cMenu    = iup_XkeyCtrl(K_Menu    ),
 
@@ -296,6 +327,7 @@ enum : dchar {
 			K_mBS      = iup_XkeyAlt(K_BS      ),
 			K_mPAUSE   = iup_XkeyAlt(K_PAUSE   ),
 			K_mESC     = iup_XkeyAlt(K_ESC     ),
+			K_mCLEAR   = iup_XkeyAlt(K_CLEAR   ),
 			K_mCcedilla= iup_XkeyAlt(K_Ccedilla),
 			K_mF1      = iup_XkeyAlt(K_F1      ),
 			K_mF2      = iup_XkeyAlt(K_F2      ),
@@ -309,6 +341,14 @@ enum : dchar {
 			K_mF10     = iup_XkeyAlt(K_F10     ),
 			K_mF11     = iup_XkeyAlt(K_F11     ),
 			K_mF12     = iup_XkeyAlt(K_F12     ),
+			K_mF13     = iup_XkeyAlt(K_F13     ),
+			K_mF14     = iup_XkeyAlt(K_F14     ),
+			K_mF15     = iup_XkeyAlt(K_F15     ),
+			K_mF16     = iup_XkeyAlt(K_F16     ),
+			K_mF17     = iup_XkeyAlt(K_F17     ),
+			K_mF18     = iup_XkeyAlt(K_F18     ),
+			K_mF19     = iup_XkeyAlt(K_F19     ),
+			K_mF20     = iup_XkeyAlt(K_F20     ),
 			K_mPrint   = iup_XkeyAlt(K_Print   ),
 			K_mMenu    = iup_XkeyAlt(K_Menu    ),
 
@@ -329,6 +369,7 @@ enum : dchar {
 			K_yBS      = iup_XkeySys(K_BS      ),
 			K_yPAUSE   = iup_XkeySys(K_PAUSE   ),
 			K_yESC     = iup_XkeySys(K_ESC     ),
+			K_yCLEAR   = iup_XkeySys(K_CLEAR   ),
 			K_yCcedilla= iup_XkeySys(K_Ccedilla),
 			K_yF1      = iup_XkeySys(K_F1      ),
 			K_yF2      = iup_XkeySys(K_F2      ),
@@ -342,6 +383,14 @@ enum : dchar {
 			K_yF10     = iup_XkeySys(K_F10     ),
 			K_yF11     = iup_XkeySys(K_F11     ),
 			K_yF12     = iup_XkeySys(K_F12     ),
+			K_yF13     = iup_XkeySys(K_F13     ),
+			K_yF14     = iup_XkeySys(K_F14     ),
+			K_yF15     = iup_XkeySys(K_F15     ),
+			K_yF16     = iup_XkeySys(K_F16     ),
+			K_yF17     = iup_XkeySys(K_F17     ),
+			K_yF18     = iup_XkeySys(K_F18     ),
+			K_yF19     = iup_XkeySys(K_F19     ),
+			K_yF20     = iup_XkeySys(K_F20     ),
 			K_yPrint   = iup_XkeySys(K_Print   ),
 			K_yMenu    = iup_XkeySys(K_Menu    ),
 

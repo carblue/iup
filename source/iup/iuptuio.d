@@ -8,7 +8,8 @@ module iup.iuptuio;
 
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iuptuio.lib"); }
+//version(Posix)      pragma(lib, "libiuptuio.so");
+//version(Windows)    pragma(lib, "iuptuio.lib");
 
 extern(C) @nogc nothrow :
 

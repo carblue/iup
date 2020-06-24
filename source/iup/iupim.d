@@ -8,21 +8,30 @@ module iup.iupim;
 
 /* Usage of any of these functions requires prior installation of package/toolkit IM */
 
+version(IM) :
+
 import iup.iup : Ihandle;
 
-version(DigitalMars) version(Windows) { pragma(lib, "iupim.lib"); } // libiupim.so depends on libim.so, (maybe image type specific .so like libpng12.so), libiup.so,...
+// version(Posix)   { pragma(lib, "libiupim.so"); } // libiupim.so i.a. depends on libim.so
+// version(Windows) { pragma(lib, "iupim.lib"); }
 
 extern(C) @nogc nothrow :
 
-Ihandle* IupLoadImage(const(char)* file_name); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/iupim.html
-int IupSaveImage(Ihandle* ih, const(char)* file_name, const(char)* format);
-Ihandle* IupLoadAnimation(const(char)* file_name);
-Ihandle* IupLoadAnimationFrames(const(char)** file_name_list, int file_count);
+void IupImOpen();  /* optional */
 
-version(IM) { // without IM-binding, type imImage is unknown
+Ihandle* IupLoadImage(const(char)* filename); /// See_Also: https://webserver2.tecgraf.puc-rio.br/iup/en/iupim.html
+int IupSaveImage(Ihandle* ih, const(char)* filename, const(char)* format);
+
+Ihandle* IupLoadAnimation(const(char)* filename);
+Ihandle* IupLoadAnimationFrames(const(char)** filename_list, int file_count);
+
+//#ifdef __IM_IMAGE_H
+//version(IM) { // without IM-binding, type imImage is unknown
 	import im.im_image : imImage;
-	imImage* IupGetNativeHandleImage(void* handle);       // in libiupim.so
-	void* IupGetImageNativeHandle(const(imImage)* image); // in libiupim.so
-	Ihandle* IupImageFromImImage(const(imImage)* image);  // in libiupim.so
+	imImage* IupGetNativeHandleImage(void* handle);
+	void* IupGetImageNativeHandle(const(imImage)* image);
+
+	Ihandle* IupImageFromImImage(const(imImage)* image);
 	imImage* IupImageToImImage(Ihandle* iup_image);
-}
+//}
+//#endif
