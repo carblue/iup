@@ -38,4 +38,12 @@ void      IupMessageV(const(char)* title, const(char)* format, ...);
 Ihandle*  IupParamBoxV(Ihandle* param, ...);
 int       IupGetParamV(const(char)* title, Iparamcb action, void* user_data, const(char)* format, ...);
 
+/* must include iupglcontrols before this file to enable this declaration */
+//#ifdef __IUPGLCONTROLS_H
+//#ifndef IUP_GLCONTROLS_API
+//#define IUP_GLCONTROLS_API
+//#endif
+//IUP_GLCONTROLS_API Ihandle*  IupGLCanvasBoxV(Ihandle* child, va_list arglist);
 Ihandle*  IupGLCanvasBoxV(Ihandle* child, ...);
+//#endif
+
